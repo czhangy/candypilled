@@ -4,6 +4,8 @@ import {
     GameDataSource,
     LearnsetMethod,
     LearnsetMove,
+    MoveAiData,
+    MoveAiRule,
     MoveData,
     MoveValuesByGeneration,
     StatValues,
@@ -31,6 +33,32 @@ export default class MoveHelpers {
         return move.method === 'level-up'
             ? `Lv. ${move.level}`
             : MoveHelpers.LEARNSET_METHOD_LABELS[move.method];
+    }
+
+    /**
+     * The AI rules that apply to the move `slug`, merged by flag in the order
+     * the AI runs them, or undefined if the move has no AI notes.
+     */
+    static getMoveAi(
+        moveAi: MoveAiData,
+        slug: string
+    ): MoveAiRule[] | undefined {
+        const ruleKeys = moveAi.moves[slug];
+        if (!ruleKeys) {
+            return undefined;
+        }
+
+        const routines: MoveAiRule[] = [];
+        ruleKeys.forEach((key) => {
+            const rule = moveAi.rules[key];
+            const routine = routines.find(({ flag }) => flag === rule.flag);
+            if (routine) {
+                routine.details.push(...rule.details);
+            } else {
+                routines.push({ flag: rule.flag, details: [...rule.details] });
+            }
+        });
+        return routines;
     }
 
     /** The move data for PokeAPI's numeric `id` in dataSource, or undefined if no move matches. */

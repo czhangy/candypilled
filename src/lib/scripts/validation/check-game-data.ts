@@ -9,8 +9,19 @@ import {
     runScript,
 } from '@/lib/scripts/utils/helpers';
 import { GAME_CHECK_CONFIGS } from '@/lib/scripts/validation/game-configs';
-import { BattleMetadata } from '@/lib/static/enums';
-import { BattleTrainer, Game, MethodSplit } from '@/lib/static/types';
+import {
+    BattleMetadata,
+    GameVersionGroup,
+    Gen3AiFlag,
+    Gen4AiFlag,
+} from '@/lib/static/enums';
+import {
+    AiFlag,
+    BattleTeam,
+    BattleTrainer,
+    Game,
+    MethodSplit,
+} from '@/lib/static/types';
 
 type Report = {
     title: string;
@@ -145,6 +156,98 @@ const checkBattleMetadata = (game: Game): string[] => {
         });
 };
 
+const DOUBLE_METADATA = [
+    BattleMetadata.Double,
+    BattleMetadata.TrueDouble,
+    BattleMetadata.Tag,
+];
+
+// Ruby and Sapphire have no double-battle AI script, so they have no
+// implied flag.
+const getImpliedDoubleFlag = (game: Game): AiFlag | undefined => {
+    if (game.generation === 4) {
+        return Gen4AiFlag.TagStrategy;
+    }
+    return game.version === GameVersionGroup.RubySapphire
+        ? undefined
+        : Gen3AiFlag.DoubleBattle;
+};
+
+const getValidAiFlags = (game: Game): AiFlag[] =>
+    (game.generation === 4
+        ? Object.values(Gen4AiFlag)
+        : Object.values(Gen3AiFlag)
+    ).filter(
+        (flag) =>
+            flag !== Gen3AiFlag.DoubleBattle ||
+            getImpliedDoubleFlag(game) !== undefined
+    );
+
+// A team's aiFlags must come from its generation's enum, and carry the
+// flag the game adds in double battles exactly when the battle is one. A
+// tag partner is exempt from the second rule: it has no metadata of its own.
+const checkAiFlags = (game: Game): string[] => {
+    const impliedDoubleFlag = getImpliedDoubleFlag(game);
+    const validFlags = getValidAiFlags(game);
+    const tagPartnerKeys = getTagPartnerKeys(game);
+
+    return Object.entries(game.battles).flatMap(([key, battle]) => {
+        const isDouble = battle.metadata.some((value) =>
+            DOUBLE_METADATA.includes(value)
+        );
+        const getDoubleFlagViolation = (team: BattleTeam): string[] =>
+            impliedDoubleFlag !== undefined &&
+            !tagPartnerKeys.has(key) &&
+            team.aiFlags.includes(impliedDoubleFlag) !== isDouble
+                ? [
+                      `battle ${key}: ${isDouble ? 'missing' : 'unexpected'} AI flag "${impliedDoubleFlag}"`,
+                  ]
+                : [];
+
+        return [
+            ...battle.teams,
+            ...(battle.secondTrainer?.teams ?? []),
+        ].flatMap((team) => [
+            ...team.aiFlags
+                .filter((flag) => !validFlags.includes(flag))
+                .map(
+                    (flag) =>
+                        `battle ${key}: AI flag "${flag}" is not valid for ${game.name}`
+                ),
+            ...getDoubleFlagViolation(team),
+        ]);
+    });
+};
+
+// Move AI notes must name real moves and real rules, use flags from the
+// game's generation, and leave no rule unused.
+const checkMoveAi = (game: Game): string[] => {
+    const validFlags = getValidAiFlags(game);
+    const { moves, rules } = game.moveAi;
+    const usedKeys = new Set(Object.values(moves).flat());
+
+    return [
+        ...Object.entries(rules).flatMap(([key, rule]) => [
+            ...(validFlags.includes(rule.flag)
+                ? []
+                : [
+                      `move AI rule "${key}": AI flag "${rule.flag}" is not valid for ${game.name}`,
+                  ]),
+            ...(usedKeys.has(key)
+                ? []
+                : [`move AI rule "${key}": not used by any move`]),
+        ]),
+        ...Object.entries(moves).flatMap(([slug, keys]) => [
+            ...(slug in game.dataSource.moves
+                ? []
+                : [`move AI "${slug}": unknown move`]),
+            ...keys
+                .filter((key) => !(key in rules))
+                .map((key) => `move AI "${slug}": unknown rule "${key}"`),
+        ]),
+    ];
+};
+
 const checkMetLocations = (
     game: Game,
     unmappedLocations: string[]
@@ -200,6 +303,8 @@ const checkGame = (game: Game): Report => {
             ...checkSplitNames(game),
             ...checkTrainerClasses(game),
             ...checkBattleMetadata(game),
+            ...checkAiFlags(game),
+            ...checkMoveAi(game),
             ...(hasMetTable
                 ? checkMetLocations(game, config.unmappedLocations)
                 : []),

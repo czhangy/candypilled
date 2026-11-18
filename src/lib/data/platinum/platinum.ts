@@ -1,4 +1,5 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
+import { PLATINUM_MOVE_AI } from '@/lib/data/move-ai/platinum';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -36,6 +37,7 @@ const PLATINUM: Game = {
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
     battles: BATTLES,
+    moveAi: PLATINUM_MOVE_AI,
     metLocationById: MET_LOCATIONS,
     roamers: [{ species: 'mesprit', level: 50 }],
     resources: [

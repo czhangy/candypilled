@@ -5,6 +5,8 @@ import {
     EncounterMethod,
     FieldCondition,
     GameVersionGroup,
+    Gen3AiFlag,
+    Gen4AiFlag,
     GrowthRate,
     ItemCategory,
     MapAnchor,
@@ -12,6 +14,43 @@ import {
     PokemonStatus,
     TrainerAssetFolder,
 } from '@/lib/static/enums';
+
+// A trainer AI flag from any generation.
+export type AiFlag = Gen3AiFlag | Gen4AiFlag;
+
+// One entry on the references page's AI tab: a title, a one-line summary and
+// its details. A breakpoint sits between entries and changes what applies
+// after it, so it is styled apart.
+export type AiEntry = {
+    details: string[];
+    isBreakpoint?: boolean;
+    summary: string;
+    title: string;
+};
+
+// One section of the references page's AI tab: a heading, a few general
+// points, then the entries that go into detail.
+export type AiSection = {
+    entries: AiEntry[];
+    overview: string[];
+    title: string;
+};
+
+// How one AI flag treats a move: the score changes and the conditions behind
+// them. A rule covers one situation; the Data tab merges a move's rules by
+// flag for display.
+export type MoveAiRule = {
+    details: string[];
+    flag: AiFlag;
+};
+
+// A game's AI notes for its moves. Each rule is written once and shared by
+// every move it applies to; `moves` lists, per move slug, the keys of the
+// rules that apply to it, in the order the AI runs them.
+export type MoveAiData = {
+    moves: Record<string, string[]>;
+    rules: Record<string, MoveAiRule>;
+};
 
 export type StatValues = {
     atk: number;
@@ -189,6 +228,13 @@ export type LineTurn = {
     trainer: LineSlot[];
 };
 
+// Which move the damage calculator is showing results for: a slot of the
+// player's moves (`attacker`) or of the enemy's (`defender`).
+export type CalcActiveMove = {
+    index: number;
+    side: 'attacker' | 'defender';
+};
+
 // A stat key affected by nature (all StatValues keys except hp, which
 // nature never modifies).
 export type NatureGridStat = Exclude<keyof StatValues, 'hp'>;
@@ -250,6 +296,10 @@ export type BattleTeamCondition = { type: 'starter'; starter: PokemonSlug };
 // trainers (not one trainer's escalating roster), so each fight can show its
 // own sprite despite sharing the battle's single display name.
 export type BattleTeam = {
+    // The AI scripts this team runs with: its trainer's flags, the flag the
+    // game adds in doubles, and (Gen 3) the other opponent's flags. A Gen 3
+    // tag partner has none of its own, so this is empty.
+    aiFlags: AiFlag[];
     condition?: BattleTeamCondition;
     team: BattlePokemon[];
     trainerClass?: string;
@@ -263,7 +313,7 @@ export type BattleTeam = {
 export type BattleTeamGroup = {
     items?: BattleItem[];
     name: string;
-    teams: { team: BattlePokemon[]; trainerClass: string }[];
+    teams: { aiFlags: AiFlag[]; team: BattlePokemon[]; trainerClass: string }[];
     trainerClass: string;
 };
 
@@ -672,6 +722,8 @@ export type Game = {
     // Every battle's trainer info, keyed by battle key
     // (BattleHelpers.getBattleKey).
     battles: Record<string, BattleData>;
+    // How each AI flag treats each move.
+    moveAi: MoveAiData;
     // Game-specific messages shown at random on the run page when a run is
     // marked as a wipe, alongside the run page's default messages.
     wipeMessages: string[];

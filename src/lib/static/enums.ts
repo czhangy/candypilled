@@ -21,6 +21,38 @@ export enum EncounterMethod {
     Walking = 'walking',
 }
 
+// Gen 3 trainer AI scripts, stored by name because the bit order differs
+// between Ruby/Sapphire and Emerald. DoubleBattle is not in trainer data:
+// Emerald adds it to every double battle.
+export enum Gen3AiFlag {
+    CheckBadMove = 'Check Bad Move',
+    CheckViability = 'Check Viability',
+    DoubleBattle = 'Double Battle',
+    HpAware = 'HP Aware',
+    PreferBatonPass = 'Prefer Baton Pass',
+    PreferPowerExtremes = 'Prefer Power Extremes',
+    Risky = 'Risky',
+    SetupFirstTurn = 'Setup First Turn',
+    TryToFaint = 'Try To Faint',
+    TrySunnyDayStart = 'Try Sunny Day Start',
+}
+
+// Gen 4 trainer AI scripts. TagStrategy is not in trainer data: the game
+// adds it to every double battle.
+export enum Gen4AiFlag {
+    Basic = 'Basic',
+    BatonPass = 'Baton Pass',
+    CheckHp = 'Check HP',
+    EvalAttack = 'Eval Attack',
+    Expert = 'Expert',
+    Harassment = 'Harassment',
+    PrioritizeExtremes = 'Prioritize Extremes',
+    Risky = 'Risky',
+    SetupFirstTurn = 'Setup First Turn',
+    TagStrategy = 'Tag Strategy',
+    Weather = 'Weather',
+}
+
 export enum BattleMetadata {
     BackToBack = 'Back To Back',
     Boss = 'Boss',

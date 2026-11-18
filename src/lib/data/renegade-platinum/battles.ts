@@ -1,4 +1,4 @@
-import { BattleMetadata, Nature } from '@/lib/static/enums';
+import { BattleMetadata, Gen4AiFlag, Nature } from '@/lib/static/enums';
 import { BattleData } from '@/lib/static/types';
 
 export const BATTLES: Record<string, BattleData> = {
@@ -10,6 +10,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chimchar',
@@ -24,6 +29,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piplup',
@@ -38,6 +48,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'turtwig',
@@ -59,6 +74,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'dustox',
@@ -91,6 +112,12 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'galactic-grunt-f',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'beautifly',
@@ -132,6 +159,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nidorino',
@@ -181,6 +213,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nidorina',
@@ -230,6 +267,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mars',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'crobat',
@@ -313,6 +355,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piplup',
@@ -327,6 +374,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'turtwig',
@@ -341,6 +393,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chimchar',
@@ -363,6 +420,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piplup',
@@ -377,6 +439,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'turtwig',
@@ -391,6 +458,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chimchar',
@@ -412,6 +484,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Natalie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'sentret',
@@ -447,6 +524,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tristan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hoothoot',
@@ -477,6 +559,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Logan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'growlithe',
@@ -522,6 +609,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'abra',
@@ -553,6 +645,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ralts',
@@ -583,6 +680,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kayla',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bulbasaur',
@@ -622,6 +724,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Skyler',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'omastar',
@@ -676,6 +783,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tony',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kricketune',
@@ -706,6 +818,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Luc',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'crawdaunt',
@@ -732,6 +849,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Miguel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'huntail',
@@ -772,6 +894,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Trenton',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'poliwhirl',
@@ -826,6 +953,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mariel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'azumarill',
@@ -866,6 +998,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sarah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shinx',
@@ -915,6 +1052,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tyler',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magikarp',
@@ -936,6 +1078,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Samantha',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'oddish',
@@ -975,6 +1122,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Taylor',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'cherubi',
@@ -1029,6 +1181,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brandon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'wurmple',
@@ -1069,6 +1226,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Liv & Liz',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'minun',
@@ -1111,6 +1274,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'starly',
@@ -1144,6 +1312,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'starly',
@@ -1177,6 +1350,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'starly',
@@ -1217,6 +1395,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dallas',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shinx',
@@ -1252,6 +1435,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Michael',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kricketot',
@@ -1291,6 +1479,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sebastian',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'makuhita',
@@ -1331,6 +1524,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kaitlin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'spearow',
@@ -1370,6 +1568,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Madeline',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'psyduck',
@@ -1410,6 +1613,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Curtis',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'seedot',
@@ -1445,6 +1653,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Diana',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'whismur',
@@ -1480,6 +1693,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Grant',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lucario',
@@ -1534,6 +1752,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mason',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'aron',
@@ -1578,6 +1801,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Colin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'geodude',
@@ -1632,6 +1860,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lauren',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'smoochum',
@@ -1676,6 +1910,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Anthony',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'magby',
@@ -1720,6 +1960,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Justin',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic, Gen4AiFlag.PrioritizeExtremes],
                 team: [
                     {
                         slug: 'graveler',
@@ -1760,6 +2001,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Austin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lombre',
@@ -1795,6 +2041,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Helen',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'tyrogue',
@@ -1849,6 +2100,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kevin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dunsparce',
@@ -1890,6 +2146,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -1955,6 +2216,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -2020,6 +2286,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -2093,6 +2364,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -2153,6 +2429,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -2213,6 +2494,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -2280,6 +2566,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jonathon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'rhyhorn',
@@ -2324,6 +2615,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darius',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'aron',
@@ -2377,6 +2673,11 @@ export const BATTLES: Record<string, BattleData> = {
         ],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nosepass',
@@ -2474,6 +2775,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'stunky',
@@ -2506,6 +2813,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: '2',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'glameow',
@@ -2548,6 +2861,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'clefairy',
@@ -2576,6 +2894,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'clefairy',
@@ -2604,6 +2927,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'clefairy',
@@ -2640,6 +2968,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'snubbull',
@@ -2668,6 +3001,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'snubbull',
@@ -2696,6 +3034,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'snubbull',
@@ -2731,6 +3074,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Helen',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'treecko',
@@ -2770,6 +3118,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jenny',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chikorita',
@@ -2819,6 +3172,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'poochyena',
@@ -2863,6 +3221,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'croagunk',
@@ -2900,6 +3264,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: '2',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'zubat',
@@ -2941,6 +3311,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'grimer',
@@ -2976,6 +3351,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kakuna',
@@ -3020,6 +3400,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mars',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'zubat',
@@ -3090,6 +3475,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jacob',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ponyta',
@@ -3139,6 +3529,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Daniel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'diglett',
@@ -3183,6 +3578,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Elizabeth',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chikorita',
@@ -3223,6 +3623,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zackary',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'aipom',
@@ -3267,6 +3672,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nicholas',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shellos',
@@ -3302,6 +3712,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kelsey',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machop',
@@ -3351,6 +3766,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Karina',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piplup',
@@ -3381,6 +3801,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Siena',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pachirisu',
@@ -3402,6 +3827,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Joseph',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'goldeen',
@@ -3456,6 +3886,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Andrew',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magikarp',
@@ -3495,6 +3930,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zachary',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'krabby',
@@ -3531,6 +3971,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'drifloon',
@@ -3594,6 +4039,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cheryl',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chansey',
@@ -3648,6 +4098,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jack',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'surskit',
@@ -3702,6 +4157,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Briana',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'buneary',
@@ -3742,6 +4202,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Elijah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'spoink',
@@ -3796,6 +4261,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lindsey',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'slowpoke',
@@ -3850,6 +4320,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Donald',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nincada',
@@ -3890,6 +4365,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Phillip',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'combee',
@@ -3925,6 +4405,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kody',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mime-jr',
@@ -3955,6 +4440,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rachael',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chingling',
@@ -3985,6 +4475,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zach',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'zubat',
@@ -4039,6 +4534,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Louis',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'geodude',
@@ -4093,6 +4593,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alexandra',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'natu',
@@ -4142,6 +4647,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Katherine',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'noctowl',
@@ -4168,6 +4678,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Harry',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'aerodactyl',
@@ -4194,6 +4709,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nick',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ninjask',
@@ -4220,6 +4740,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sean',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'heracross',
@@ -4246,6 +4771,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Axel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pichu',
@@ -4295,6 +4825,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Megan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pidgeotto',
@@ -4321,6 +4856,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'James',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ponyta',
@@ -4361,6 +4901,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nicole',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'taillow',
@@ -4415,6 +4960,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'John',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'farfetchd',
@@ -4441,6 +4991,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ryan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'luxio',
@@ -4462,6 +5017,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rachel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'jolteon',
@@ -4488,6 +5048,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kayla',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'voltorb',
@@ -4537,6 +5102,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Theodore',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'torkoal',
@@ -4563,6 +5133,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ledian',
@@ -4603,6 +5178,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nidorina',
@@ -4657,6 +5237,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nidorino',
@@ -4711,6 +5296,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'houndoom',
@@ -4760,6 +5350,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ledian',
@@ -4800,6 +5395,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -4826,6 +5426,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'masquerain',
@@ -4866,6 +5471,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'murkrow',
@@ -4915,6 +5525,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ariados',
@@ -4969,6 +5584,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -5018,6 +5638,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'murkrow',
@@ -5086,6 +5711,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Blake',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'porygon',
@@ -5121,6 +5751,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maria',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'quagsire',
@@ -5165,6 +5800,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Laura',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'togetic',
@@ -5205,6 +5845,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Edward',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'snover',
@@ -5254,6 +5899,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Garrett',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mr-mime',
@@ -5303,6 +5953,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Philip',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hariyama',
@@ -5343,6 +5998,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kaitlyn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lapras',
@@ -5369,6 +6029,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bradley',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'piloswine',
@@ -5404,6 +6069,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Andrea',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'abomasnow',
@@ -5430,6 +6100,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Caroline',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lotad',
@@ -5498,6 +6173,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jenna',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'weepinbell',
@@ -5552,6 +6232,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Angela',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'roselia',
@@ -5607,6 +6292,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'super-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bellossom',
@@ -5709,6 +6399,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ekans',
@@ -5753,6 +6448,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'koffing',
@@ -5802,6 +6502,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'croagunk',
@@ -5842,6 +6547,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'cleffa',
@@ -5868,6 +6578,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'houndour',
@@ -5922,6 +6637,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Travon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'drowzee',
@@ -5976,6 +6696,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jupiter',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -6047,6 +6772,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'togetic',
@@ -6119,6 +6849,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mira',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -6173,6 +6908,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Diego',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'aipom',
@@ -6208,6 +6948,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tori',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'psyduck',
@@ -6248,6 +6993,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cassidy',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'skitty',
@@ -6297,6 +7047,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wayne',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'loudred',
@@ -6332,6 +7087,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Reginald',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dugtrio',
@@ -6358,6 +7118,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lorenzo',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'rhyhorn',
@@ -6393,6 +7158,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ana',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'illumise',
@@ -6428,6 +7198,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Parker',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'volbeat',
@@ -6468,6 +7243,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Terry',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gible',
@@ -6512,6 +7292,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gerald',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'cubone',
@@ -6547,6 +7332,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jonathan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hippopotas',
@@ -6591,6 +7381,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kyle',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machoke',
@@ -6617,6 +7412,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Robert',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'marowak',
@@ -6643,6 +7443,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alexander',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'graveler',
@@ -6669,6 +7474,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hannah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'roselia',
@@ -6709,6 +7519,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'William',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'smeargle',
@@ -6764,6 +7579,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dustox',
@@ -6846,6 +7666,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cody',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'whiscash',
@@ -6886,6 +7707,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Donny',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gastly',
@@ -6940,6 +7766,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Molly',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'misdreavus',
@@ -6966,6 +7797,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chance',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'duskull',
@@ -7020,6 +7856,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mackenzie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shuppet',
@@ -7074,6 +7915,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Catherine',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'haunter',
@@ -7123,6 +7969,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Allen',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'haunter',
@@ -7178,6 +8029,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'drifblim',
@@ -7281,6 +8137,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staravia',
@@ -7341,6 +8202,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staravia',
@@ -7401,6 +8267,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staravia',
@@ -7464,6 +8335,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staravia',
@@ -7524,6 +8400,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staravia',
@@ -7584,6 +8465,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staravia',
@@ -7646,6 +8532,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mightyena',
@@ -7676,6 +8567,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kricketune',
@@ -7702,6 +8598,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'glameow',
@@ -7751,6 +8652,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'lunatone',
@@ -7788,6 +8695,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: '5',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'solrock',
@@ -7830,6 +8743,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'prinplup',
@@ -7871,6 +8789,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'cherrim',
@@ -7911,6 +8834,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Caleb',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'granbull',
@@ -7933,6 +8861,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chatot',
@@ -7955,6 +8888,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'delcatty',
@@ -7976,6 +8914,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dylan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'arcanine',
@@ -7997,6 +8940,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alex',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machamp',
@@ -8023,6 +8971,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bobby',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'noctowl',
@@ -8049,6 +9002,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Taylor',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'carnivine',
@@ -8098,6 +9056,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alexa',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'seadra',
@@ -8139,6 +9102,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'x-sp-atk' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magneton',
@@ -8193,6 +9161,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sabrina',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'castform',
@@ -8219,6 +9192,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Juan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shellder',
@@ -8273,6 +9251,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Josh',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'remoraid',
@@ -8327,6 +9310,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Travis',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'barboach',
@@ -8367,6 +9355,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dean',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'umbreon',
@@ -8421,6 +9414,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Danny',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'growlithe',
@@ -8476,6 +9474,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'x-defense' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'muk',
@@ -8516,6 +9519,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jeffrey',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magmar',
@@ -8565,6 +9573,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Allison',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'milotic',
@@ -8619,6 +9632,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'stunky',
@@ -8663,6 +9681,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'murkrow',
@@ -8689,6 +9712,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'croagunk',
@@ -8738,6 +9766,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'beedrill',
@@ -8774,6 +9807,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nincada',
@@ -8792,6 +9830,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ninjask',
@@ -8811,6 +9854,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shedinja',
@@ -8843,6 +9891,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 4, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'bronzong',
@@ -8897,6 +9951,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Backlot',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'wigglytuff',
@@ -8955,6 +10015,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Richard',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dodrio',
@@ -8981,6 +10046,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ema & Lil',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'vaporeon',
@@ -9021,6 +10092,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Danielle',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pikachu',
@@ -9075,6 +10151,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Albert',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'tyrogue',
@@ -9161,6 +10242,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jennifer',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'azurill',
@@ -9252,6 +10338,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Raul',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'fearow',
@@ -9273,6 +10364,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shelley',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ponyta',
@@ -9308,6 +10404,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ty & Sue',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'illumise',
@@ -9343,6 +10445,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Oliver',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shellos',
@@ -9397,6 +10504,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kirby',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'cleffa',
@@ -9424,6 +10532,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-heal' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'plusle',
@@ -9470,6 +10583,11 @@ export const BATTLES: Record<string, BattleData> = {
         ],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'clefairy',
@@ -9537,6 +10655,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Beth & Bob',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ponyta',
@@ -9572,6 +10695,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mike & Nat',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'murkrow',
@@ -9612,6 +10740,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Karl',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bronzor',
@@ -9661,6 +10794,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wyatt',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'electrode',
@@ -9687,6 +10821,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Marco',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'rapidash',
@@ -9708,6 +10843,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ava & Matt',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic, Gen4AiFlag.TagStrategy],
                 team: [
                     {
                         slug: 'tauros',
@@ -9748,6 +10884,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Teri & Tia',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'furret',
@@ -9783,6 +10925,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kahlil',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'riolu',
@@ -9827,6 +10974,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Amber',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mantyke',
@@ -9876,6 +11028,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kati',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'clefable',
@@ -9897,6 +11050,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Fernando',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dratini',
@@ -9937,6 +11095,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Edwin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bagon',
@@ -9977,6 +11140,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Calvin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'marowak',
@@ -10017,6 +11185,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Craig',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'luxray',
@@ -10038,6 +11211,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gregory',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'primeape',
@@ -10073,6 +11251,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Derek',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'combusken',
@@ -10113,6 +11296,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nathaniel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machoke',
@@ -10153,6 +11341,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Scott',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -10179,6 +11372,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maya',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lickitung',
@@ -10233,6 +11431,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dennis',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gligar',
@@ -10282,6 +11485,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nils',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dragonair',
@@ -10350,6 +11558,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Colby',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machop',
@@ -10432,6 +11645,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darren',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'primeape',
@@ -10486,6 +11704,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Rafael',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hitmonchan',
@@ -10540,6 +11763,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jeffery',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'heracross',
@@ -10581,6 +11809,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'medicham',
@@ -10683,6 +11916,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'weezing',
@@ -10729,6 +11968,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: '2',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'skuntank',
@@ -10785,6 +12030,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -10827,6 +12077,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -10869,6 +12124,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -10919,6 +12179,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -10961,6 +12226,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -11003,6 +12273,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -11052,6 +12327,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Abigail',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kirlia',
@@ -11106,6 +12386,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Carlos',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dugtrio',
@@ -11127,6 +12412,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brady',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kangaskhan',
@@ -11181,6 +12471,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Devon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'wormadam-plant',
@@ -11235,6 +12530,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mitchell',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kadabra',
@@ -11284,6 +12584,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bryan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'anorith',
@@ -11338,6 +12643,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jamal',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lapras',
@@ -11364,6 +12674,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ronald',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'relicanth',
@@ -11390,6 +12705,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Douglas',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'jolteon',
@@ -11444,6 +12764,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kendrick',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'rhydon',
@@ -11467,6 +12793,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Gabriela',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'lumineon',
@@ -11494,6 +12826,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Emanuel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'blaziken',
@@ -11517,6 +12855,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Blythe',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'lopunny',
@@ -11539,6 +12883,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Eugene',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'milotic',
@@ -11557,6 +12907,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Alison',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'meganium',
@@ -11584,6 +12940,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ismael',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'smeargle',
@@ -11607,6 +12969,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Harley',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'golduck',
@@ -11635,6 +13003,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'arcanine',
@@ -11658,6 +13032,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Kylie',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'vileplume',
@@ -11686,6 +13066,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'chatot',
@@ -11704,6 +13090,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Rebecca',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'persian',
@@ -11732,6 +13124,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'x-sp-def' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'quagsire',
@@ -11750,6 +13148,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Meredith',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'pachirisu',
@@ -11779,6 +13183,12 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'x-sp-atk' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -11802,6 +13212,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Kaylee',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'azumarill',
@@ -11829,6 +13245,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darryl',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'magneton',
@@ -11852,6 +13274,12 @@ export const BATTLES: Record<string, BattleData> = {
             name: 'Valerie',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'loudred',
@@ -11879,6 +13307,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jared',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gastrodon',
@@ -11905,6 +13338,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Chelsea',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'azumarill',
@@ -11931,6 +13369,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kenneth',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'carvanha',
@@ -11946,6 +13389,34 @@ export const BATTLES: Record<string, BattleData> = {
                         nature: Nature.Adamant,
                         ivs: 12,
                     },
+                    {
+                        slug: 'remoraid',
+                        ability: 'hustle',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'flamethrower',
+                            'seed-bomb',
+                            'ice-beam',
+                            'signal-beam',
+                        ],
+                        nature: Nature.Brave,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'horsea',
+                        ability: 'swift-swim',
+                        gender: 'male',
+                        level: 36,
+                        moves: [
+                            'dragon-pulse',
+                            'muddy-water',
+                            'agility',
+                            'octazooka',
+                        ],
+                        nature: Nature.Naive,
+                        ivs: 12,
+                    },
                 ],
             },
         ],
@@ -11957,6 +13428,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cyndy',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'delcatty',
@@ -11965,6 +13441,15 @@ export const BATTLES: Record<string, BattleData> = {
                         level: 37,
                         moves: ['double-slap', 'attract', 'sing', 'fake-out'],
                         nature: Nature.Gentle,
+                        ivs: 12,
+                    },
+                    {
+                        slug: 'persian',
+                        ability: 'technician',
+                        gender: 'female',
+                        level: 37,
+                        moves: ['hypnosis', 'assurance', 'power-gem', 'taunt'],
+                        nature: Nature.Serious,
                         ivs: 12,
                     },
                 ],
@@ -11978,6 +13463,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Haley',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golduck',
@@ -12032,6 +13522,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sheltin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gyarados',
@@ -12086,6 +13581,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Paul',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'politoed',
@@ -12112,6 +13612,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mary',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'pelipper',
@@ -12147,6 +13648,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Evan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'quagsire',
@@ -12188,6 +13694,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -12278,6 +13789,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -12363,6 +13879,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -12460,6 +13981,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Walter',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'whiscash',
@@ -12514,6 +14040,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Damian',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pelipper',
@@ -12558,6 +14089,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jacky',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bibarel',
@@ -12607,6 +14143,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Caitlyn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'azumarill',
@@ -12661,6 +14202,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Erick',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lumineon',
@@ -12715,6 +14261,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Samson',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'slowbro',
@@ -12765,6 +14316,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'quagsire',
@@ -12862,6 +14418,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'toxicroak',
@@ -12888,6 +14445,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brennan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ninjask',
@@ -12914,6 +14476,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Fabian',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'toxicroak',
@@ -12940,6 +14507,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bruce',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'skuntank',
@@ -12966,6 +14538,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Joel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'scyther',
@@ -13015,6 +14592,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Patrick',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gabite',
@@ -13083,6 +14665,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Adam',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machamp',
@@ -13132,6 +14719,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Davido',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ninetales',
@@ -13158,6 +14750,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nathan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'swalot',
@@ -13209,6 +14806,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -13304,6 +14906,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -13399,6 +15006,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -13503,6 +15115,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -13598,6 +15215,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -13693,6 +15315,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -13795,6 +15422,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alyssa',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ambipom',
@@ -13839,6 +15471,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zac & Jen',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'gyarados',
@@ -13915,6 +15553,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ernest',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'politoed',
@@ -13973,6 +15616,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brianna',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dodrio',
@@ -14022,6 +15670,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brian',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'tangrowth',
@@ -14066,6 +15719,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'houndoom',
@@ -14115,6 +15773,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cyrus',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'crobat',
@@ -14187,6 +15850,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dillan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machop',
@@ -14231,6 +15899,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Holden',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magnemite',
@@ -14285,6 +15958,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Conrad',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magmar',
@@ -14339,6 +16017,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jessica',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'seadra',
@@ -14393,6 +16076,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Erica',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lumineon',
@@ -14433,6 +16121,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Adrian',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'octillery',
@@ -14487,6 +16180,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Vincent',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'wailord',
@@ -14513,6 +16211,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Katelyn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'floatzel',
@@ -14567,6 +16270,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Claire',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'starmie',
@@ -14602,6 +16310,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Erik',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'politoed',
@@ -14642,6 +16355,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dillon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'swampert',
@@ -14668,6 +16386,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Vanessa',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'milotic',
@@ -14694,6 +16417,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ivan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'togekiss',
@@ -14734,6 +16462,7 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cory',
         teams: [
             {
+                aiFlags: [Gen4AiFlag.Basic],
                 team: [
                     {
                         slug: 'whiscash',
@@ -14783,6 +16512,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shannon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'vileplume',
@@ -14846,6 +16580,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jake',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'claydol',
@@ -14915,6 +16654,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gallade',
@@ -15018,6 +16762,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -15108,6 +16857,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -15198,6 +16952,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -15296,6 +17055,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'absol',
@@ -15393,6 +17157,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Riley',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lucario',
@@ -15442,6 +17211,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lawrence',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'charmeleon',
@@ -15491,6 +17265,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Summer',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'grovyle',
@@ -15545,6 +17324,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Noel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'donphan',
@@ -15571,6 +17355,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Braden',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'camerupt',
@@ -15597,6 +17386,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Damon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pupitar',
@@ -15651,6 +17445,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maurice',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'rhydon',
@@ -15691,6 +17490,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kendal',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'poliwrath',
@@ -15731,6 +17535,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Tyler',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hitmontop',
@@ -15771,6 +17580,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Quentin',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lairon',
@@ -15811,6 +17625,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brendon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magneton',
@@ -15851,6 +17670,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jonah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'masquerain',
@@ -15905,6 +17729,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brenda',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gardevoir',
@@ -15959,6 +17788,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -16010,6 +17845,7 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'galactic-grunt-m',
             teams: [
                 {
+                    aiFlags: [Gen4AiFlag.Basic, Gen4AiFlag.TagStrategy],
                     team: [
                         {
                             slug: 'purugly',
@@ -16065,6 +17901,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ricky',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'steelix',
@@ -16091,6 +17932,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gary',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magnemite',
@@ -16173,6 +18019,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cesar',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'empoleon',
@@ -16227,6 +18078,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jackson',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magneton',
@@ -16281,6 +18137,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gerardo',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'probopass',
@@ -16321,6 +18182,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'David',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lucario',
@@ -16347,6 +18213,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Breanna',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'skarmory',
@@ -16402,6 +18273,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bronzong',
@@ -16499,6 +18375,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'purugly',
@@ -16525,6 +18406,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'houndoom',
@@ -16551,6 +18437,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'skuntank',
@@ -16577,6 +18468,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Saturn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -16664,6 +18560,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Dalton',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'magmortar',
@@ -16718,6 +18619,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Madison',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'smoochum',
@@ -16767,6 +18673,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ethan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'drapion',
@@ -16793,6 +18704,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lexie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dewgong',
@@ -16828,6 +18744,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Luke',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machamp',
@@ -16882,6 +18803,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Shawn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'snover',
@@ -16936,6 +18862,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Matthew',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'crobat',
@@ -16962,6 +18893,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bjorn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'swinub',
@@ -17006,6 +18942,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Olivia',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shiftry',
@@ -17060,6 +19001,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Aran',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'heracross',
@@ -17111,6 +19058,12 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'ace-trainer-snow-f',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'blissey',
@@ -17166,6 +19119,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alicia',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'spheal',
@@ -17205,6 +19163,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Anton',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'snorunt',
@@ -17244,6 +19207,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Savannah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'seel',
@@ -17283,6 +19251,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Isaiah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'abomasnow',
@@ -17313,6 +19286,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sergio',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'swinub',
@@ -17357,6 +19335,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brenna',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dewgong',
@@ -17396,6 +19379,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Candice',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'abomasnow',
@@ -17493,6 +19481,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -17547,6 +19540,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'murkrow',
@@ -17587,6 +19585,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'beautifly',
@@ -17632,6 +19635,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'x-defense' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kirlia',
@@ -17686,6 +19694,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cyrus',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'crobat',
@@ -17773,6 +19786,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Saturn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bronzong',
@@ -17875,6 +19893,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'toxicroak',
@@ -17915,6 +19938,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -17969,6 +19997,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golbat',
@@ -18023,6 +20056,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Darrius',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'porygon-z',
@@ -18049,6 +20087,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'scyther',
@@ -18089,6 +20132,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '2',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pinsir',
@@ -18129,6 +20177,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '3',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'forretress',
@@ -18178,6 +20231,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: '4',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'muk',
@@ -18218,6 +20276,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: '1',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'persian',
@@ -18264,6 +20328,12 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'galactic-grunt-m',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'toxicroak',
@@ -18323,6 +20393,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mars',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'crobat',
@@ -18422,6 +20498,12 @@ export const BATTLES: Record<string, BattleData> = {
             trainerClass: 'commander-jupiter',
             teams: [
                 {
+                    aiFlags: [
+                        Gen4AiFlag.Basic,
+                        Gen4AiFlag.EvalAttack,
+                        Gen4AiFlag.Expert,
+                        Gen4AiFlag.TagStrategy,
+                    ],
                     team: [
                         {
                             slug: 'crobat',
@@ -18526,6 +20608,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -18621,6 +20708,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -18716,6 +20808,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -18822,6 +20919,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cyrus',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'palkia',
@@ -18854,6 +20956,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'crobat',
@@ -18957,6 +21064,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'luxray',
@@ -19011,6 +21123,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Nicola',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lopunny',
@@ -19065,6 +21182,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Thomas',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'noctowl',
@@ -19091,6 +21213,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Alec',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gyarados',
@@ -19145,6 +21272,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'George',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'octillery',
@@ -19180,6 +21312,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brett',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'qwilfish',
@@ -19206,6 +21343,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cole',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'seaking',
@@ -19260,6 +21402,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Holly',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'azumarill',
@@ -19286,6 +21433,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Janet',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pikachu',
@@ -19328,6 +21480,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Marc',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lanturn',
@@ -19382,6 +21539,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Conner',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'remoraid',
@@ -19422,6 +21584,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Luther',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pelipper',
@@ -19480,6 +21647,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Miranda',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'cloyster',
@@ -19515,6 +21687,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Aubree',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'bibarel',
@@ -19550,6 +21727,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Oscar',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mantine',
@@ -19604,6 +21786,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Paige',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'azumarill',
@@ -19658,6 +21845,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Colton',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pelipper',
@@ -19712,6 +21904,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ricardo',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'tentacruel',
@@ -19738,6 +21935,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Crystal',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'wailord',
@@ -19787,6 +21989,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Wesley',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'floatzel',
@@ -19841,6 +22048,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zachariah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kingler',
@@ -19899,6 +22111,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Gabrielle',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'golduck',
@@ -19948,6 +22165,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Cassandra',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'vaporeon',
@@ -19974,6 +22196,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Troy',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gyarados',
@@ -20001,6 +22228,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'blaziken',
@@ -20104,6 +22336,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'hyper-potion' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'plusle',
@@ -20154,6 +22391,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 1, slug: 'x-speed' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'elekid',
@@ -20208,6 +22450,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jerry',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'electabuzz',
@@ -20243,6 +22490,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Meghan',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'pichu',
@@ -20297,6 +22549,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Lonnie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'electabuzz',
@@ -20337,6 +22594,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Destiny',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'raichu',
@@ -20400,6 +22662,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Preston',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'electabuzz',
@@ -20440,6 +22707,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Zachery',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ampharos',
@@ -20512,6 +22784,11 @@ export const BATTLES: Record<string, BattleData> = {
         ],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'jolteon',
@@ -20608,6 +22885,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Bryce',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gengar',
@@ -20676,6 +22958,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hana',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'noctowl',
@@ -20744,6 +23031,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Mariah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'blissey',
@@ -20821,6 +23113,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Omar',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'rapidash',
@@ -20903,6 +23200,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Sydney',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'clefable',
@@ -20985,6 +23287,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clayton',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'lickilicky',
@@ -21067,6 +23374,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Al & Kay',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'whiscash',
@@ -21135,6 +23448,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Miles',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'machamp',
@@ -21203,6 +23521,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Valencia',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chimecho',
@@ -21271,6 +23594,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Henry',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'honchkrow',
@@ -21354,6 +23682,12 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jo & Pat',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                    Gen4AiFlag.TagStrategy,
+                ],
                 team: [
                     {
                         slug: 'medicham',
@@ -21422,6 +23756,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ondrej',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'kingdra',
@@ -21490,6 +23829,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Edgar',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'porygon-z',
@@ -21572,6 +23916,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clinton',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'flygon',
@@ -21641,6 +23990,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'starmie',
@@ -21738,6 +24092,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Marley',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'arcanine',
@@ -21787,6 +24146,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Micah',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'metagross',
@@ -21841,6 +24205,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brandi',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'nidoqueen',
@@ -21890,6 +24259,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Landon',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'banette',
@@ -21944,6 +24318,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Desiree',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mr-mime',
@@ -21998,6 +24377,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Terrel',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'parasect',
@@ -22052,6 +24436,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Eddie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'primeape',
@@ -22106,6 +24495,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Joe',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dragonair',
@@ -22155,6 +24549,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Autumn',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'xatu',
@@ -22204,6 +24603,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Kendra',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'chimecho',
@@ -22258,6 +24662,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Deandre',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'dusclops',
@@ -22312,6 +24721,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Willie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'heracross',
@@ -22366,6 +24780,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brenden',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'forretress',
@@ -22415,6 +24834,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Arthur',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'gastrodon',
@@ -22469,6 +24893,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Clarice',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'swalot',
@@ -22518,6 +24947,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Ruben',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'shiftry',
@@ -22586,6 +25020,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Brittney',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hypno',
@@ -22654,6 +25093,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Maxwell',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mismagius',
@@ -22717,6 +25161,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Armando',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'muk',
@@ -22780,6 +25229,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Carl',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hariyama',
@@ -22848,6 +25302,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Larry',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'aerodactyl',
@@ -22916,6 +25375,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Jamie',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'vaporeon',
@@ -22984,6 +25448,11 @@ export const BATTLES: Record<string, BattleData> = {
         name: 'Hayden',
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'altaria',
@@ -23054,6 +25523,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -23149,6 +25623,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -23244,6 +25723,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -23348,6 +25832,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -23443,6 +25932,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -23538,6 +26032,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -23642,6 +26141,11 @@ export const BATTLES: Record<string, BattleData> = {
         teams: [
             {
                 condition: { type: 'starter', starter: 'turtwig' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -23737,6 +26241,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'chimchar' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -23832,6 +26341,11 @@ export const BATTLES: Record<string, BattleData> = {
             },
             {
                 condition: { type: 'starter', starter: 'piplup' },
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'staraptor',
@@ -23935,6 +26449,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'yanmega',
@@ -24028,6 +26547,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'venomoth',
@@ -24122,6 +26646,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'masquerain',
@@ -24216,6 +26745,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'scyther',
@@ -24314,6 +26848,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hippowdon',
@@ -24408,6 +26947,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hippowdon',
@@ -24492,6 +27036,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'tyranitar',
@@ -24586,6 +27135,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'tyranitar',
@@ -24684,6 +27238,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ninetales',
@@ -24778,6 +27337,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'rapidash',
@@ -24872,6 +27436,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'ninetales',
@@ -24966,6 +27535,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'torkoal',
@@ -25069,6 +27643,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 2, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'mr-mime',
@@ -25163,6 +27742,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'espeon',
@@ -25257,6 +27841,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'hypno',
@@ -25351,6 +27940,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'alakazam',
@@ -25454,6 +28048,11 @@ export const BATTLES: Record<string, BattleData> = {
         items: [{ count: 4, slug: 'full-restore' }],
         teams: [
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'spiritomb',
@@ -25543,6 +28142,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'milotic',
@@ -25632,6 +28236,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'togekiss',
@@ -25721,6 +28330,11 @@ export const BATTLES: Record<string, BattleData> = {
                 ],
             },
             {
+                aiFlags: [
+                    Gen4AiFlag.Basic,
+                    Gen4AiFlag.EvalAttack,
+                    Gen4AiFlag.Expert,
+                ],
                 team: [
                     {
                         slug: 'clefable',

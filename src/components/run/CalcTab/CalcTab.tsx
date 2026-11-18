@@ -10,6 +10,7 @@ import {
 } from '@/lib/static/constants';
 import { Nature, PokemonStatus } from '@/lib/static/enums';
 import {
+    CalcActiveMove,
     CalcField,
     CalcFieldState,
     CalcPokemonInput,
@@ -26,6 +27,7 @@ import ItemHelpers from '@/lib/utils/ItemHelpers';
 import MoveHelpers from '@/lib/utils/MoveHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import StatHelpers from '@/lib/utils/StatHelpers';
+import AiMoveModal from './AiMoveModal/AiMoveModal';
 import BoxSelectPanel from './BoxSelectPanel/BoxSelectPanel';
 import styles from './CalcTab.module.scss';
 import DamageResultsPanel from './DamageResultsPanel/DamageResultsPanel';
@@ -459,6 +461,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
     );
     const [field, setField] = useState(getBlankFieldState);
     const [subtab, setSubtab] = useState('calculator');
+    const [activeMove, setActiveMove] = useState<CalcActiveMove>({
+        index: 0,
+        side: 'attacker',
+    });
+    const [isAiModalOpen, setIsAiModalOpen] = useState(false);
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -502,6 +509,21 @@ const CalcTab: React.FC<CalcTabProps> = ({
         run.gender
     );
     const mon = team[Number(selectedMemberIndex)];
+    const aiMoveName =
+        activeMove.side === 'defender' ? defender.moves[activeMove.index] : '';
+    const canShowAi = !!aiMoveName;
+    const aiRoutines = MoveHelpers.getMoveAi(
+        game.moveAi,
+        MoveHelpers.getSlugByName(game.dataSource, aiMoveName) ?? ''
+    );
+    const aiFlags = battleCardBattle
+        ? BattleHelpers.getMemberAiFlags(
+              battleCardBattle,
+              run.starter,
+              game,
+              Number(selectedMemberIndex)
+          )
+        : [];
 
     // The calc's held item is edited independently of the caught/team
     // Pokémon's own held item (a "what if" sandbox), so a form change
@@ -958,20 +980,50 @@ const CalcTab: React.FC<CalcTabProps> = ({
         });
     };
 
+    const handleAiButtonClick = (): void => {
+        setIsAiModalOpen(true);
+    };
+
+    const handleAiModalClose = (): void => {
+        setIsAiModalOpen(false);
+    };
+
     // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
     return (
         <div className={styles['calc-tab']}>
-            <Subtabs
-                activeSubtab={subtab}
-                onSubtabChange={setSubtab}
-                subtabs={SUBTABS}
-            />
+            <div className={styles['subtab-row']}>
+                <Subtabs
+                    activeSubtab={subtab}
+                    onSubtabChange={setSubtab}
+                    subtabs={SUBTABS}
+                />
+                {subtab === 'calculator' && canShowAi && (
+                    <button
+                        className={styles['ai-button']}
+                        onClick={handleAiButtonClick}
+                        type="button"
+                    >
+                        AI routine
+                    </button>
+                )}
+            </div>
+            {isAiModalOpen && canShowAi && (
+                <AiMoveModal
+                    accentColor={game.accentColor}
+                    aiFlags={aiFlags}
+                    buttonTextColor={game.textContrastColor}
+                    moveName={aiMoveName}
+                    onClose={handleAiModalClose}
+                    routines={aiRoutines}
+                />
+            )}
             <div className={styles.calculator} hidden={subtab !== 'calculator'}>
                 <div className={styles.results}>
                     <DamageResultsPanel
+                        activeMove={activeMove}
                         attackerField={attackerField}
                         attackerIvs={attacker.ivs}
                         attackerMoves={attacker.moves}
@@ -980,6 +1032,7 @@ const CalcTab: React.FC<CalcTabProps> = ({
                         defenderIvs={defender.ivs}
                         defenderMoves={defender.moves}
                         generation={game.generation}
+                        onSelectMove={setActiveMove}
                         playerInput={playerInput}
                         trainerInput={trainerInput}
                     />

@@ -1,0 +1,39 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+
+.ai-flag-section {
+    align-items: center;
+    background: $background-light;
+    border: 1px solid $border-subtle;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
+
+    .group {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        justify-content: center;
+
+        .name {
+            @include mono-label;
+
+            font-size: 0.7rem;
+            margin-right: 0.25rem;
+        }
+
+        .chip {
+            @include mono-label;
+
+            border: 1px solid $border-subtle;
+            border-radius: 999px;
+            color: $text-mid;
+            font-size: 0.65rem;
+            letter-spacing: 0.03em;
+            padding: 0.2rem 0.6rem;
+            text-transform: uppercase;
+        }
+    }
+}

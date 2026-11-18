@@ -12,6 +12,7 @@ import MAYLENE from '@/lib/data/diamond-pearl/splits/maylene';
 import ROARK from '@/lib/data/diamond-pearl/splits/roark';
 import VOLKNER from '@/lib/data/diamond-pearl/splits/volkner';
 import WAKE from '@/lib/data/diamond-pearl/splits/wake';
+import { DIAMOND_PEARL_MOVE_AI } from '@/lib/data/move-ai/diamond-pearl';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -42,6 +43,7 @@ const PEARL: Game = {
     accentColor: '#E0A0C0',
     encounters: ENCOUNTERS,
     battles: BATTLES,
+    moveAi: DIAMOND_PEARL_MOVE_AI,
     metLocationById: MET_LOCATIONS,
     roamers: ROAMERS,
     resources: [

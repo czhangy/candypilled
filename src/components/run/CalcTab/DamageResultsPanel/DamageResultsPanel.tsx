@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import {
+    CalcActiveMove,
     CalcField,
     CalcPokemonInput,
     GameDataSource,
@@ -10,6 +10,7 @@ import styles from './DamageResultsPanel.module.scss';
 import MoveDamageColumn from './MoveDamageColumn/MoveDamageColumn';
 
 type DamageResultsPanelProps = {
+    activeMove: CalcActiveMove;
     attackerField: CalcField;
     attackerIvs: StatValues;
     attackerMoves: string[];
@@ -18,11 +19,13 @@ type DamageResultsPanelProps = {
     defenderIvs: StatValues;
     defenderMoves: string[];
     generation: number;
+    onSelectMove: (move: CalcActiveMove) => void;
     playerInput: CalcPokemonInput | null;
     trainerInput: CalcPokemonInput | null;
 };
 
 const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
+    activeMove,
     attackerField,
     attackerIvs,
     attackerMoves,
@@ -31,27 +34,10 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
     defenderIvs,
     defenderMoves,
     generation,
+    onSelectMove,
     playerInput,
     trainerInput,
 }) => {
-    // -------------------------------------------------------------------------
-    // CONSTANTS
-    // -------------------------------------------------------------------------
-
-    type ActiveMove = {
-        index: number;
-        side: 'attacker' | 'defender';
-    };
-
-    // -------------------------------------------------------------------------
-    // STATE
-    // -------------------------------------------------------------------------
-
-    const [activeMove, setActiveMove] = useState<ActiveMove>({
-        index: 0,
-        side: 'attacker',
-    });
-
     // -------------------------------------------------------------------------
     // RENDERING
     // -------------------------------------------------------------------------
@@ -105,11 +91,11 @@ const DamageResultsPanel: React.FC<DamageResultsPanelProps> = ({
     // -------------------------------------------------------------------------
 
     const handleSelectAttackerMove = (index: number): void => {
-        setActiveMove({ index, side: 'attacker' });
+        onSelectMove({ index, side: 'attacker' });
     };
 
     const handleSelectDefenderMove = (index: number): void => {
-        setActiveMove({ index, side: 'defender' });
+        onSelectMove({ index, side: 'defender' });
     };
 
     // -------------------------------------------------------------------------

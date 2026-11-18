@@ -1,4 +1,5 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
+import { RUBY_SAPPHIRE_MOVE_AI } from '@/lib/data/move-ai/ruby-sapphire';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
 import { LOCATIONS } from '@/lib/data/ruby-sapphire/locations';
 import AQUA_HIDEOUT from '@/lib/data/ruby-sapphire/locations/aqua-hideout';
@@ -37,6 +38,7 @@ const SAPPHIRE: Game = {
     accentColor: '#3D51A7',
     encounters: ENCOUNTERS,
     battles: BATTLES,
+    moveAi: RUBY_SAPPHIRE_MOVE_AI,
     // Index 66 is version-dependent ("Magma Hideout" in Ruby, "Aqua
     // Hideout" in Sapphire).
     metLocationById: { ...MET_LOCATIONS, 66: 'Aqua Hideout' },
