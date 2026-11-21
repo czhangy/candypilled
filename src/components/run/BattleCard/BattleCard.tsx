@@ -16,17 +16,29 @@ import PokemonSlot from './PokemonSlot/PokemonSlot';
 import TrainerPanel from './TrainerPanel/TrainerPanel';
 import TrainerSprite from './TrainerSprite/TrainerSprite';
 
-type BattleCardProps = {
+// 'link' mode's species, move, ability and item buttons open their reference
+// pages. 'select' mode has no links: it reports which team member (an index
+// into the battle's combined team) or move slot was clicked.
+type BattleCardProps = (
+    | {
+          mode: 'link';
+          onSelectAbility: (slug: string) => void;
+          onSelectItem: (slug: string) => void;
+          onSelectMove: (slug: string) => void;
+          onSelectSpecies: (species: string) => void;
+          onSelectTrainer?: (battleKey: string) => void;
+          onWipeBattle?: (battleKey: string) => void;
+      }
+    | {
+          mode: 'select';
+          onSelectMember: (memberIndex: number) => void;
+          onSelectMove: (memberIndex: number, moveIndex: number) => void;
+      }
+) & {
     battle: Battle;
     game: Game;
     generation: number;
     isTagPartner?: boolean;
-    onSelectAbility: (slug: string) => void;
-    onSelectItem: (slug: string) => void;
-    onSelectMove: (slug: string) => void;
-    onSelectSpecies: (species: string) => void;
-    onSelectTrainer?: (battleKey: string) => void;
-    onWipeBattle?: (battleKey: string) => void;
     starter: string;
     variant: string;
     version: string;
@@ -37,15 +49,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
     game,
     generation,
     isTagPartner,
-    onSelectAbility,
-    onSelectItem,
-    onSelectMove,
-    onSelectSpecies,
-    onSelectTrainer,
-    onWipeBattle,
     starter,
     variant,
     version,
+    ...rest
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -59,6 +66,34 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
     const [isWipeConfirmOpen, setIsWipeConfirmOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const getSlotHandlers = (
+        firstMemberIndex: number,
+        slotIndex: number
+    ): Pick<
+        React.ComponentProps<typeof PokemonSlot>,
+        'onSelectAbility' | 'onSelectItem' | 'onSelectMove' | 'onSelectSpecies'
+    > => {
+        if (rest.mode === 'link') {
+            return {
+                onSelectAbility: rest.onSelectAbility,
+                onSelectItem: rest.onSelectItem,
+                onSelectMove: rest.onSelectMove,
+                onSelectSpecies: rest.onSelectSpecies,
+            };
+        }
+
+        const memberIndex = firstMemberIndex + slotIndex;
+        return {
+            onSelectMove: (_slug: string, moveIndex: number) =>
+                rest.onSelectMove(memberIndex, moveIndex),
+            onSelectSpecies: () => rest.onSelectMember(memberIndex),
+        };
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -114,7 +149,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
     };
 
     const handleWipeConfirm = (): void => {
-        onWipeBattle?.(BattleHelpers.getBattleKey(battle));
+        if (rest.mode !== 'link') return;
+
+        rest.onWipeBattle?.(BattleHelpers.getBattleKey(battle));
     };
 
     // -------------------------------------------------------------------------
@@ -134,11 +171,11 @@ const BattleCard: React.FC<BattleCardProps> = ({
                     </div>
                 </Tooltip>
                 <div className={styles['trainer-header']}>
-                    {onSelectTrainer ? (
+                    {rest.mode === 'link' && rest.onSelectTrainer ? (
                         <button
                             className={styles['trainer-name']}
                             onClick={() =>
-                                onSelectTrainer(
+                                rest.onSelectTrainer?.(
                                     BattleHelpers.getBattleKey(battle)
                                 )
                             }
@@ -189,9 +226,17 @@ const BattleCard: React.FC<BattleCardProps> = ({
                 {rows.map((row, rowIndex) => {
                     const isLastRow = rowIndex === rows.length - 1;
                     const handleRowWipeClick =
-                        rowIndex === 0 && onWipeBattle
+                        rowIndex === 0 &&
+                        rest.mode === 'link' &&
+                        rest.onWipeBattle
                             ? handleWipeButtonClick
                             : undefined;
+                    const firstMemberIndex = rows
+                        .slice(0, rowIndex)
+                        .reduce(
+                            (count, previous) => count + previous.team.length,
+                            0
+                        );
                     const position = !isStacked
                         ? 'single'
                         : isLastRow
@@ -238,6 +283,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         dataSource={game.dataSource}
                                         generation={generation}
                                         hofDisplay={false}
+                                        isMetadataReadOnly={
+                                            rest.mode === 'select'
+                                        }
                                         isReadOnly={false}
                                         isTagPartner={!!isTagPartner}
                                         key={
@@ -245,10 +293,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                 ? `${rowIndex}-${pokemon.slug}-${index}`
                                                 : `${rowIndex}-empty-${index}`
                                         }
-                                        onSelectAbility={onSelectAbility}
-                                        onSelectItem={onSelectItem}
-                                        onSelectMove={onSelectMove}
-                                        onSelectSpecies={onSelectSpecies}
+                                        {...getSlotHandlers(
+                                            firstMemberIndex,
+                                            index
+                                        )}
                                         pokemon={pokemon}
                                         position={position}
                                         variant={variant}

@@ -12,7 +12,7 @@ type MoveListProps = {
     isReadOnly: boolean;
     ivs: StatValues;
     moves: string[];
-    onSelectMove?: (slug: string) => void;
+    onSelectMove?: (slug: string, index: number) => void;
 };
 
 const MoveList: React.FC<MoveListProps> = ({
@@ -92,7 +92,7 @@ const MoveList: React.FC<MoveListProps> = ({
                         ]
                             .filter(Boolean)
                             .join(' ')}
-                        onClick={() => onSelectMove?.(moveSlug)}
+                        onClick={() => onSelectMove?.(moveSlug, index)}
                         style={
                             {
                                 '--move-color': getMoveColor(moveSlug),

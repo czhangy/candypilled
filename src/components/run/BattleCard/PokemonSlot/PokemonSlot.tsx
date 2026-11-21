@@ -20,6 +20,10 @@ type PokemonSlotProps = {
     // for contexts that allow editing those two fields but not species,
     // ability, or nature (e.g. a saved Hall of Fame team).
     hofDisplay: boolean;
+    // Renders the ability, nature and held item as plain text, for contexts
+    // where only the species and moves are selectable (e.g. the calc's
+    // battle card).
+    isMetadataReadOnly: boolean;
     isReadOnly: boolean;
     // A tag partner's moves/items/ability are never a threat to the
     // player's own team, so dangerous highlighting never applies here
@@ -27,7 +31,7 @@ type PokemonSlotProps = {
     isTagPartner: boolean;
     onSelectAbility?: (slug: string) => void;
     onSelectItem?: (slug: string) => void;
-    onSelectMove?: (slug: string) => void;
+    onSelectMove?: (slug: string, index: number) => void;
     onSelectSpecies?: (species: string) => void;
     pokemon: BattlePokemon | null;
     position: 'single' | 'top' | 'middle' | 'bottom';
@@ -39,6 +43,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     dataSource,
     generation,
     hofDisplay,
+    isMetadataReadOnly,
     isReadOnly,
     isTagPartner,
     onSelectAbility,
@@ -197,7 +202,10 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     // Even without a held item, the item slot must stay clickable in HOF
     // display mode so one can be assigned; elsewhere an item button is only
     // shown once a held item actually exists.
-    const canClickItem = !isItemAndMovesReadOnly && (!!heldItem || hofDisplay);
+    const canClickItem =
+        !isItemAndMovesReadOnly &&
+        !isMetadataReadOnly &&
+        (!!heldItem || hofDisplay);
     const heldItemContent = canClickItem ? (
         <button
             className={[
@@ -250,9 +258,10 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
     ) : (
         '-'
     );
+    const isAbilityAndNatureReadOnly = isReadOnly || isMetadataReadOnly;
     const abilityButtonContent = ability && (
         <>
-            {isReadOnly ? (
+            {isAbilityAndNatureReadOnly ? (
                 <span
                     className={[
                         styles['ability-button'],
@@ -345,7 +354,7 @@ const PokemonSlot: React.FC<PokemonSlotProps> = ({
                 <li className={styles['pokemon-slot__metadata-item--nature']}>
                     {!pokemon.nature ? (
                         '-'
-                    ) : isReadOnly ? (
+                    ) : isAbilityAndNatureReadOnly ? (
                         <span
                             className={[
                                 styles['ability-button'],

@@ -14,15 +14,6 @@ const OLD_CHATEAU: Location = {
             map: oldChateauEntrance,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance-and-dining-room',
-            items: [
-                {
-                    category: ItemCategory.TmHm,
-                    count: 1,
-                    hidden: false,
-                    method: 'Ground',
-                    slug: 'substitute',
-                },
-            ],
             methodSplits: [
                 { method: EncounterMethod.Walking, split: 'Gardenia' },
             ],
@@ -32,6 +23,15 @@ const OLD_CHATEAU: Location = {
             map: oldChateauDiningRoom,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'old-chateau-entrance-and-dining-room',
+            items: [
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'Far right side',
+                    slug: 'spell-tag',
+                },
+            ],
             methodSplits: [
                 { method: EncounterMethod.Walking, split: 'Gardenia' },
             ],

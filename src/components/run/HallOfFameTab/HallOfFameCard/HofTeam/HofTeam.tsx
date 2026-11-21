@@ -113,6 +113,7 @@ const HofTeam: React.FC<HofTeamProps> = ({
                     dataSource={dataSource}
                     generation={generation}
                     hofDisplay
+                    isMetadataReadOnly={false}
                     isReadOnly
                     isTagPartner={false}
                     key={pokemon ? pokemon.location : `empty-${index}`}

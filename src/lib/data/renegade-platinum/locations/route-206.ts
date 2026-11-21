@@ -10,14 +10,28 @@ const ROUTE_206: Location = {
     items: [
         {
             category: ItemCategory.Berry,
-            count: 2,
+            count: 5,
             hidden: false,
             method: 'Berry tree',
             slug: 'razz-berry',
         },
         {
             category: ItemCategory.Berry,
-            count: 2,
+            count: 5,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'razz-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 5,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'rawst-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 5,
             hidden: false,
             method: 'Berry tree',
             slug: 'rawst-berry',

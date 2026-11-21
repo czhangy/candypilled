@@ -14,29 +14,6 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             name: '1F',
             map: teamGalacticEternaBuilding1f,
             mapAnchor: MapAnchor.Center,
-            items: [
-                {
-                    category: ItemCategory.TmHm,
-                    count: 1,
-                    hidden: false,
-                    method: 'Ground',
-                    slug: 'light-screen',
-                },
-                {
-                    category: ItemCategory.TmHm,
-                    count: 1,
-                    hidden: false,
-                    method: 'Ground',
-                    slug: 'reflect',
-                },
-                {
-                    category: ItemCategory.TmHm,
-                    count: 1,
-                    hidden: false,
-                    method: 'Ground',
-                    slug: 'thunder-wave',
-                },
-            ],
             battles: [
                 {
                     battleKey:
@@ -56,6 +33,15 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             name: '2F',
             map: teamGalacticEternaBuilding2f,
             mapAnchor: MapAnchor.Center,
+            items: [
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'In left room',
+                    slug: 'thunder-wave',
+                },
+            ],
             battles: [
                 {
                     battleKey:
@@ -75,6 +61,15 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             name: '3F',
             map: teamGalacticEternaBuilding3f,
             mapAnchor: MapAnchor.Center,
+            items: [
+                {
+                    category: ItemCategory.HeldItem,
+                    count: 1,
+                    hidden: false,
+                    method: 'In second room',
+                    slug: 'wise-glasses',
+                },
+            ],
             battles: [
                 {
                     battleKey:
@@ -96,10 +91,24 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             encountersKey: 'team-galactic-eterna-building-4f',
             items: [
                 {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'In middle room',
+                    slug: 'light-screen',
+                },
+                {
+                    category: ItemCategory.TmHm,
+                    count: 1,
+                    hidden: false,
+                    method: 'In middle room',
+                    slug: 'reflect',
+                },
+                {
                     category: ItemCategory.KeyItem,
                     count: 1,
                     hidden: false,
-                    method: 'Ground',
+                    method: 'Right side of the room',
                     slug: 'secret-key',
                 },
             ],
