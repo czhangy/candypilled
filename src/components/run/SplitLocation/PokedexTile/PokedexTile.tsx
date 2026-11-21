@@ -282,13 +282,14 @@ const PokedexTile: React.FC<PokedexTileProps> = ({
                 generation
             )
         );
+    const isEggEncounter = rest.mode === 'catch' && rest.isEggEncounter;
     const isCatchDisabled =
         rest.mode === 'catch' &&
         !isCaughtHere &&
-        (isOtherCaughtHere || isEvolutionLineCaught || rest.isLocationMissed);
+        (isEvolutionLineCaught ||
+            (!isEggEncounter && (isOtherCaughtHere || rest.isLocationMissed)));
     const isCatchButtonHidden =
         rest.mode === 'catch' && rest.isStarterEncounter;
-    const isEggEncounter = rest.mode === 'catch' && rest.isEggEncounter;
     const catchButtonLabel = isCaughtHere
         ? isEggEncounter
             ? 'HATCHED'
