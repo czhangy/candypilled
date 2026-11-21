@@ -15,17 +15,18 @@ Ask these in one plain-text list before creating anything. Never answer one from
 
 Then create `src/lib/data/<slug>/ONBOARDING.md` and record every answer in it. Later steps add to it; edit in place, never as a log.
 
-| Question                                                                                                    | Decides                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Is it a ROM hack, or a vanilla game?                                                                        | Data sources for trainers and encounters. A hack's tracker is the source, since PokeAPI and the decomp reflect the unpatched base game. |
-| Does it change Pokémon or moves from its base game?                                                         | Whether it needs `DataOverrides` (a sparse diff over vanilla) or an independent dataset, instead of `VANILLA_DATA_SOURCE`.              |
-| Is there a trusted decomp of this exact game?                                                               | Trainer data, badge bits and flags come from the decomp. Without one, they come from a tracker or a real save.                          |
-| Does it change the trainer AI (scripts, flags or per-trainer flag assignments) from its base game?          | Whether `battle-ai-flags` and `move-ai-rules` can reuse the base game's data, or need the hack's own `trdata` flags and AI script diff. |
-| Is it one of a set of variants that differ only in wild encounters (like Diamond and Pearl)?                | One shared data folder plus a subfolder per variant.                                                                                    |
-| What generation and PokeAPI version-group slug does it use? (For a hack, that of the base game it patches.) | `Game.generation`, `Game.version`, and the encounter scraper config.                                                                    |
-| Which sprite and badge art does it use?                                                                     | Whether `badgeAssetFolder`, `trainerAssetFolder` and `pokemonAssetFolder` reuse an existing folder, or need new art.                    |
-| What is its accent color?                                                                                   | `Game.accentColor`.                                                                                                                     |
-| Does it need a text contrast color? (Optional.)                                                             | `Game.textContrastColor`, omitted when not needed.                                                                                      |
+| Question                                                                                                              | Decides                                                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Is it a ROM hack, or a vanilla game?                                                                                  | Data sources for trainers and encounters. A hack's tracker is the source, since PokeAPI and the decomp reflect the unpatched base game.              |
+| Does it change Pokémon or moves from its base game?                                                                   | Whether it needs `DataOverrides` (a sparse diff over vanilla) or an independent dataset, instead of `VANILLA_DATA_SOURCE`.                           |
+| (ROM hacks only) Does it use the Gen 6+ type chart (Fairy, Steel resisting less) despite its generation predating it? | `GameDataSource.usesGen6TypeChart`, which the damage calc builds its type chart from. A vanilla game never asks: it uses its own generation's chart. |
+| Is there a trusted decomp of this exact game?                                                                         | Trainer data, badge bits and flags come from the decomp. Without one, they come from a tracker or a real save.                                       |
+| Does it change the trainer AI (scripts, flags or per-trainer flag assignments) from its base game?                    | Whether `battle-ai-flags` and `move-ai-rules` can reuse the base game's data, or need the hack's own `trdata` flags and AI script diff.              |
+| Is it one of a set of variants that differ only in wild encounters (like Diamond and Pearl)?                          | One shared data folder plus a subfolder per variant.                                                                                                 |
+| What generation and PokeAPI version-group slug does it use? (For a hack, that of the base game it patches.)           | `Game.generation`, `Game.version`, and the encounter scraper config.                                                                                 |
+| Which sprite and badge art does it use?                                                                               | Whether `badgeAssetFolder`, `trainerAssetFolder` and `pokemonAssetFolder` reuse an existing folder, or need new art.                                 |
+| What is its accent color?                                                                                             | `Game.accentColor`.                                                                                                                                  |
+| Does it need a text contrast color? (Optional.)                                                                       | `Game.textContrastColor`, omitted when not needed.                                                                                                   |
 
 ## 2. Data folder scaffold
 
@@ -59,12 +60,12 @@ Badges and trainer class sprites are requested later, once the splits and traine
 
 ## 4. Data source
 
-- **Vanilla, or no Pokémon/move changes:** `dataSource: VANILLA_DATA_SOURCE` (`data-sources.ts`). Nothing to build.
+- **Vanilla, or no Pokémon/move changes:** `dataSource: VANILLA_DATA_SOURCE` (`data-sources.ts`). Nothing to build. The type chart follows the game's generation (`usesGen6TypeChart: false`). A hack that answered yes to the Gen 6+ chart question needs its own `<SLUG>_DATA_SOURCE` below even without other changes.
 - **A hack with changes (overrides):**
     - Ask the user for the source of the changes.
     - Write sparse `DataOverrides` JSON to `<slug>/raw/pokemon-overrides.json` and `moves-overrides.json`, diffed against vanilla as resolved for the hack's generation.
     - Create `<slug>/pokemon.ts` and `<slug>/moves.ts` in the shape of `renegade-platinum/`. They export `POKEMON_OVERRIDES` and `POKEMON`, and `MOVE_OVERRIDES` and `MOVES`, built with `DataOverrideHelpers.applyOverrides` (plus `removeEntries` for retired moves).
-    - Add a `<SLUG>_DATA_SOURCE` to `data-sources.ts` with `overrides` set, reusing `ITEMS` unless items changed.
+    - Add a `<SLUG>_DATA_SOURCE` to `data-sources.ts` with `overrides` set and `usesGen6TypeChart` set to the user's answer from step 1, reusing `ITEMS` unless items changed.
     - Set `Game.pokemonAssetFolder` to the version group whose Pokémon sprites the hack uses.
 - **A hack with a wholly independent dataset:** ask the user.
 

@@ -647,6 +647,9 @@ export type GameDataSource = {
     pokemon: Record<string, PokemonData>;
     moves: Record<string, MoveData>;
     items: Record<string, ItemData>;
+    // Whether the damage calc uses the Gen 6+ type chart (Fairy, Steel
+    // resisting less) even though the game's generation predates it.
+    usesGen6TypeChart: boolean;
     // Set only for a game whose pokemon/moves are vanilla data patched by a
     // sparse diff (e.g. a ROM hack rebalance) — lets the UI surface
     // exactly what this game changed, species/move by species/move, field
