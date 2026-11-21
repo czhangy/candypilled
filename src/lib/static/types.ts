@@ -973,10 +973,10 @@ export type LearnsetMove = {
 };
 
 // The level-up moves of another evolution stage (earlier or later) that the
-// viewed species either learns at a different level or, for lostMoves, can no
-// longer learn (nor can any of its later evolutions). gainedMoves are the
-// viewed species' own level-up moves the stage can't learn by any method;
-// they're included in moves, using the viewed species' levels.
+// viewed species either learns at a different level or, for lostMoves, can't
+// learn by any method. gainedMoves are the viewed species' own level-up moves
+// the stage can't learn by any method; they're included in moves, using the
+// viewed species' levels.
 export type LearnsetDifference = {
     // Level offsets for entries the viewed species also learns, keyed by
     // `${slug}-${level}`: the stage's level minus the viewed species' level
