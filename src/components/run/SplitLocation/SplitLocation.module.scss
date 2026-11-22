@@ -141,6 +141,12 @@
                     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
                     width: 100%;
 
+                    // Two columns only at the page's full width, where the
+                    // evolution line fits; any narrower, stack to one column.
+                    @media (width < $max-content-width) {
+                        grid-template-columns: 1fr;
+                    }
+
                     .left-column {
                         display: flex;
                         flex-direction: column;
