@@ -1212,7 +1212,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'sis-and-bro-lisa-and-ray': {
-        metadata: [BattleMetadata.Required, BattleMetadata.TrueDouble],
+        metadata: [BattleMetadata.Optional, BattleMetadata.TrueDouble],
         split: 'Winona',
         trainerClass: 'sis-and-bro',
         name: 'Lisa & Ray',
