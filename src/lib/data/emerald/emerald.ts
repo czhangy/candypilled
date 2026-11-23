@@ -1,4 +1,5 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
+import { BATTLE_ORDER } from '@/lib/data/emerald/battle-order';
 import { BATTLES } from '@/lib/data/emerald/battles';
 import { ENCOUNTERS } from '@/lib/data/emerald/encounters';
 import { LOCATIONS } from '@/lib/data/emerald/locations';
@@ -36,6 +37,7 @@ const EMERALD: Game = {
     starters: ['treecko', 'torchic', 'mudkip'],
     accentColor: '#009652',
     encounters: ENCOUNTERS,
+    battleOrder: BATTLE_ORDER,
     battles: BATTLES,
     moveAi: EMERALD_MOVE_AI,
     metLocationById: MET_LOCATIONS,

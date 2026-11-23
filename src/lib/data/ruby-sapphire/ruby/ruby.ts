@@ -1,5 +1,6 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { RUBY_SAPPHIRE_MOVE_AI } from '@/lib/data/move-ai/ruby-sapphire';
+import { BATTLE_ORDER } from '@/lib/data/ruby-sapphire/battle-order';
 import { BATTLES } from '@/lib/data/ruby-sapphire/battles';
 import { LOCATIONS } from '@/lib/data/ruby-sapphire/locations';
 import MAGMA_HIDEOUT from '@/lib/data/ruby-sapphire/locations/magma-hideout';
@@ -37,6 +38,7 @@ const RUBY: Game = {
     starters: ['treecko', 'torchic', 'mudkip'],
     accentColor: '#CD2236',
     encounters: ENCOUNTERS,
+    battleOrder: BATTLE_ORDER,
     battles: BATTLES,
     moveAi: RUBY_SAPPHIRE_MOVE_AI,
     // Index 66 is version-dependent ("Magma Hideout" in Ruby, "Aqua

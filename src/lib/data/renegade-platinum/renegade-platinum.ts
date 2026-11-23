@@ -1,5 +1,6 @@
 import { RENEGADE_PLATINUM_DATA_SOURCE } from '@/lib/data/data-sources';
 import { RENEGADE_PLATINUM_MOVE_AI } from '@/lib/data/move-ai/renegade-platinum';
+import { BATTLE_ORDER } from '@/lib/data/renegade-platinum/battle-order';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -51,6 +52,7 @@ const RENEGADE_PLATINUM: Game = {
     // explicit direction, not inferred).
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
+    battleOrder: BATTLE_ORDER,
     battles: BATTLES,
     moveAi: RENEGADE_PLATINUM_MOVE_AI,
     metLocationById: MET_LOCATIONS,

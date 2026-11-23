@@ -10,7 +10,9 @@ const ROUTE_211: Location = {
             map: route211West,
             mapAnchor: MapAnchor.Center,
             encountersKey: 'sinnoh-route-211-west-towards-eterna-city',
-            methodSplits: [{ method: EncounterMethod.Grass, split: 'Byron' }],
+            methodSplits: [
+                { method: EncounterMethod.Grass, split: 'Gardenia' },
+            ],
             battles: [
                 {
                     battleKey: 'ninja-boy-zach',
@@ -65,8 +67,8 @@ const ROUTE_211: Location = {
                 },
             ],
             methodSplits: [
-                { method: EncounterMethod.Grass, split: 'Gardenia' },
-                { method: EncounterMethod.HoneyTree, split: 'Gardenia' },
+                { method: EncounterMethod.Grass, split: 'Byron' },
+                { method: EncounterMethod.HoneyTree, split: 'Byron' },
             ],
             battles: [
                 {

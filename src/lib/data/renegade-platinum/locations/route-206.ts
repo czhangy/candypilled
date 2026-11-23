@@ -60,11 +60,6 @@ const ROUTE_206: Location = {
             y: 27.4,
         },
         {
-            battleKey: 'hiker-theodore',
-            x: 73.4,
-            y: 35.9,
-        },
-        {
             battleKey: 'cyclist-james',
             x: 51.6,
             y: 36,
@@ -93,6 +88,11 @@ const ROUTE_206: Location = {
             battleKey: 'cyclist-kayla',
             x: 57.8,
             y: 77.4,
+        },
+        {
+            battleKey: 'hiker-theodore',
+            x: 73.4,
+            y: 35.9,
         },
     ],
 };

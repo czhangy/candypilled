@@ -210,12 +210,6 @@ const ROUTE_212: Location = {
                     y: 72.2,
                 },
                 {
-                    battleKey: 'parasol-lady-alexa',
-                    fieldCondition: FieldCondition.Rain,
-                    x: 56.7,
-                    y: 50.1,
-                },
-                {
                     battleKey: 'scientist-shaun',
                     fieldCondition: FieldCondition.Rain,
                     x: 73,
@@ -226,6 +220,12 @@ const ROUTE_212: Location = {
                     fieldCondition: FieldCondition.Rain,
                     x: 62.9,
                     y: 15.5,
+                },
+                {
+                    battleKey: 'parasol-lady-alexa',
+                    fieldCondition: FieldCondition.Rain,
+                    x: 56.7,
+                    y: 50.1,
                 },
                 {
                     battleKey: 'fisherman-juan',
@@ -264,16 +264,16 @@ const ROUTE_212: Location = {
                     y: 75.1,
                 },
                 {
-                    battleKey: 'pkmn-ranger-m-jeffrey',
-                    fieldCondition: FieldCondition.Rain,
-                    x: 7.4,
-                    y: 40.7,
-                },
-                {
                     battleKey: 'pkmn-ranger-f-allison',
                     fieldCondition: FieldCondition.Rain,
                     x: 7.4,
                     y: 31.4,
+                },
+                {
+                    battleKey: 'pkmn-ranger-m-jeffrey',
+                    fieldCondition: FieldCondition.Rain,
+                    x: 7.4,
+                    y: 40.7,
                 },
             ],
         },

@@ -64,14 +64,14 @@ const ROUTE_223: Location = {
             y: 26.62,
         },
         {
-            battleKey: 'swimmer-f-cassandra',
-            x: 73.54,
-            y: 21.93,
-        },
-        {
             battleKey: 'swimmer-m-francisco',
             x: 92.29,
             y: 36.79,
+        },
+        {
+            battleKey: 'swimmer-f-cassandra',
+            x: 73.54,
+            y: 21.93,
         },
         {
             battleKey: 'swimmer-m-troy',

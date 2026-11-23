@@ -73,19 +73,24 @@ const ROUTE_205: Location = {
                     y: 73,
                 },
                 {
-                    battleKey: 'hiker-daniel',
-                    x: 58,
-                    y: 58.3,
-                },
-                {
                     battleKey: 'aroma-lady-elizabeth',
                     x: 73.6,
                     y: 59.4,
                 },
                 {
+                    battleKey: 'hiker-daniel',
+                    x: 58,
+                    y: 58.3,
+                },
+                {
                     battleKey: 'camper-zackary',
                     x: 45.1,
                     y: 51.2,
+                },
+                {
+                    battleKey: 'picnicker-siena',
+                    x: 73.6,
+                    y: 44.8,
                 },
                 {
                     battleKey: 'hiker-nicholas',
@@ -101,11 +106,6 @@ const ROUTE_205: Location = {
                     battleKey: 'picnicker-karina',
                     x: 51.6,
                     y: 19.9,
-                },
-                {
-                    battleKey: 'picnicker-siena',
-                    x: 73.6,
-                    y: 44.8,
                 },
             ],
         },

@@ -725,6 +725,10 @@ export type Game = {
     // Every battle's trainer info, keyed by battle key
     // (BattleHelpers.getBattleKey).
     battles: Record<string, BattleData>;
+    // Battle keys in canonical order, earliest first: every battle placed in
+    // one of this game's locations, hand-maintained (check:data enforces it
+    // covers exactly those battles). Orders the battle dropdowns.
+    battleOrder: string[];
     // How each AI flag treats each move.
     moveAi: MoveAiData;
     // Game-specific messages shown at random on the run page when a run is

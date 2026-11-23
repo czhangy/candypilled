@@ -108,13 +108,12 @@ export default class BattleHelpers {
     }
 
     /**
-     * Every distinct battle in game for gender, ordered by each battle's own
-     * split (game.battles[key].split) in game order -- sourced from
-     * game.locations (every location, split-independent) rather than
-     * game.splits[].locations, so a battle shows up here even when its
-     * location's Split.locations membership doesn't (yet) cover the split
-     * the battle itself belongs to. A battle reachable from more than one
-     * location is still one battle, so only its first occurrence is kept.
+     * Every distinct battle in game for gender, in game.battleOrder -- sourced
+     * from game.locations (every location, split-independent) rather than
+     * game.splits[].locations. A battle missing from battleOrder sorts last,
+     * by its own split (game.battles[key].split) in game order. A battle
+     * reachable from more than one location is still one battle, so only its
+     * first occurrence is kept.
      */
     static getAllBattles(
         game: Game,
@@ -348,18 +347,25 @@ export default class BattleHelpers {
         const splitIndexes = new Map(
             game.splits.map((split, index) => [split.name, index])
         );
+        const orderIndexes = new Map(
+            game.battleOrder.map((key, index) => [key, index])
+        );
 
         return deduped
             .map((entry) => {
-                const split =
-                    game.battles[BattleHelpers.getBattleKey(entry.battle)]
-                        ?.split;
+                const key = BattleHelpers.getBattleKey(entry.battle);
+                const split = game.battles[key]?.split;
                 return {
                     entry,
+                    orderIndex: orderIndexes.get(key) ?? Infinity,
                     splitIndex: split ? (splitIndexes.get(split) ?? -1) : -1,
                 };
             })
-            .sort((a, b) => a.splitIndex - b.splitIndex)
+            .sort((a, b) =>
+                a.orderIndex === b.orderIndex
+                    ? a.splitIndex - b.splitIndex
+                    : a.orderIndex - b.orderIndex
+            )
             .map(({ entry }) => entry);
     }
 

@@ -38,6 +38,7 @@ Create `src/lib/data/<slug>/` (reference: `platinum/`). For a variant group, cre
 - `met-locations.ts`: `MET_LOCATIONS: Record<number, string>`, met index to location name.
 - `encounters.ts`: `ENCOUNTERS: Record<string, Encounter[]>`.
 - `battles.ts`: `BATTLES: Record<string, BattleData>`.
+- `battle-order.ts`: `BATTLE_ORDER: string[]`, battle keys in canonical order (step 14).
 - `locations.ts`: `LOCATIONS: Location[]`, every location in the game.
 - `locations/`: one `Location` per file.
 - `maps/`: map PNGs plus `index.ts`, one alphabetical export per image.
@@ -47,7 +48,7 @@ Per-move AI notes are not in the game folder: they live in `src/lib/data/move-ai
 
 In a variant group, `encounters.ts` and `<slug>.ts` live in each variant's subfolder, and everything else is shared.
 
-Start each data file as an empty typed export. Don't register the game yet. Add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts` for each game, with `dataFolder`, `unmappedLocations: []` and `isEnabled: false`, so `check:data` skips the game until onboarding is done.
+Start each data file as an empty typed export. Don't register the game yet. Add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts` for each game, with `dataFolder`, `unmappedLocations: []`, `isEnabled: false` and `isBattleOrderChecked: false`, so `check:data` skips the game until onboarding is done.
 
 ## 3. Gather assets
 
@@ -93,7 +94,7 @@ Once `encounters.ts` is populated:
 
 1. Find which `encountersKey` holds the `Starter` encounters in `encounters.ts`, work out which location it is, and suggest it to the user. Wait for confirmation.
 2. Wire only that location: a `Location` whose map is the inline placeholder `{ src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', height: 1, width: 1 }` (no file), with `mapAnchor: MapAnchor.Center` and its `encountersKey`. Add it to `locations.ts` and to one split. Ask the user for the split's name. Set the split's `saveCondition` to the placeholder `{ type: 'badge', bit: -1 }`; step 10 replaces it. Set `Game.starters` to the species of the `Starter` encounters.
-3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. Set `moveAi` to the empty `{ moves: {}, rules: {} }`; step 15 fills it. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
+3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. Set `moveAi` to the empty `{ moves: {}, rules: {} }`; step 15 fills it. Set `battleOrder` to `BATTLE_ORDER` from `battle-order.ts`, empty until step 14. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
 4. Register the game. For a variant group, do this for each variant:
     - Add a member to `GameName`, and to `GameVersionGroup`, `BadgeAssetFolder` and `TrainerAssetFolder` when the value is new.
     - Add the game to `GAMES` and its slug to `GAME_LOADERS` in `RunPageLoader.tsx`.
@@ -142,8 +143,9 @@ Work one location at a time, in alphabetical order. Wire each location's battles
 3. Look each trainer up in the game's trainer data and read team, species, level, moves, held item, ability, nature and gender. IVs follow the `battle-ivs` skill. State exactly what you parsed and get the user's confirmation before writing. Never guess a value; a missing or ambiguous one is a question for the user. `gender` is never omitted for a species that has one.
 4. Add each battle to `battles.ts` under its `battleKey`: `<trainer-class-slug>-<name>` for a named trainer, or `<trainer-class-slug>-<number>` (with `name` set to the number as a string) for repeated anonymous trainers. Ask the user for each battle's `split`.
 5. Set every team's required `aiFlags` following the `battle-ai-flags` skill, from the game's own trainer data (never from the user for a vanilla game). Report every team that cannot be matched to a trainer. The skill also covers the `Double`/`TrueDouble`/`Tag` implied flag, which comes from the metadata the user gave in step 2.
-6. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill.
+6. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill. Keep the array in the order the player fights them (each subarea's own array), since the battle order in step 14 relies on it. Ask the user when the source order is unclear.
 7. A roster that varies by run state (starter-dependent) is one battle with several `teams`, each with a `condition`. A different trainer or position by gender or game is a separate `Battle` entry with `gender` or `game` set.
+8. Once the game's `isBattleOrderChecked` is `true`, a new battle also needs a `battleOrder` entry. Ask the user where it goes.
 
 ## 12. Method splits
 
@@ -168,7 +170,7 @@ Work one location at a time, in alphabetical order, after its method splits. Ite
 3. If a slug isn't in `ITEMS` (`src/lib/data/raw/items.json`), add it as data first, by hand: an entry in `src/lib/data/raw/items.json` (same shape as its neighbours, with `valuesByGeneration` from PokeAPI's flavor text up to generation 5), the slug in `ItemSlug` (`types.ts`), and its sprite at `public/items/<slug>.png`. There is no fetch script. Tell the user about any sprite you can't source and wait.
 4. Items carry no split. Never ask for one.
 
-## 14. Split assignment
+## 14. Split assignment and battle order
 
 Run only after step 13 is finished for every location. Work split by split, in `Game.splits` order:
 
@@ -176,6 +178,20 @@ Run only after step 13 is finished for every location. Work split by split, in `
 2. Write exactly the list the user gives, then move to the next split.
 
 Never add a location to a split unprompted or infer membership. Per `.claude/docs/split-location-wiring.md`, a split lists only locations the player is required to go through.
+
+### Battle order
+
+`battle-order.ts` lists every battle placed in a location, earliest first: by split (the battle's `BattleData.split`), then by location within that split, then by the battle's position in its location's `battles` array (each subarea's array in turn). Step 11 already put each array in fight order, so the only thing to ask is the order of the locations.
+
+For each split, in `Game.splits` order:
+
+1. List the locations that have battles of this split, with their battle counts. Use `Split.locations` order, with locations the split doesn't list after them as a default only.
+2. Ask the user for the order of those locations. Never infer it. Apply it exactly.
+3. Append the split's battles to `battle-order.ts` under a `// <Split>` comment: each location's battles of this split, in array order.
+
+Then `npm run check:data` must show the missing count drop by the split's size. To change the order within a location later, reorder its `battles` array and the list together.
+
+A tag partner's battle isn't placed in a location, so it isn't listed. In a variant group the list is shared, so list a version-exclusive battle once.
 
 ## 15. Move AI
 
@@ -207,6 +223,6 @@ Delete everything onboarding brought in that the app doesn't use: cloned decomps
 
 ## 19. Final validation
 
-1. Set the game's `isEnabled` to `true` in `GAME_CHECK_CONFIGS`.
+1. Set the game's `isEnabled` and `isBattleOrderChecked` to `true` in `GAME_CHECK_CONFIGS`.
 2. Run `npm run check:data` and `npx tsc --noEmit`. Fix every violation; a violation that needs a decision is a question for the user.
 3. Update the game's row in the README's Supported Games table (a variant group is one row). Set its status to `Complete`; never ask.

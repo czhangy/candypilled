@@ -1,4 +1,5 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
+import { BATTLE_ORDER } from '@/lib/data/diamond-pearl/battle-order';
 import { BATTLES } from '@/lib/data/diamond-pearl/battles';
 import { LOCATIONS } from '@/lib/data/diamond-pearl/locations';
 import { MET_LOCATIONS } from '@/lib/data/diamond-pearl/met-locations';
@@ -42,6 +43,7 @@ const PEARL: Game = {
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#E0A0C0',
     encounters: ENCOUNTERS,
+    battleOrder: BATTLE_ORDER,
     battles: BATTLES,
     moveAi: DIAMOND_PEARL_MOVE_AI,
     metLocationById: MET_LOCATIONS,

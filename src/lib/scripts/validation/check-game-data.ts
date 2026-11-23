@@ -218,6 +218,30 @@ const checkSplitWiring = (game: Game, siblings: Game[]): string[] => {
         });
 };
 
+// battleOrder must list each battle placed in one of the game's locations
+// exactly once, and nothing else.
+const checkBattleOrder = (game: Game): string[] => {
+    const placedKeys = new Set(
+        getPlacements(game).map((placement) => placement.battleKey)
+    );
+    const listedKeys = new Set<string>();
+    const duplicated = new Set<string>();
+    game.battleOrder.forEach((key) => {
+        if (listedKeys.has(key)) duplicated.add(key);
+        listedKeys.add(key);
+    });
+
+    return [
+        ...[...placedKeys]
+            .filter((key) => !listedKeys.has(key))
+            .map((key) => `battle ${key}: missing from battleOrder`),
+        ...[...listedKeys]
+            .filter((key) => !placedKeys.has(key))
+            .map((key) => `battleOrder: "${key}" isn't placed in a location`),
+        ...[...duplicated].map((key) => `battleOrder: duplicate "${key}"`),
+    ];
+};
+
 const DOUBLE_METADATA = [
     BattleMetadata.Double,
     BattleMetadata.TrueDouble,
@@ -371,6 +395,7 @@ const checkGame = (game: Game, games: Game[]): Report => {
             ...checkTrainerClasses(game),
             ...checkBattleMetadata(game),
             ...checkSplitWiring(game, siblings),
+            ...(config.isBattleOrderChecked ? checkBattleOrder(game) : []),
             ...checkAiFlags(game),
             ...checkMoveAi(game),
             ...(hasMetTable
