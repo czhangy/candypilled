@@ -355,7 +355,6 @@ export const BATTLE_ORDER: string[] = [
     'swimmer-f-cassandra',
     'swimmer-m-troy',
     // Cynthia
-    'pkmn-trainer-barry-pokemon-league-lobby',
     'psychic-m-bryce',
     'bird-keeper-hana',
     'ace-trainer-f-mariah',
@@ -370,6 +369,7 @@ export const BATTLE_ORDER: string[] = [
     'dragon-tamer-ondrej',
     'veteran-edgar',
     'dragon-tamer-clinton',
+    'pkmn-trainer-barry-pokemon-league-lobby',
     'elite-four-aaron',
     'elite-four-bertha',
     'elite-four-flint',

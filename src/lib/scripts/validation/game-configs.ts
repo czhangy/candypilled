@@ -90,13 +90,13 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
         dataFolder: 'diamond-pearl',
         unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: false,
+        isBattleOrderChecked: true,
     },
     Pearl: {
         dataFolder: 'diamond-pearl',
         unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: false,
+        isBattleOrderChecked: true,
     },
     Platinum: {
         dataFolder: 'platinum',
