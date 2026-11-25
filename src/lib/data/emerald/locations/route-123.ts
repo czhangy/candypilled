@@ -48,6 +48,17 @@ const ROUTE_123: Location = {
             ],
             battles: [
                 {
+                    battleKey: 'psychic-m-cameron',
+                    x: 98.66,
+                    y: 61.72,
+                },
+                {
+                    battleKey: 'ninja-boy-jonas',
+                    customHeight: 57,
+                    x: 98.66,
+                    y: 76.72,
+                },
+                {
                     battleKey: 'hex-maniac-kindra',
                     x: 53.07,
                     y: 61.72,
@@ -86,17 +97,6 @@ const ROUTE_123: Location = {
                     battleKey: 'expert-m-fredrick',
                     x: 19.11,
                     y: 96.72,
-                },
-                {
-                    battleKey: 'psychic-m-cameron',
-                    x: 98.66,
-                    y: 61.72,
-                },
-                {
-                    battleKey: 'ninja-boy-jonas',
-                    customHeight: 57,
-                    x: 98.66,
-                    y: 76.72,
                 },
             ],
         },

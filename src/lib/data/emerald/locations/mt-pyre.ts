@@ -140,14 +140,14 @@ const MT_PYRE: Location = {
             methodSplits: GRASS_WINONA,
             battles: [
                 {
-                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-1',
-                    x: 43.0,
-                    y: 41.47,
-                },
-                {
                     battleKey: 'team-aqua-grunt-m-mt-pyre-summit-2',
                     x: 51.0,
                     y: 49.58,
+                },
+                {
+                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-1',
+                    x: 43.0,
+                    y: 41.47,
                 },
                 {
                     battleKey: 'team-aqua-grunt-m-mt-pyre-summit-3',

@@ -13,14 +13,14 @@ const FORTREE_GYM: Location = {
             y: 93.38,
         },
         {
-            battleKey: 'bird-keeper-jared',
-            x: 22.5,
-            y: 57.38,
-        },
-        {
             battleKey: 'picnicker-ashley',
             x: 27.5,
             y: 69.38,
+        },
+        {
+            battleKey: 'bird-keeper-jared',
+            x: 22.5,
+            y: 57.38,
         },
         {
             battleKey: 'camper-flint',

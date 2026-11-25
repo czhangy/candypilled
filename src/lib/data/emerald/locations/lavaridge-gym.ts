@@ -11,14 +11,14 @@ const LAVARIDGE_GYM: Location = {
             mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    battleKey: 'kindler-cole',
-                    x: 20.59,
-                    y: 75.49,
-                },
-                {
                     battleKey: 'cooltrainer-m-gerald',
                     x: 14.71,
                     y: 80.76,
+                },
+                {
+                    battleKey: 'kindler-cole',
+                    x: 20.59,
+                    y: 75.49,
                 },
                 {
                     battleKey: 'kindler-axle',
@@ -48,14 +48,14 @@ const LAVARIDGE_GYM: Location = {
                     y: 91.28,
                 },
                 {
-                    battleKey: 'kindler-jace',
-                    x: 26.47,
-                    y: 96.55,
-                },
-                {
                     battleKey: 'hiker-eli',
                     x: 26.47,
                     y: 86.02,
+                },
+                {
+                    battleKey: 'kindler-jace',
+                    x: 26.47,
+                    y: 96.55,
                 },
                 {
                     battleKey: 'kindler-keegan',

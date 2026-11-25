@@ -24,13 +24,13 @@ const ROUTE_111: Location = {
             ],
             battles: [
                 {
-                    battleKey: 'camper-tyron',
-                    x: 66.25,
+                    battleKey: 'aroma-lady-celina',
+                    x: 51.25,
                     y: 89.06,
                 },
                 {
-                    battleKey: 'aroma-lady-celina',
-                    x: 51.25,
+                    battleKey: 'camper-tyron',
+                    x: 66.25,
                     y: 89.06,
                 },
                 {
@@ -77,14 +77,14 @@ const ROUTE_111: Location = {
                     y: 63.59,
                 },
                 {
-                    battleKey: 'cooltrainer-f-brooke',
-                    x: 28.75,
-                    y: 26.38,
-                },
-                {
                     battleKey: 'black-belt-daisuke',
                     x: 81.25,
                     y: 68.24,
+                },
+                {
+                    battleKey: 'cooltrainer-f-brooke',
+                    x: 28.75,
+                    y: 26.38,
                 },
             ],
         },
@@ -96,9 +96,9 @@ const ROUTE_111: Location = {
             methodSplits: [{ method: EncounterMethod.Sand, split: 'Norman' }],
             battles: [
                 {
-                    battleKey: 'picnicker-heidi',
-                    x: 71.25,
-                    y: 23.82,
+                    battleKey: 'camper-drew',
+                    x: 73.75,
+                    y: 5.64,
                 },
                 {
                     battleKey: 'camper-beau',
@@ -106,9 +106,9 @@ const ROUTE_111: Location = {
                     y: 18.63,
                 },
                 {
-                    battleKey: 'camper-drew',
-                    x: 73.75,
-                    y: 5.64,
+                    battleKey: 'picnicker-heidi',
+                    x: 71.25,
+                    y: 23.82,
                 },
                 {
                     battleKey: 'picnicker-becky',

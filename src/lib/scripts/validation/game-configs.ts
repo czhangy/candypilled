@@ -84,7 +84,7 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
             "Wallace's Room",
         ],
         isEnabled: true,
-        isBattleOrderChecked: false,
+        isBattleOrderChecked: true,
     },
     Diamond: {
         dataFolder: 'diamond-pearl',

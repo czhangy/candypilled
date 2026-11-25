@@ -15,6 +15,11 @@ const ROUTE_134: Location = {
     ],
     battles: [
         {
+            battleKey: 'sailor-hudson',
+            x: 79.38,
+            y: 35.86,
+        },
+        {
             battleKey: 'swimmer-f-laurel',
             x: 73.12,
             y: 18.36,
@@ -25,19 +30,14 @@ const ROUTE_134: Location = {
             y: 23.36,
         },
         {
-            battleKey: 'black-belt-hitoshi',
-            x: 61.88,
-            y: 40.86,
-        },
-        {
             battleKey: 'battle-girl-reyna',
             x: 63.12,
             y: 40.86,
         },
         {
-            battleKey: 'sailor-hudson',
-            x: 79.38,
-            y: 35.86,
+            battleKey: 'black-belt-hitoshi',
+            x: 61.88,
+            y: 40.86,
         },
         {
             battleKey: 'dragon-tamer-aaron',

@@ -52,19 +52,19 @@ const ROUTE_103: Location = {
             ],
             battles: [
                 {
-                    battleKey: 'swimmer-f-isabelle',
-                    x: 19.33,
-                    y: 28.6,
-                },
-                {
-                    battleKey: 'swimmer-m-pete',
-                    x: 19.33,
-                    y: 60.42,
-                },
-                {
                     battleKey: 'aroma-lady-daisy',
                     x: 84.27,
                     y: 51.05,
+                },
+                {
+                    battleKey: 'black-belt-rhett',
+                    x: 76.86,
+                    y: 23.77,
+                },
+                {
+                    battleKey: 'guitarist-marcos',
+                    x: 76.74,
+                    y: 41.96,
                 },
                 {
                     battleKey: 'twins-amy-and-liv',
@@ -83,14 +83,14 @@ const ROUTE_103: Location = {
                     y: 37.7,
                 },
                 {
-                    battleKey: 'black-belt-rhett',
-                    x: 76.86,
-                    y: 23.77,
+                    battleKey: 'swimmer-f-isabelle',
+                    x: 19.33,
+                    y: 28.6,
                 },
                 {
-                    battleKey: 'guitarist-marcos',
-                    x: 76.74,
-                    y: 41.96,
+                    battleKey: 'swimmer-m-pete',
+                    x: 19.33,
+                    y: 60.42,
                 },
             ],
         },

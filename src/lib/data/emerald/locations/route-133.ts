@@ -15,6 +15,31 @@ const ROUTE_133: Location = {
     ],
     battles: [
         {
+            battleKey: 'swimmer-m-franklin',
+            x: 85.62,
+            y: 68.36,
+        },
+        {
+            battleKey: 'swimmer-f-debra',
+            x: 85.62,
+            y: 70.86,
+        },
+        {
+            battleKey: 'expert-f-mollie',
+            x: 70.62,
+            y: 28.36,
+        },
+        {
+            battleKey: 'expert-m-conor',
+            x: 70.62,
+            y: 38.36,
+        },
+        {
+            battleKey: 'cooltrainer-m-warren',
+            x: 46.88,
+            y: 38.36,
+        },
+        {
             battleKey: 'swimmer-f-linda',
             x: 16.88,
             y: 8.36,
@@ -23,31 +48,6 @@ const ROUTE_133: Location = {
             battleKey: 'bird-keeper-beck',
             x: 9.38,
             y: 35.86,
-        },
-        {
-            battleKey: 'expert-m-conor',
-            x: 70.62,
-            y: 38.36,
-        },
-        {
-            battleKey: 'expert-f-mollie',
-            x: 70.62,
-            y: 28.36,
-        },
-        {
-            battleKey: 'cooltrainer-m-warren',
-            x: 46.88,
-            y: 38.36,
-        },
-        {
-            battleKey: 'swimmer-f-debra',
-            x: 85.62,
-            y: 70.86,
-        },
-        {
-            battleKey: 'swimmer-m-franklin',
-            x: 85.62,
-            y: 68.36,
         },
     ],
 };

@@ -30,14 +30,14 @@ const ROUTE_129: Location = {
             y: 35.86,
         },
         {
-            battleKey: 'swimmer-m-clarence',
-            x: 16.88,
-            y: 68.36,
-        },
-        {
             battleKey: 'swimmer-f-tisha',
             x: 16.88,
             y: 55.86,
+        },
+        {
+            battleKey: 'swimmer-m-clarence',
+            x: 16.88,
+            y: 68.36,
         },
     ],
 };

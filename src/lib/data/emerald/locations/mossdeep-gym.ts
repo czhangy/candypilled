@@ -19,24 +19,9 @@ const MOSSDEEP_GYM: Location = {
             y: 81.51,
         },
         {
-            battleKey: 'psychic-f-samantha',
-            x: 17.31,
-            y: 64.84,
-        },
-        {
-            battleKey: 'psychic-m-blake',
-            x: 21.15,
-            y: 56.51,
-        },
-        {
-            battleKey: 'psychic-f-macey',
+            battleKey: 'psychic-m-nicholas',
             x: 98.08,
-            y: 70.4,
-        },
-        {
-            battleKey: 'gentleman-clifford',
-            x: 86.54,
-            y: 70.4,
+            y: 62.07,
         },
         {
             battleKey: 'hex-maniac-kathleen',
@@ -44,19 +29,34 @@ const MOSSDEEP_GYM: Location = {
             y: 64.84,
         },
         {
-            battleKey: 'psychic-m-nicholas',
-            x: 98.08,
-            y: 62.07,
+            battleKey: 'gentleman-clifford',
+            x: 86.54,
+            y: 70.4,
         },
         {
-            battleKey: 'gentleman-nate',
-            x: 36.54,
-            y: 23.18,
+            battleKey: 'psychic-f-macey',
+            x: 98.08,
+            y: 70.4,
+        },
+        {
+            battleKey: 'psychic-m-blake',
+            x: 21.15,
+            y: 56.51,
+        },
+        {
+            battleKey: 'psychic-f-samantha',
+            x: 17.31,
+            y: 64.84,
         },
         {
             battleKey: 'psychic-m-virgil',
             x: 25.0,
             y: 25.95,
+        },
+        {
+            battleKey: 'gentleman-nate',
+            x: 36.54,
+            y: 23.18,
         },
         {
             battleKey: 'hex-maniac-sylvia',
