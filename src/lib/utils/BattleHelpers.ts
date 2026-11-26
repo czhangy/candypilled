@@ -1,3 +1,4 @@
+import { BattleMetadata } from '@/lib/static/enums';
 import {
     AiFlag,
     Battle,
@@ -146,6 +147,45 @@ export default class BattleHelpers {
         return BattleHelpers.getAllBattles(game, gender).findIndex(
             (battle) => BattleHelpers.getBattleKey(battle) === battleKey
         );
+    }
+
+    /**
+     * The key of the nearest Required, Boss or Choice battle before
+     * (direction -1) or after (direction 1) battleKey in
+     * getAllBattles(game, gender), or undefined if there is none. battleKey
+     * itself needn't be one of those, so stepping also works from an Optional
+     * battle.
+     */
+    static getAdjacentRequiredBattleKey(
+        game: Game,
+        battleKey: string | undefined,
+        gender: 'male' | 'female' | undefined,
+        direction: -1 | 1
+    ): string | undefined {
+        const requiredMetadata = [
+            BattleMetadata.Required,
+            BattleMetadata.Boss,
+            BattleMetadata.Choice,
+        ];
+        const battles = BattleHelpers.getAllBattles(game, gender);
+        const position = battles.findIndex(
+            (battle) => BattleHelpers.getBattleKey(battle) === battleKey
+        );
+        if (position === -1) return undefined;
+
+        for (
+            let index = position + direction;
+            index >= 0 && index < battles.length;
+            index += direction
+        ) {
+            const key = BattleHelpers.getBattleKey(battles[index]);
+            const { metadata } = game.battles[key];
+            if (requiredMetadata.some((value) => metadata.includes(value))) {
+                return key;
+            }
+        }
+
+        return undefined;
     }
 
     /** items restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. Shared by Battle[] and TagPartner[], both of which carry an optional gender field. */

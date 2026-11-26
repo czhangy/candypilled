@@ -484,6 +484,19 @@ const CalcTab: React.FC<CalcTabProps> = ({
             BattleHelpers.getBattleKey(battle) === effectiveSelectedBattle
     );
 
+    const previousBattleKey = BattleHelpers.getAdjacentRequiredBattleKey(
+        game,
+        effectiveSelectedBattle,
+        run.gender,
+        -1
+    );
+    const nextBattleKey = BattleHelpers.getAdjacentRequiredBattleKey(
+        game,
+        effectiveSelectedBattle,
+        run.gender,
+        1
+    );
+
     const caught = run.caughtPokemon.find(
         (pokemon) => pokemon.location === selectedLocation
     );
@@ -1048,8 +1061,11 @@ const CalcTab: React.FC<CalcTabProps> = ({
                             game={game}
                             generation={game.generation}
                             mode="select"
+                            nextBattleKey={nextBattleKey}
+                            onSelectBattle={onSelectBattle}
                             onSelectMember={handleBattleCardMemberSelect}
                             onSelectMove={handleBattleCardMoveSelect}
+                            previousBattleKey={previousBattleKey}
                             starter={run.starter}
                             variant={game.pokemonAssetFolder ?? game.version}
                             version={game.version}
@@ -1144,8 +1160,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     />
                     <TeamSelectPanel
                         game={game}
+                        nextBattleKey={nextBattleKey}
                         onSelectBattle={onSelectBattle}
                         onSelectMember={setSelectedMemberIndex}
+                        previousBattleKey={previousBattleKey}
                         run={run}
                         selectedBattle={effectiveSelectedBattle}
                         selectedMemberIndex={selectedMemberIndex}

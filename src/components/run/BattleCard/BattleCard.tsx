@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import ConfirmModal from '@/components/common/ConfirmModal/ConfirmModal';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import EditIcon from '@/lib/icons/EditIcon';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -31,8 +32,12 @@ type BattleCardProps = (
       }
     | {
           mode: 'select';
+          // The neighboring required battles, undefined when there is none.
+          nextBattleKey: string | undefined;
+          onSelectBattle: (battleKey: string) => void;
           onSelectMember: (memberIndex: number) => void;
           onSelectMove: (memberIndex: number, moveIndex: number) => void;
+          previousBattleKey: string | undefined;
       }
 ) & {
     battle: Battle;
@@ -132,6 +137,18 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
+    const handlePreviousBattleClick = (): void => {
+        if (rest.mode === 'select' && rest.previousBattleKey) {
+            rest.onSelectBattle(rest.previousBattleKey);
+        }
+    };
+
+    const handleNextBattleClick = (): void => {
+        if (rest.mode === 'select' && rest.nextBattleKey) {
+            rest.onSelectBattle(rest.nextBattleKey);
+        }
+    };
+
     const handleNotesButtonClick = (): void => {
         setIsNotesModalOpen(true);
     };
@@ -170,6 +187,20 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         <Image alt="" fill sizes="1.5rem" src={badge} />
                     </div>
                 </Tooltip>
+                {rest.mode === 'select' && (
+                    <button
+                        aria-label="Previous required battle"
+                        className={[
+                            styles['nav-button'],
+                            styles['nav-button--previous'],
+                        ].join(' ')}
+                        disabled={!rest.previousBattleKey}
+                        onClick={handlePreviousBattleClick}
+                        type="button"
+                    >
+                        <ChevronIcon />
+                    </button>
+                )}
                 <div className={styles['trainer-header']}>
                     {rest.mode === 'link' && rest.onSelectTrainer ? (
                         <button
@@ -189,6 +220,20 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         </span>
                     )}
                 </div>
+                {rest.mode === 'select' && (
+                    <button
+                        aria-label="Next required battle"
+                        className={[
+                            styles['nav-button'],
+                            styles['nav-button--next'],
+                        ].join(' ')}
+                        disabled={!rest.nextBattleKey}
+                        onClick={handleNextBattleClick}
+                        type="button"
+                    >
+                        <ChevronIcon />
+                    </button>
+                )}
                 <button
                     aria-label="Add notes"
                     className={styles['notes-button']}
