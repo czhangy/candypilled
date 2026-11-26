@@ -94,22 +94,16 @@ const MT_PYRE: Location = {
             methodSplits: GRASS_WINONA,
             battles: [
                 {
-                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-1',
-                    game: 'Sapphire',
-                    x: 43,
-                    y: 49.58,
-                },
-                {
                     battleKey: 'team-magma-grunt-m-mt-pyre-summit-1',
                     game: 'Ruby',
                     x: 43,
                     y: 49.58,
                 },
                 {
-                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-2',
+                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-1',
                     game: 'Sapphire',
-                    x: 51,
-                    y: 41.47,
+                    x: 43,
+                    y: 49.58,
                 },
                 {
                     battleKey: 'team-magma-grunt-m-mt-pyre-summit-2',
@@ -118,14 +112,20 @@ const MT_PYRE: Location = {
                     y: 41.47,
                 },
                 {
-                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-3',
+                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-2',
                     game: 'Sapphire',
-                    x: 43,
-                    y: 30.66,
+                    x: 51,
+                    y: 41.47,
                 },
                 {
                     battleKey: 'team-magma-grunt-m-mt-pyre-summit-3',
                     game: 'Ruby',
+                    x: 43,
+                    y: 30.66,
+                },
+                {
+                    battleKey: 'team-aqua-grunt-m-mt-pyre-summit-3',
+                    game: 'Sapphire',
                     x: 43,
                     y: 30.66,
                 },

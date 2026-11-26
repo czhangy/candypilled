@@ -24,14 +24,14 @@ const TRICK_HOUSE: Location = {
                     y: 97.02,
                 },
                 {
-                    battleKey: 'lass-robin',
-                    x: 23.33,
-                    y: 37.93,
-                },
-                {
                     battleKey: 'youngster-eddie',
                     x: 90,
                     y: 33.38,
+                },
+                {
+                    battleKey: 'lass-robin',
+                    x: 23.33,
+                    y: 37.93,
                 },
             ],
         },
@@ -112,9 +112,9 @@ const TRICK_HOUSE: Location = {
             mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    battleKey: 'pkmn-ranger-f-sophia',
-                    x: 70,
-                    y: 42.47,
+                    battleKey: 'bird-keeper-benny',
+                    x: 96.67,
+                    y: 56.11,
                 },
                 {
                     battleKey: 'pkmn-ranger-m-sebastian',
@@ -122,9 +122,9 @@ const TRICK_HOUSE: Location = {
                     y: 15.2,
                 },
                 {
-                    battleKey: 'bird-keeper-benny',
-                    x: 96.67,
-                    y: 56.11,
+                    battleKey: 'pkmn-ranger-f-sophia',
+                    x: 70,
+                    y: 42.47,
                 },
             ],
         },
@@ -134,14 +134,14 @@ const TRICK_HOUSE: Location = {
             mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    battleKey: 'psychic-m-joshua',
-                    x: 3.33,
-                    y: 15.2,
-                },
-                {
                     battleKey: 'hex-maniac-patricia',
                     x: 63.33,
                     y: 47.02,
+                },
+                {
+                    battleKey: 'psychic-m-joshua',
+                    x: 3.33,
+                    y: 15.2,
                 },
                 {
                     battleKey: 'psychic-f-alexis',

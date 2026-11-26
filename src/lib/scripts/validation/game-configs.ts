@@ -6,9 +6,6 @@ type GameCheckConfig = {
     unmappedLocations: string[];
     // False skips every check for a game still being onboarded.
     isEnabled: boolean;
-    // Whether Game.battleOrder is checked for full coverage. False for a game
-    // whose order list hasn't been written yet.
-    isBattleOrderChecked: boolean;
 };
 
 const HOENN_UNMAPPED_LOCATIONS = [
@@ -57,13 +54,11 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
         dataFolder: 'ruby-sapphire',
         unmappedLocations: HOENN_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: false,
     },
     Sapphire: {
         dataFolder: 'ruby-sapphire',
         unmappedLocations: HOENN_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: false,
     },
     Emerald: {
         dataFolder: 'emerald',
@@ -84,25 +79,21 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
             "Wallace's Room",
         ],
         isEnabled: true,
-        isBattleOrderChecked: true,
     },
     Diamond: {
         dataFolder: 'diamond-pearl',
         unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: true,
     },
     Pearl: {
         dataFolder: 'diamond-pearl',
         unmappedLocations: DIAMOND_PEARL_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: true,
     },
     Platinum: {
         dataFolder: 'platinum',
         unmappedLocations: SINNOH_UNMAPPED_LOCATIONS,
         isEnabled: true,
-        isBattleOrderChecked: true,
     },
     'Renegade Platinum': {
         dataFolder: 'renegade-platinum',
@@ -113,6 +104,5 @@ export const GAME_CHECK_CONFIGS: Record<string, GameCheckConfig> = {
             "Rotom's Room",
         ],
         isEnabled: true,
-        isBattleOrderChecked: true,
     },
 };

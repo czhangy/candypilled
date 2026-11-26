@@ -16,9 +16,9 @@ const ROUTE_128: Location = {
     battles: [
         { battleKey: 'cooltrainer-m-ruben', x: 20.42, y: 20.86 },
         { battleKey: 'cooltrainer-f-alexa', x: 39.58, y: 23.36 },
+        { battleKey: 'triathlete-swimmer-f-katelyn', x: 29.58, y: 85.86 },
         { battleKey: 'fisherman-wayne', x: 52.92, y: 70.86 },
         { battleKey: 'triathlete-swimmer-m-isaiah', x: 64.58, y: 60.86 },
-        { battleKey: 'triathlete-swimmer-f-katelyn', x: 29.58, y: 85.86 },
     ],
 };
 

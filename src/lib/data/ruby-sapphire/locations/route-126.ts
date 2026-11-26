@@ -15,8 +15,8 @@ const ROUTE_126: Location = {
     ],
     battles: [
         { battleKey: 'swimmer-m-barry', x: 69.38, y: 27.93 },
-        { battleKey: 'swimmer-m-dean', x: 41.88, y: 79.18 },
         { battleKey: 'swimmer-f-brenda', x: 80.62, y: 55.43 },
+        { battleKey: 'swimmer-m-dean', x: 41.88, y: 79.18 },
         { battleKey: 'swimmer-f-nikki', x: 11.88, y: 61.68 },
     ],
 };

@@ -9434,7 +9434,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-nikki': {
         metadata: [BattleMetadata.Optional],
-        split: 'Winona',
+        split: 'Wallace',
         trainerClass: 'swimmer-f',
         name: 'Nikki',
         teams: [

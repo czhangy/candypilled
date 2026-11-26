@@ -179,6 +179,11 @@ const getPlacements = (
             }))
     );
 
+const getPlacedKeys = (games: Game[]): Set<string> =>
+    new Set(
+        games.flatMap(getPlacements).map((placement) => placement.battleKey)
+    );
+
 // A Required, Boss or Choice battle must be placed in a location some split
 // lists. One that only a sibling version places (Ruby/Sapphire share a battle
 // table) isn't this game's to wire. Only reports; never wires.
@@ -189,9 +194,7 @@ const checkSplitWiring = (game: Game, siblings: Game[]): string[] => {
         )
     );
     const placements = getPlacements(game);
-    const siblingBattleKeys = new Set(
-        siblings.flatMap(getPlacements).map((placement) => placement.battleKey)
-    );
+    const siblingBattleKeys = getPlacedKeys(siblings);
 
     return Object.entries(game.battles)
         .filter(([, battle]) =>
@@ -219,11 +222,11 @@ const checkSplitWiring = (game: Game, siblings: Game[]): string[] => {
 };
 
 // battleOrder must list each battle placed in one of the game's locations
-// exactly once, and nothing else.
-const checkBattleOrder = (game: Game): string[] => {
-    const placedKeys = new Set(
-        getPlacements(game).map((placement) => placement.battleKey)
-    );
+// exactly once. A battle only a sibling version places (Ruby/Sapphire share a
+// battleOrder) may be listed too, but nothing placed nowhere.
+const checkBattleOrder = (game: Game, siblings: Game[]): string[] => {
+    const placedKeys = getPlacedKeys([game]);
+    const siblingKeys = getPlacedKeys(siblings);
     const listedKeys = new Set<string>();
     const duplicated = new Set<string>();
     game.battleOrder.forEach((key) => {
@@ -236,7 +239,7 @@ const checkBattleOrder = (game: Game): string[] => {
             .filter((key) => !listedKeys.has(key))
             .map((key) => `battle ${key}: missing from battleOrder`),
         ...[...listedKeys]
-            .filter((key) => !placedKeys.has(key))
+            .filter((key) => !placedKeys.has(key) && !siblingKeys.has(key))
             .map((key) => `battleOrder: "${key}" isn't placed in a location`),
         ...[...duplicated].map((key) => `battleOrder: duplicate "${key}"`),
     ];
@@ -395,7 +398,7 @@ const checkGame = (game: Game, games: Game[]): Report => {
             ...checkTrainerClasses(game),
             ...checkBattleMetadata(game),
             ...checkSplitWiring(game, siblings),
-            ...(config.isBattleOrderChecked ? checkBattleOrder(game) : []),
+            ...checkBattleOrder(game, siblings),
             ...checkAiFlags(game),
             ...checkMoveAi(game),
             ...(hasMetTable

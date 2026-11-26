@@ -60,14 +60,14 @@ const ROUTE_118: Location = {
                     y: 76.72,
                 },
                 {
-                    battleKey: 'bird-keeper-chester',
-                    x: 58.04,
-                    y: 36.72,
-                },
-                {
                     battleKey: 'bird-keeper-perry',
                     x: 72.32,
                     y: 51.72,
+                },
+                {
+                    battleKey: 'bird-keeper-chester',
+                    x: 58.04,
+                    y: 36.72,
                 },
             ],
         },

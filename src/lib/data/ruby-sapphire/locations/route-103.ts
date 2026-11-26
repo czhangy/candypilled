@@ -56,6 +56,12 @@ const ROUTE_103: Location = {
                     y: 51.72,
                 },
                 {
+                    battleKey: 'twins-amy-and-liv',
+                    customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
+                    x: 72.11,
+                    y: 56.46,
+                },
+                {
                     battleKey: 'pokefan-m-miguel',
                     x: 56.48,
                     y: 61.72,
@@ -64,12 +70,6 @@ const ROUTE_103: Location = {
                     battleKey: 'fisherman-andrew',
                     x: 45.37,
                     y: 41.72,
-                },
-                {
-                    battleKey: 'twins-amy-and-liv',
-                    customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
-                    x: 72.11,
-                    y: 56.46,
                 },
             ],
         },

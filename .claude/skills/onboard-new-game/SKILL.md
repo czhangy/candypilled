@@ -48,7 +48,7 @@ Per-move AI notes are not in the game folder: they live in `src/lib/data/move-ai
 
 In a variant group, `encounters.ts` and `<slug>.ts` live in each variant's subfolder, and everything else is shared.
 
-Start each data file as an empty typed export. Don't register the game yet. Add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts` for each game, with `dataFolder`, `unmappedLocations: []`, `isEnabled: false` and `isBattleOrderChecked: false`, so `check:data` skips the game until onboarding is done.
+Start each data file as an empty typed export. Don't register the game yet. Add an entry to `GAME_CHECK_CONFIGS` in `src/lib/scripts/validation/game-configs.ts` for each game, with `dataFolder`, `unmappedLocations: []` and `isEnabled: false`, so `check:data` skips the game until onboarding is done.
 
 ## 3. Gather assets
 
@@ -145,7 +145,7 @@ Work one location at a time, in alphabetical order. Wire each location's battles
 5. Set every team's required `aiFlags` following the `battle-ai-flags` skill, from the game's own trainer data (never from the user for a vanilla game). Report every team that cannot be matched to a trainer. The skill also covers the `Double`/`TrueDouble`/`Tag` implied flag, which comes from the metadata the user gave in step 2.
 6. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill. Keep the array in the order the player fights them (each subarea's own array), since the battle order in step 14 relies on it. Ask the user when the source order is unclear.
 7. A roster that varies by run state (starter-dependent) is one battle with several `teams`, each with a `condition`. A different trainer or position by gender or game is a separate `Battle` entry with `gender` or `game` set.
-8. Once the game's `isBattleOrderChecked` is `true`, a new battle also needs a `battleOrder` entry. Ask the user where it goes.
+8. Once the game's `isEnabled` is `true`, a new battle also needs a `battleOrder` entry. Ask the user where it goes.
 
 ## 12. Method splits
 
@@ -223,6 +223,6 @@ Delete everything onboarding brought in that the app doesn't use: cloned decomps
 
 ## 19. Final validation
 
-1. Set the game's `isEnabled` and `isBattleOrderChecked` to `true` in `GAME_CHECK_CONFIGS`.
+1. Set the game's `isEnabled` to `true` in `GAME_CHECK_CONFIGS`.
 2. Run `npm run check:data` and `npx tsc --noEmit`. Fix every violation; a violation that needs a decision is a question for the user.
 3. Update the game's row in the README's Supported Games table (a variant group is one row). Set its status to `Complete`; never ask.
