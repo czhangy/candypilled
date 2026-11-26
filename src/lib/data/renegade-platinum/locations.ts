@@ -1,11 +1,14 @@
 import AARONS_ROOM from '@/lib/data/renegade-platinum/locations/aarons-room';
 import ACUITY_CAVERN from '@/lib/data/renegade-platinum/locations/acuity-cavern';
 import ACUITY_LAKEFRONT from '@/lib/data/renegade-platinum/locations/acuity-lakefront';
+import AMITY_SQUARE from '@/lib/data/renegade-platinum/locations/amity-square';
 import BERTHAS_ROOM from '@/lib/data/renegade-platinum/locations/berthas-room';
 import CAFE_CABIN from '@/lib/data/renegade-platinum/locations/cafe-cabin';
 import CANALAVE_CITY from '@/lib/data/renegade-platinum/locations/canalave-city';
 import CANALAVE_GYM from '@/lib/data/renegade-platinum/locations/canalave-gym';
+import CANALAVE_LIBRARY from '@/lib/data/renegade-platinum/locations/canalave-library';
 import CELESTIC_TOWN from '@/lib/data/renegade-platinum/locations/celestic-town';
+import CONTEST_HALL from '@/lib/data/renegade-platinum/locations/contest-hall';
 import CYCLE_SHOP from '@/lib/data/renegade-platinum/locations/cycle-shop';
 import CYNTHIAS_ROOM from '@/lib/data/renegade-platinum/locations/cynthias-room';
 import DISTORTION_WORLD from '@/lib/data/renegade-platinum/locations/distortion-world';
@@ -16,8 +19,13 @@ import FLINTS_ROOM from '@/lib/data/renegade-platinum/locations/flints-room';
 import FLOAROMA_MEADOW from '@/lib/data/renegade-platinum/locations/floaroma-meadow';
 import FLOAROMA_TOWN from '@/lib/data/renegade-platinum/locations/floaroma-town';
 import FLOWER_SHOP from '@/lib/data/renegade-platinum/locations/flower-shop';
+import FOOTSTEP_HOUSE from '@/lib/data/renegade-platinum/locations/footstep-house';
+import FOREIGN_BUILDING from '@/lib/data/renegade-platinum/locations/foreign-building';
 import FUEGO_IRONWORKS from '@/lib/data/renegade-platinum/locations/fuego-ironworks';
 import GALACTIC_HQ from '@/lib/data/renegade-platinum/locations/galactic-hq';
+import GAME_CORNER from '@/lib/data/renegade-platinum/locations/game-corner';
+import GLOBAL_TERMINAL from '@/lib/data/renegade-platinum/locations/global-terminal';
+import GRAND_LAKE from '@/lib/data/renegade-platinum/locations/grand-lake';
 import GREAT_MARSH from '@/lib/data/renegade-platinum/locations/great-marsh';
 import HEARTHOME_CITY from '@/lib/data/renegade-platinum/locations/hearthome-city';
 import HEARTHOME_GYM from '@/lib/data/renegade-platinum/locations/hearthome-gym';
@@ -39,8 +47,11 @@ import OREBURGH_MINE from '@/lib/data/renegade-platinum/locations/oreburgh-mine'
 import PAL_PARK from '@/lib/data/renegade-platinum/locations/pal-park';
 import PASTORIA_CITY from '@/lib/data/renegade-platinum/locations/pastoria-city';
 import PASTORIA_GYM from '@/lib/data/renegade-platinum/locations/pastoria-gym';
+import POFFIN_HOUSE from '@/lib/data/renegade-platinum/locations/poffin-house';
+import POKEMON_DAY_CARE from '@/lib/data/renegade-platinum/locations/pokemon-day-care';
 import POKEMON_LEAGUE from '@/lib/data/renegade-platinum/locations/pokemon-league';
 import POKEMON_MANSION from '@/lib/data/renegade-platinum/locations/pokemon-mansion';
+import POKETCH_CO from '@/lib/data/renegade-platinum/locations/poketch-co';
 import RAVAGED_PATH from '@/lib/data/renegade-platinum/locations/ravaged-path';
 import ROTOMS_ROOM from '@/lib/data/renegade-platinum/locations/rotoms-room';
 import ROUTE_201 from '@/lib/data/renegade-platinum/locations/route-201';
@@ -78,6 +89,7 @@ import SOLACEON_TOWN from '@/lib/data/renegade-platinum/locations/solaceon-town'
 import SPEAR_PILLAR from '@/lib/data/renegade-platinum/locations/spear-pillar';
 import SUNYSHORE_CITY from '@/lib/data/renegade-platinum/locations/sunyshore-city';
 import SUNYSHORE_GYM from '@/lib/data/renegade-platinum/locations/sunyshore-gym';
+import SUNYSHORE_MARKET from '@/lib/data/renegade-platinum/locations/sunyshore-market';
 import TEAM_GALACTIC_ETERNA_BUILDING from '@/lib/data/renegade-platinum/locations/team-galactic-eterna-building';
 import TRAINERS_SCHOOL from '@/lib/data/renegade-platinum/locations/trainers-school';
 import TROPHY_GARDEN from '@/lib/data/renegade-platinum/locations/trophy-garden';
@@ -87,6 +99,7 @@ import VALOR_CAVERN from '@/lib/data/renegade-platinum/locations/valor-cavern';
 import VALOR_LAKEFRONT from '@/lib/data/renegade-platinum/locations/valor-lakefront';
 import VEILSTONE_CITY from '@/lib/data/renegade-platinum/locations/veilstone-city';
 import VEILSTONE_GYM from '@/lib/data/renegade-platinum/locations/veilstone-gym';
+import VEILSTONE_STORE from '@/lib/data/renegade-platinum/locations/veilstone-store';
 import VERITY_CAVERN from '@/lib/data/renegade-platinum/locations/verity-cavern';
 import VERITY_LAKEFRONT from '@/lib/data/renegade-platinum/locations/verity-lakefront';
 import VICTORY_ROAD from '@/lib/data/renegade-platinum/locations/victory-road';
@@ -99,11 +112,14 @@ export const LOCATIONS: Location[] = [
     AARONS_ROOM,
     ACUITY_CAVERN,
     ACUITY_LAKEFRONT,
+    AMITY_SQUARE,
     BERTHAS_ROOM,
     CAFE_CABIN,
     CANALAVE_CITY,
     CANALAVE_GYM,
+    CANALAVE_LIBRARY,
     CELESTIC_TOWN,
+    CONTEST_HALL,
     CYCLE_SHOP,
     CYNTHIAS_ROOM,
     DISTORTION_WORLD,
@@ -114,8 +130,13 @@ export const LOCATIONS: Location[] = [
     FLOAROMA_MEADOW,
     FLOAROMA_TOWN,
     FLOWER_SHOP,
+    FOOTSTEP_HOUSE,
+    FOREIGN_BUILDING,
     FUEGO_IRONWORKS,
     GALACTIC_HQ,
+    GAME_CORNER,
+    GLOBAL_TERMINAL,
+    GRAND_LAKE,
     GREAT_MARSH,
     HEARTHOME_CITY,
     HEARTHOME_GYM,
@@ -137,8 +158,11 @@ export const LOCATIONS: Location[] = [
     PAL_PARK,
     PASTORIA_CITY,
     PASTORIA_GYM,
+    POFFIN_HOUSE,
+    POKEMON_DAY_CARE,
     POKEMON_LEAGUE,
     POKEMON_MANSION,
+    POKETCH_CO,
     RAVAGED_PATH,
     ROTOMS_ROOM,
     ROUTE_201,
@@ -176,6 +200,7 @@ export const LOCATIONS: Location[] = [
     SPEAR_PILLAR,
     SUNYSHORE_CITY,
     SUNYSHORE_GYM,
+    SUNYSHORE_MARKET,
     TEAM_GALACTIC_ETERNA_BUILDING,
     TRAINERS_SCHOOL,
     TROPHY_GARDEN,
@@ -185,6 +210,7 @@ export const LOCATIONS: Location[] = [
     VALOR_LAKEFRONT,
     VEILSTONE_CITY,
     VEILSTONE_GYM,
+    VEILSTONE_STORE,
     VERITY_CAVERN,
     VERITY_LAKEFRONT,
     VICTORY_ROAD,
