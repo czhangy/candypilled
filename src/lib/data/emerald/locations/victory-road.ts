@@ -16,7 +16,7 @@ const VICTORY_ROAD: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-trainer-wally-victory-road',
-                    x: 6.52,
+                    x: 7.61,
                     y: 54.1,
                 },
                 {
