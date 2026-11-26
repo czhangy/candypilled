@@ -164,7 +164,7 @@ export default class BattleHelpers {
         return items.filter((item) => !item.game || item.game === game.name);
     }
 
-    /** items restricted to splitName: entries whose BattleData carries no `split` always pass, entries with one only pass once splitName's split is reached — i.e. splitName is that split or a later one in game order. Shared by Battle[] and TagPartner[], both of which carry a `battleKey` into Game.battles. */
+    /** items restricted to splitName: only entries whose BattleData `split` equals splitName pass, or every entry if splitName is undefined. Shared by Battle[] and TagPartner[], both of which carry a `battleKey` into Game.battles. */
     static filterBySplit<T extends { battleKey: string }>(
         items: T[],
         splitName: string | undefined,
@@ -172,21 +172,9 @@ export default class BattleHelpers {
     ): T[] {
         if (!splitName) return items;
 
-        const splitIndexes = new Map(
-            game.splits.map((split, index) => [split.name, index])
+        return items.filter(
+            (item) => game.battles[item.battleKey].split === splitName
         );
-        const currentIndex = splitIndexes.get(splitName);
-
-        return items.filter((item) => {
-            const split = game.battles[item.battleKey]?.split;
-            if (!split) return true;
-
-            const battleIndex = splitIndexes.get(split);
-            if (battleIndex === undefined || currentIndex === undefined) {
-                return true;
-            }
-            return currentIndex >= battleIndex;
-        });
     }
 
     /** The team belonging to the battle keyed by battleKey within game, resolved for starter, or [] if battleKey is undefined or doesn't match any battle. */

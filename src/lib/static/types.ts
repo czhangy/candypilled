@@ -401,12 +401,10 @@ export type BattleData = {
     // person's own name paired with their class.
     plainName?: boolean;
     secondTrainer?: BattleTrainer;
-    // The split (Split.name) this battle first becomes available in.
-    // Restricts this battle's marker to that split or any split after it
-    // in game order — for a location placed in more than one split whose
-    // battle set differs between them, rather than showing this battle's
-    // marker before the player has reached it — and drives the split
-    // badge shown on the battle card.
+    // The split (Split.name) this battle belongs to. Restricts this
+    // battle's marker to that split only — for a location placed in more
+    // than one split whose battle set differs between them — and drives
+    // the split badge shown on the battle card.
     split: string;
     // TRAINER_CLASSES slug.
     trainerClass: string;
