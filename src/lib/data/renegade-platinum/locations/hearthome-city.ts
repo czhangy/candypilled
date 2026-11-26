@@ -16,8 +16,8 @@ const HEARTHOME_CITY: Location = {
             battles: [
                 {
                     battleKey: 'elite-four-aaron-route-208',
-                    x: 44.9,
-                    y: 45.9,
+                    x: 44.8,
+                    y: 46.62,
                 },
             ],
         },
@@ -56,8 +56,8 @@ const HEARTHOME_CITY: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-hearthome-city-east-gate',
-                    x: 69.3,
-                    y: 47,
+                    x: 69.67,
+                    y: 46.62,
                 },
             ],
         },

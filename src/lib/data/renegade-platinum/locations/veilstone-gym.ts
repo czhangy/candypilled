@@ -18,28 +18,28 @@ const VEILSTONE_GYM: Location = {
     battles: [
         {
             battleKey: 'black-belt-colby',
-            x: 60.1,
-            y: 71.5,
+            x: 60.39,
+            y: 71.55,
         },
         {
             battleKey: 'black-belt-darren',
-            x: 64.8,
+            x: 64.55,
             y: 39.9,
         },
         {
             battleKey: 'black-belt-rafael',
-            x: 44,
-            y: 36.3,
+            x: 43.77,
+            y: 36.38,
         },
         {
             battleKey: 'black-belt-jeffery',
-            x: 6.4,
-            y: 22.5,
+            x: 6.36,
+            y: 22.32,
         },
         {
             battleKey: 'leader-maylene',
-            x: 48.2,
-            y: 5,
+            x: 47.92,
+            y: 4.74,
         },
     ],
 };

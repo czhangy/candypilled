@@ -38,8 +38,8 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
         { width: number; height: number }
     > = {
         3: { width: 19, height: 25 },
-        4: { width: 22, height: 30 },
-        5: { width: 22, height: 30 },
+        4: { width: 19, height: 28 },
+        5: { width: 19, height: 28 },
     };
 
     // -------------------------------------------------------------------------

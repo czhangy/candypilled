@@ -16,8 +16,8 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'school-kid-tiera',
-                    x: 36.6,
-                    y: 24.2,
+                    x: 36.67,
+                    y: 23.78,
                 },
             ],
         },
@@ -28,17 +28,17 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'school-kid-forrest',
-                    x: 21.6,
+                    x: 21.47,
                     y: 31.3,
                 },
                 {
                     battleKey: 'guitarist-jerry',
-                    x: 83.9,
+                    x: 84.22,
                     y: 55.4,
                 },
                 {
                     battleKey: 'poke-kid-meghan',
-                    x: 71.4,
+                    x: 71.67,
                     y: 17.9,
                 },
             ],
@@ -59,27 +59,27 @@ const SUNYSHORE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'guitarist-lonnie',
-                    x: 73.4,
+                    x: 73.66,
                     y: 90,
                 },
                 {
                     battleKey: 'ace-trainer-destiny',
-                    x: 16.1,
+                    x: 16.34,
                     y: 89.7,
                 },
                 {
                     battleKey: 'guitarist-preston',
-                    x: 11.3,
+                    x: 11.57,
                     y: 12.6,
                 },
                 {
                     battleKey: 'ace-trainer-zachery',
-                    x: 97.3,
+                    x: 97.54,
                     y: 41.7,
                 },
                 {
                     battleKey: 'leader-volkner',
-                    x: 49.6,
+                    x: 49.78,
                     y: 12.6,
                 },
             ],

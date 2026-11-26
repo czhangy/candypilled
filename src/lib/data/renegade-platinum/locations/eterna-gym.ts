@@ -18,23 +18,23 @@ const ETERNA_GYM: Location = {
     battles: [
         {
             battleKey: 'lass-caroline',
-            x: 64.5,
-            y: 77,
+            x: 64.42,
+            y: 77.02,
         },
         {
             battleKey: 'aroma-lady-jenna',
-            x: 92.6,
-            y: 58.2,
+            x: 92.83,
+            y: 58.24,
         },
         {
             battleKey: 'aroma-lady-angela',
-            x: 7.4,
-            y: 20.7,
+            x: 7.62,
+            y: 20.68,
         },
         {
             battleKey: 'leader-gardenia',
-            x: 50,
-            y: 5.9,
+            x: 50.22,
+            y: 5.66,
         },
     ],
 };

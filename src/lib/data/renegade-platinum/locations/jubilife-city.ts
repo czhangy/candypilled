@@ -57,8 +57,8 @@ const JUBILIFE_CITY: Location = {
                 {
                     battleKey: 'galactic-grunt-m-jubilife-city',
                     customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
-                    x: 72.7,
-                    y: 5.6,
+                    x: 72.71,
+                    y: 5.57,
                 },
             ],
         },
@@ -136,8 +136,8 @@ const JUBILIFE_CITY: Location = {
             battles: [
                 {
                     battleKey: 'reporter-kayla',
-                    x: 16.7,
-                    y: 18,
+                    x: 16.88,
+                    y: 18.44,
                 },
             ],
         },

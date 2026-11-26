@@ -9,8 +9,8 @@ const CYNTHIAS_ROOM: Location = {
     battles: [
         {
             battleKey: 'champion-cynthia',
-            x: 52,
-            y: 53.9,
+            x: 52.11,
+            y: 53.87,
         },
     ],
 };

@@ -42,13 +42,13 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-warehouse-1',
-                    x: 47.7,
-                    y: 72.1,
+                    x: 47.63,
+                    y: 72.09,
                 },
                 {
                     battleKey: 'galactic-grunt-m-warehouse-2',
-                    x: 85,
-                    y: 43.3,
+                    x: 84.98,
+                    y: 43.31,
                 },
             ],
         },
@@ -68,13 +68,13 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-f-hq-1f',
-                    x: 77.8,
-                    y: 21.4,
+                    x: 77.95,
+                    y: 21.37,
                 },
                 {
                     battleKey: 'scientist-fredrick',
-                    x: 31.7,
-                    y: 16.5,
+                    x: 31.74,
+                    y: 16.53,
                 },
             ],
         },
@@ -85,23 +85,23 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-hq-2f-1',
-                    x: 18.3,
-                    y: 16.4,
+                    x: 18.33,
+                    y: 16.41,
                 },
                 {
                     battleKey: 'galactic-grunt-m-hq-2f-2',
-                    x: 39.3,
-                    y: 65.5,
+                    x: 39.48,
+                    y: 65.49,
                 },
                 {
                     battleKey: 'galactic-grunt-f-hq-2f-3',
-                    x: 49.2,
-                    y: 65.5,
+                    x: 49.1,
+                    y: 65.49,
                 },
                 {
                     battleKey: 'scientist-darrius',
-                    x: 60.6,
-                    y: 16.4,
+                    x: 60.64,
+                    y: 16.41,
                 },
             ],
         },
@@ -112,23 +112,23 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     battleKey: 'galactic-grunt-m-hq-3f-1',
-                    x: 6.7,
-                    y: 17.7,
+                    x: 6.79,
+                    y: 17.72,
                 },
                 {
                     battleKey: 'galactic-grunt-m-hq-3f-2',
-                    x: 16.3,
-                    y: 85.3,
+                    x: 16.41,
+                    y: 85.6,
                 },
                 {
                     battleKey: 'galactic-grunt-f-hq-3f-3',
-                    x: 79.8,
-                    y: 3.2,
+                    x: 79.87,
+                    y: 3.18,
                 },
                 {
                     battleKey: 'galactic-grunt-m-hq-3f-4',
-                    x: 79.8,
-                    y: 22.6,
+                    x: 79.87,
+                    y: 22.57,
                 },
             ],
         },
@@ -139,8 +139,8 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     battleKey: 'galactic-boss-cyrus',
-                    x: 34.4,
-                    y: 33.7,
+                    x: 34.3,
+                    y: 34.21,
                 },
             ],
         },
@@ -151,8 +151,8 @@ const GALACTIC_HQ: Location = {
             battles: [
                 {
                     battleKey: 'commander-saturn-galactic-hq',
-                    x: 50.4,
-                    y: 28.8,
+                    x: 50.1,
+                    y: 29.57,
                 },
             ],
         },

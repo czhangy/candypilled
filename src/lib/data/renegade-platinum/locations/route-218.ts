@@ -69,23 +69,23 @@ const ROUTE_218: Location = {
     battles: [
         {
             battleKey: 'fisherman-miguel',
-            x: 46.1,
-            y: 66,
+            x: 46.14,
+            y: 65.82,
         },
         {
             battleKey: 'fisherman-luc',
-            x: 46.1,
-            y: 47.2,
+            x: 46.14,
+            y: 47.07,
         },
         {
             battleKey: 'sailor-skyler',
-            x: 19.6,
-            y: 31.4,
+            x: 19.58,
+            y: 31.45,
         },
         {
             battleKey: 'guitarist-tony',
-            x: 25.8,
-            y: 53.5,
+            x: 25.83,
+            y: 53.32,
         },
     ],
 };

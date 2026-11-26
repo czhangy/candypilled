@@ -27,8 +27,8 @@ const POKEMON_LEAGUE: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-trainer-barry-pokemon-league',
-                    x: 52.8,
-                    y: 31.2,
+                    x: 53.01,
+                    y: 31.64,
                 },
             ],
         },

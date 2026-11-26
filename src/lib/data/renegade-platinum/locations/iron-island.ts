@@ -44,8 +44,8 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'pkmn-trainer-riley',
-                    x: 67.4,
-                    y: 31.5,
+                    x: 67.29,
+                    y: 31.45,
                 },
             ],
         },
@@ -65,8 +65,8 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'camper-lawrence',
-                    x: 63.9,
-                    y: 73,
+                    x: 64.06,
+                    y: 72.57,
                 },
             ],
         },
@@ -79,8 +79,8 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'picnicker-summer',
-                    x: 75.7,
-                    y: 53.2,
+                    x: 75.81,
+                    y: 53.1,
                 },
             ],
         },
@@ -93,13 +93,13 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'worker-noel',
-                    x: 22.5,
-                    y: 21.4,
+                    x: 22.66,
+                    y: 21.09,
                 },
                 {
                     battleKey: 'worker-braden',
-                    x: 7.2,
-                    y: 79.3,
+                    x: 7.66,
+                    y: 79.43,
                 },
             ],
         },
@@ -113,49 +113,49 @@ const IRON_ISLAND: Location = {
             battles: [
                 {
                     battleKey: 'hiker-damon',
-                    x: 65,
-                    y: 3.8,
+                    x: 64.81,
+                    y: 3.88,
                 },
                 {
                     battleKey: 'hiker-maurice',
                     x: 52.6,
-                    y: 7.7,
+                    y: 7.65,
                 },
                 {
                     battleKey: 'black-belt-kendal',
-                    x: 89.1,
+                    x: 89.24,
                     y: 34,
                 },
                 {
                     battleKey: 'battle-girl-tyler',
-                    x: 89.1,
-                    y: 39.6,
+                    x: 89.24,
+                    y: 39.65,
                 },
                 {
                     battleKey: 'worker-quentin',
-                    x: 37.9,
-                    y: 47.1,
+                    x: 37.94,
+                    y: 47.18,
                 },
                 {
                     battleKey: 'worker-brendon',
                     x: 35.5,
-                    y: 52.7,
+                    y: 52.82,
                 },
                 {
                     battleKey: 'ace-trainer-m-jonah',
-                    x: 57.6,
-                    y: 58.4,
+                    x: 57.48,
+                    y: 58.47,
                 },
                 {
                     battleKey: 'ace-trainer-f-brenda',
-                    x: 67.4,
-                    y: 58.4,
+                    x: 67.25,
+                    y: 58.47,
                 },
                 {
                     battleKey: 'galactic-grunt-and-galactic-grunt-iron-island',
                     customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
-                    x: 47.9,
-                    y: 76.4,
+                    x: 47.71,
+                    y: 76.35,
                 },
             ],
         },

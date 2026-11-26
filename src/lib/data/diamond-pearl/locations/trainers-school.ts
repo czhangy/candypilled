@@ -9,12 +9,12 @@ const TRAINERS_SCHOOL: Location = {
     battles: [
         {
             battleKey: 'school-kid-m-harrison',
-            x: 76.7,
+            x: 76.88,
             y: 15.2,
         },
         {
             battleKey: 'school-kid-f-christine',
-            x: 90,
+            x: 90.21,
             y: 15.2,
         },
     ],

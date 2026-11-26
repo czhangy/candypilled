@@ -9,8 +9,8 @@ const BERTHAS_ROOM: Location = {
     battles: [
         {
             battleKey: 'elite-four-bertha',
-            x: 50,
-            y: 28.7,
+            x: 50.1,
+            y: 28.49,
         },
     ],
 };

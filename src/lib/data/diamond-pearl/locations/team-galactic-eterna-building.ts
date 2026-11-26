@@ -61,8 +61,8 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
                 },
                 {
                     battleKey: 'scientist-travon',
-                    x: 97.5,
-                    y: 22.8,
+                    x: 97.07,
+                    y: 23.49,
                 },
             ],
         },

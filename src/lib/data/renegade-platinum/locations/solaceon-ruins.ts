@@ -34,8 +34,8 @@ const SOLACEON_RUINS: Location = {
             battles: [
                 {
                     battleKey: 'ruin-maniac-karl',
-                    x: 70.6,
-                    y: 47.5,
+                    x: 70.64,
+                    y: 47.29,
                 },
             ],
         },

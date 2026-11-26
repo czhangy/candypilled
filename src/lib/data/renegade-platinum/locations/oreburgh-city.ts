@@ -105,8 +105,8 @@ const OREBURGH_CITY: Location = {
             battles: [
                 {
                     battleKey: 'reporter-helen',
-                    x: 16.7,
-                    y: 18.2,
+                    x: 16.88,
+                    y: 18.44,
                 },
             ],
         },

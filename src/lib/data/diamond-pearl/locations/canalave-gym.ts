@@ -17,17 +17,17 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'black-belt-ricky',
-                    x: 14.4,
+                    x: 13.94,
                     y: 43,
                 },
                 {
                     battleKey: 'worker-gary',
-                    x: 66.1,
+                    x: 65.94,
                     y: 38.8,
                 },
                 {
                     battleKey: 'ace-trainer-m-cesar',
-                    x: 86.1,
+                    x: 85.94,
                     y: 81.6,
                 },
             ],
@@ -39,12 +39,12 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'worker-jackson',
-                    x: 44.9,
+                    x: 44.95,
                     y: 4.1,
                 },
                 {
                     battleKey: 'ace-trainer-f-breanna',
-                    x: 88.2,
+                    x: 88.28,
                     y: 11.1,
                 },
             ],
@@ -56,12 +56,12 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'worker-gerardo',
-                    x: 25.1,
+                    x: 24.95,
                     y: 3.8,
                 },
                 {
                     battleKey: 'black-belt-david',
-                    x: 78.2,
+                    x: 78.28,
                     y: 3.8,
                 },
             ],
@@ -73,7 +73,7 @@ const CANALAVE_GYM: Location = {
             battles: [
                 {
                     battleKey: 'leader-byron',
-                    x: 51.8,
+                    x: 51.61,
                     y: 4.1,
                 },
             ],

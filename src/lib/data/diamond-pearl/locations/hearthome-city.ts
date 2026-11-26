@@ -11,8 +11,8 @@ const HEARTHOME_CITY: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-hearthome-city',
-            x: 61.7,
-            y: 76.7,
+            x: 61.77,
+            y: 76.66,
         },
     ],
 };

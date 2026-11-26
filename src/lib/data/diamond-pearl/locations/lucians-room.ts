@@ -9,8 +9,8 @@ const LUCIANS_ROOM: Location = {
     battles: [
         {
             battleKey: 'elite-four-lucian',
-            x: 50,
-            y: 28.4,
+            x: 49.9,
+            y: 28.49,
         },
     ],
 };

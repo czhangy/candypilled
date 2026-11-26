@@ -5,13 +5,13 @@ description: Compute a battle marker's x/y on a location's map image from the ga
 
 # Battle marker x/y
 
-`Battle.x` and `Battle.y` are percentages of the map image's width and height. The marker box is centered on `(x, y)`. Its default size is 19×25 px for Gen 3 and 22×30 px for Gen 4, overridden by `customWidth` and `customHeight`.
+`Battle.x` and `Battle.y` are percentages of the map image's width and height. The marker box is centered on `(x, y)`. Its default size is 19×25 px for Gen 3 and 19×28 px for Gen 4, overridden by `customWidth` and `customHeight`.
 
 Placement is pure arithmetic from the trainer's tile position. It never varies by sprite height, and it is never eyeballed or guessed. The tile positions come from the game's decomp (the map's object events). If you can't compute a marker, ask the user.
 
 ## Formulas
 
-Work in image pixels, then divide by the image's width and height to get percentages.
+Work in image pixels, then divide by the image's width and height to get percentages, rounded to two decimals (as Platinum, Ruby/Sapphire and Emerald do). One decimal can be up to about 1 px off on a tall image. Round from the exact pixel position, never from an already-rounded percentage.
 
 - **Gen 3:** `x = (tileX + 0.5) * 16`, `y = tileY * 16 + 5.5`, relative to the image's tile origin.
 - **Gen 4, outdoor images stitched from chunks:** the image origin is a multiple of 32 tiles. `x = (tileX - originX) * 16 + 8.5`, `y = (tileZ - originZ) * 16 + 1`.
