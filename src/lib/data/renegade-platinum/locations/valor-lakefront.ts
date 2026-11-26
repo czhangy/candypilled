@@ -30,8 +30,8 @@ const VALOR_LAKEFRONT: Location = {
     battles: [
         {
             battleKey: 'galactic-grunt-m-valor-lakefront',
-            x: 80.5,
-            y: 51.7,
+            x: 80.52,
+            y: 51.66,
         },
     ],
 };

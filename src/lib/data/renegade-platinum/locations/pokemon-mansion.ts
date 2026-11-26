@@ -20,33 +20,33 @@ const POKEMON_MANSION: Location = {
     battles: [
         {
             battleKey: 'galactic-grunt-m-pokemon-mansion-1',
-            x: 84.5,
+            x: 84.56,
             y: 23.4,
         },
         {
             battleKey: 'galactic-grunt-m-pokemon-mansion-2',
-            x: 36.6,
+            x: 36.67,
             y: 23.4,
         },
         {
             battleKey: 'galactic-grunt-f-pokemon-mansion-1',
-            x: 22.4,
+            x: 22.48,
             y: 23.4,
         },
         {
             battleKey: 'galactic-grunt-f-pokemon-mansion-2',
-            x: 8.2,
+            x: 8.29,
             y: 23.4,
         },
         {
             battleKey: 'galactic-grunt-m-pokemon-mansion-3',
-            x: 1.1,
-            y: 30.2,
+            x: 1.19,
+            y: 30.24,
         },
         {
             battleKey: 'commander-saturn-and-gentleman-backlot',
             customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
-            x: 58.8,
+            x: 58.84,
             y: 23.4,
         },
     ],

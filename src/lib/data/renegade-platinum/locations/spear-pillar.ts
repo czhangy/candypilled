@@ -11,14 +11,14 @@ const SPEAR_PILLAR: Location = {
         {
             battleKey: 'galactic-grunt-and-galactic-grunt-spear-pillar',
             customWidth: 54,
-            x: 49.2,
-            y: 75.7,
+            x: 49.25,
+            y: 75.72,
         },
         {
             battleKey: 'commander-mars-and-commander-jupiter-spear-pillar',
             customWidth: 82,
-            x: 49.3,
-            y: 48.6,
+            x: 49.25,
+            y: 48.58,
         },
     ],
 };

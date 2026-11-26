@@ -116,8 +116,8 @@ const TEAM_GALACTIC_ETERNA_BUILDING: Location = {
             battles: [
                 {
                     battleKey: 'commander-jupiter',
-                    x: 61.1,
-                    y: 32.1,
+                    x: 61.47,
+                    y: 33.13,
                 },
             ],
         },

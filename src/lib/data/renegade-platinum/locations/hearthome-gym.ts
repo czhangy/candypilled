@@ -18,27 +18,27 @@ const HEARTHOME_GYM: Location = {
     battles: [
         {
             battleKey: 'lass-molly',
-            x: 35.3,
+            x: 35.66,
             y: 73.9,
         },
         {
             battleKey: 'youngster-donny',
-            x: 60.7,
+            x: 60.66,
             y: 74,
         },
         {
             battleKey: 'school-kid-mackenzie',
-            x: 21.2,
+            x: 21.37,
             y: 49.8,
         },
         {
             battleKey: 'school-kid-chance',
-            x: 74.8,
+            x: 74.94,
             y: 50.2,
         },
         {
             battleKey: 'ace-trainer-catherine',
-            x: 39.1,
+            x: 39.23,
             y: 35.4,
         },
         {
@@ -48,7 +48,7 @@ const HEARTHOME_GYM: Location = {
         },
         {
             battleKey: 'leader-fantina',
-            x: 49.8,
+            x: 49.94,
             y: 17.4,
         },
     ],

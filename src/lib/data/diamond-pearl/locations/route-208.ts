@@ -17,38 +17,38 @@ const ROUTE_208: Location = {
     battles: [
         {
             battleKey: 'hiker-jonathan',
-            x: 57.2,
-            y: 56.2,
+            x: 57.08,
+            y: 56.45,
         },
         {
             battleKey: 'black-belt-kyle',
-            x: 33.5,
-            y: 31.4,
+            x: 33.64,
+            y: 31.45,
         },
         {
             battleKey: 'hiker-robert',
-            x: 38.3,
-            y: 59.4,
+            x: 38.33,
+            y: 59.57,
         },
         {
             battleKey: 'aroma-lady-hannah',
-            x: 77.3,
-            y: 50,
+            x: 77.39,
+            y: 50.2,
         },
         {
             battleKey: 'artist-william',
-            x: 86.8,
-            y: 62.5,
+            x: 86.77,
+            y: 62.7,
         },
         {
             battleKey: 'fisherman-cody',
-            x: 46.1,
-            y: 72.1,
+            x: 46.14,
+            y: 72.07,
         },
         {
             battleKey: 'hiker-alexander',
-            x: 10.2,
-            y: 46.7,
+            x: 10.21,
+            y: 47.07,
         },
     ],
 };

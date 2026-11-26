@@ -24,18 +24,18 @@ const ROUTE_204: Location = {
             battles: [
                 {
                     battleKey: 'lass-sarah',
-                    x: 39.3,
-                    y: 66.1,
+                    x: 39.16,
+                    y: 65.82,
                 },
                 {
                     battleKey: 'youngster-tyler',
-                    x: 23.8,
-                    y: 56.7,
+                    x: 23.54,
+                    y: 56.45,
                 },
                 {
                     battleKey: 'lass-samantha',
-                    x: 35.9,
-                    y: 25.5,
+                    x: 36.04,
+                    y: 25.2,
                 },
             ],
         },
@@ -74,19 +74,19 @@ const ROUTE_204: Location = {
             battles: [
                 {
                     battleKey: 'aroma-lady-taylor',
-                    x: 54.9,
+                    x: 54.79,
                     y: 62.7,
                 },
                 {
                     battleKey: 'bug-catcher-brandon',
-                    x: 70.5,
-                    y: 40.8,
+                    x: 70.41,
+                    y: 40.82,
                 },
                 {
                     battleKey: 'twins-liv-and-liz',
                     customWidth: 36,
-                    x: 50,
-                    y: 22.7,
+                    x: 50.1,
+                    y: 22.07,
                 },
             ],
         },

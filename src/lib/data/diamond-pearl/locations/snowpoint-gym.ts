@@ -9,37 +9,37 @@ const SNOWPOINT_GYM: Location = {
     battles: [
         {
             battleKey: 'ace-trainer-snow-m-sergio',
-            x: 2.2,
+            x: 2.31,
             y: 68.4,
         },
         {
             battleKey: 'ace-trainer-snow-f-brenna',
-            x: 21.6,
+            x: 21.35,
             y: 54.5,
         },
         {
             battleKey: 'ace-trainer-snow-m-isaiah',
-            x: 64.1,
+            x: 64.21,
             y: 49.9,
         },
         {
             battleKey: 'ace-trainer-snow-f-savannah',
-            x: 92.4,
+            x: 92.78,
             y: 34.7,
         },
         {
             battleKey: 'ace-trainer-snow-f-alicia',
-            x: 26.3,
+            x: 26.12,
             y: 21.1,
         },
         {
             battleKey: 'ace-trainer-snow-m-anton',
-            x: 69.2,
+            x: 68.97,
             y: 18.1,
         },
         {
             battleKey: 'leader-candice',
-            x: 50,
+            x: 49.93,
             y: 8.7,
         },
     ],

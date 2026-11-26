@@ -48,33 +48,33 @@ const ROUTE_203: Location = {
     battles: [
         {
             battleKey: 'pkmn-trainer-barry-route-203',
-            x: 15,
-            y: 66,
+            x: 14.89,
+            y: 65.82,
         },
         {
             battleKey: 'youngster-dallas',
-            x: 47.7,
-            y: 62.9,
+            x: 47.71,
+            y: 62.7,
         },
         {
             battleKey: 'youngster-michael',
-            x: 47.7,
+            x: 47.71,
             y: 75.2,
         },
         {
             battleKey: 'youngster-sebastian',
-            x: 66.4,
-            y: 72.2,
+            x: 66.46,
+            y: 72.07,
         },
         {
             battleKey: 'lass-kaitlin',
-            x: 78.9,
-            y: 56.5,
+            x: 78.96,
+            y: 56.45,
         },
         {
             battleKey: 'lass-madeline',
-            x: 85.3,
-            y: 56.5,
+            x: 85.21,
+            y: 56.45,
         },
     ],
 };

@@ -18,8 +18,8 @@ const PAL_PARK: Location = {
     battles: [
         {
             battleKey: 'castle-valet-darach',
-            x: 17.2,
-            y: 4.1,
+            x: 17.32,
+            y: 4.07,
         },
     ],
 };

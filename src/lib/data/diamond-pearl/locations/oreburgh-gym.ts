@@ -9,18 +9,18 @@ const OREBURGH_GYM: Location = {
     battles: [
         {
             battleKey: 'youngster-jonathon',
-            x: 32.4,
-            y: 71.7,
+            x: 33.11,
+            y: 71.53,
         },
         {
             battleKey: 'youngster-darius',
-            x: 55.7,
-            y: 43.7,
+            x: 55.02,
+            y: 43.81,
         },
         {
             battleKey: 'leader-roark',
-            x: 40.2,
-            y: 12.1,
+            x: 40.41,
+            y: 12.13,
         },
     ],
 };

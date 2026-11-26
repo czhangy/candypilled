@@ -32,8 +32,8 @@ const SUNYSHORE_CITY: Location = {
     battles: [
         {
             battleKey: 'arcade-star-dahlia',
-            x: 78.9,
-            y: 17.1,
+            x: 78.96,
+            y: 17.3,
         },
     ],
 };

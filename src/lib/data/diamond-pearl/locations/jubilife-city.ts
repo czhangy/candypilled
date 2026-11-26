@@ -21,8 +21,8 @@ const JUBILIFE_CITY: Location = {
         {
             customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
             battleKey: 'galactic-grunt-m-jubilife-city',
-            x: 72.7,
-            y: 5.6,
+            x: 72.71,
+            y: 5.57,
         },
     ],
 };

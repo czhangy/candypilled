@@ -93,8 +93,8 @@ const FLOAROMA_TOWN: Location = {
             battles: [
                 {
                     battleKey: 'reporter-jenny',
-                    x: 16.7,
-                    y: 17.9,
+                    x: 16.88,
+                    y: 18.44,
                 },
             ],
         },

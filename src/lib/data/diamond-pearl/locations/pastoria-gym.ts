@@ -9,38 +9,38 @@ const PASTORIA_GYM: Location = {
     battles: [
         {
             battleKey: 'tuber-m-jacky',
-            x: 41.8,
-            y: 75.5,
+            x: 42.26,
+            y: 75.12,
         },
         {
             battleKey: 'fisherman-walter',
-            x: 33.7,
+            x: 34.34,
             y: 21.3,
         },
         {
             battleKey: 'sailor-damian',
-            x: 26.2,
-            y: 48.2,
+            x: 26.42,
+            y: 48.21,
         },
         {
             battleKey: 'tuber-f-caitlyn',
-            x: 81.9,
-            y: 75.4,
+            x: 81.87,
+            y: 75.12,
         },
         {
             battleKey: 'fisherman-erick',
-            x: 74,
-            y: 38.4,
+            x: 73.95,
+            y: 38.43,
         },
         {
             battleKey: 'sailor-samson',
-            x: 18.1,
-            y: 14,
+            x: 18.5,
+            y: 13.96,
         },
         {
             battleKey: 'leader-wake',
-            x: 50,
-            y: 3.9,
+            x: 50.19,
+            y: 4.17,
         },
     ],
 };

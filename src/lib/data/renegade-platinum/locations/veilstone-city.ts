@@ -49,8 +49,8 @@ const VEILSTONE_CITY: Location = {
                 {
                     battleKey: 'galactic-grunt-m-veilstone-city',
                     customHeight: 60,
-                    x: 39.9,
-                    y: 31.4,
+                    x: 39.89,
+                    y: 31.35,
                 },
             ],
         },
@@ -61,8 +61,8 @@ const VEILSTONE_CITY: Location = {
             battles: [
                 {
                     battleKey: 'dragon-tamer-nils',
-                    x: 70,
-                    y: 35.7,
+                    x: 70.21,
+                    y: 36.31,
                 },
             ],
         },

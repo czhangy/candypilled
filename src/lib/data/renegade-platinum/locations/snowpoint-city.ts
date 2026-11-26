@@ -35,8 +35,8 @@ const SNOWPOINT_CITY: Location = {
             battleKey:
                 'ace-trainer-snow-m-aran-and-ace-trainer-snow-f-nephenee',
             customWidth: GEN_4_TRUE_DOUBLE_WIDTH,
-            x: 46.9,
-            y: 9.4,
+            x: 46.97,
+            y: 9.47,
         },
     ],
 };

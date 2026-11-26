@@ -16,38 +16,38 @@ const ROUTE_220: Location = {
     battles: [
         {
             battleKey: 'swimmer-f-jessica',
-            x: 24.3,
-            y: 28.7,
+            x: 24.29,
+            y: 28.83,
         },
         {
             battleKey: 'swimmer-f-erica',
-            x: 14.7,
-            y: 34.9,
+            x: 14.91,
+            y: 35.09,
         },
         {
             battleKey: 'swimmer-m-adrian',
-            x: 39.9,
-            y: 69.2,
+            x: 39.93,
+            y: 69.53,
         },
         {
             battleKey: 'swimmer-m-vincent',
-            x: 60.2,
-            y: 47.7,
+            x: 60.26,
+            y: 47.61,
         },
         {
             battleKey: 'swimmer-f-katelyn',
-            x: 69.6,
-            y: 22.4,
+            x: 69.65,
+            y: 22.56,
         },
         {
             battleKey: 'swimmer-f-claire',
-            x: 80.4,
-            y: 47.5,
+            x: 80.6,
+            y: 47.61,
         },
         {
             battleKey: 'swimmer-m-erik',
-            x: 80.4,
-            y: 66.1,
+            x: 80.6,
+            y: 66.4,
         },
     ],
 };
