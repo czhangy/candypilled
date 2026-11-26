@@ -68,14 +68,14 @@ const ROUTE_214: Location = {
             y: 50,
         },
         {
-            battleKey: 'psychic-m-mitchell',
-            x: 85.9,
-            y: 56.4,
-        },
-        {
             battleKey: 'ruin-maniac-bryan',
             x: 33,
             y: 53.2,
+        },
+        {
+            battleKey: 'psychic-m-mitchell',
+            x: 85.9,
+            y: 56.4,
         },
         {
             battleKey: 'collector-jamal',

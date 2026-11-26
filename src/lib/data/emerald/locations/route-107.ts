@@ -37,14 +37,14 @@ const ROUTE_107: Location = {
             y: 51.72,
         },
         {
-            battleKey: 'swimmer-f-beth',
-            x: 84.17,
-            y: 56.72,
-        },
-        {
             battleKey: 'triathlete-swimmer-m-camron',
             x: 84.17,
             y: 26.72,
+        },
+        {
+            battleKey: 'swimmer-f-beth',
+            x: 84.17,
+            y: 56.72,
         },
     ],
 };

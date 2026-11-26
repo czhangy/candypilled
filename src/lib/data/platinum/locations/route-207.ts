@@ -36,6 +36,11 @@ const ROUTE_207: Location = {
     ],
     battles: [
         {
+            battleKey: 'hiker-kevin',
+            x: 49.27,
+            y: 53.32,
+        },
+        {
             battleKey: 'picnicker-lauren',
             x: 50.83,
             y: 18.95,
@@ -46,19 +51,14 @@ const ROUTE_207: Location = {
             y: 37.7,
         },
         {
-            battleKey: 'hiker-justin',
-            x: 64.89,
-            y: 34.57,
-        },
-        {
             battleKey: 'youngster-austin',
             x: 58.64,
             y: 65.82,
         },
         {
-            battleKey: 'hiker-kevin',
-            x: 49.27,
-            y: 53.32,
+            battleKey: 'hiker-justin',
+            x: 64.89,
+            y: 34.57,
         },
         {
             battleKey: 'battle-girl-helen',

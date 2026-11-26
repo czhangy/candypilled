@@ -401,12 +401,10 @@ export type BattleData = {
     // person's own name paired with their class.
     plainName?: boolean;
     secondTrainer?: BattleTrainer;
-    // The split (Split.name) this battle first becomes available in.
-    // Restricts this battle's marker to that split or any split after it
-    // in game order — for a location placed in more than one split whose
-    // battle set differs between them, rather than showing this battle's
-    // marker before the player has reached it — and drives the split
-    // badge shown on the battle card.
+    // The split (Split.name) this battle belongs to. Restricts this
+    // battle's marker to that split only — for a location placed in more
+    // than one split whose battle set differs between them — and drives
+    // the split badge shown on the battle card.
     split: string;
     // TRAINER_CLASSES slug.
     trainerClass: string;
@@ -647,6 +645,9 @@ export type GameDataSource = {
     pokemon: Record<string, PokemonData>;
     moves: Record<string, MoveData>;
     items: Record<string, ItemData>;
+    // Whether the damage calc uses the Gen 6+ type chart (Fairy, Steel
+    // resisting less) even though the game's generation predates it.
+    usesGen6TypeChart: boolean;
     // Set only for a game whose pokemon/moves are vanilla data patched by a
     // sparse diff (e.g. a ROM hack rebalance) — lets the UI surface
     // exactly what this game changed, species/move by species/move, field
@@ -722,6 +723,10 @@ export type Game = {
     // Every battle's trainer info, keyed by battle key
     // (BattleHelpers.getBattleKey).
     battles: Record<string, BattleData>;
+    // Battle keys in canonical order, earliest first: every battle placed in
+    // one of this game's locations, hand-maintained (check:data enforces it
+    // covers exactly those battles). Orders the battle dropdowns.
+    battleOrder: string[];
     // How each AI flag treats each move.
     moveAi: MoveAiData;
     // Game-specific messages shown at random on the run page when a run is
@@ -973,10 +978,10 @@ export type LearnsetMove = {
 };
 
 // The level-up moves of another evolution stage (earlier or later) that the
-// viewed species either learns at a different level or, for lostMoves, can no
-// longer learn (nor can any of its later evolutions). gainedMoves are the
-// viewed species' own level-up moves the stage can't learn by any method;
-// they're included in moves, using the viewed species' levels.
+// viewed species either learns at a different level or, for lostMoves, can't
+// learn by any method. gainedMoves are the viewed species' own level-up moves
+// the stage can't learn by any method; they're included in moves, using the
+// viewed species' levels.
 export type LearnsetDifference = {
     // Level offsets for entries the viewed species also learns, keyed by
     // `${slug}-${level}`: the stage's level minus the viewed species' level

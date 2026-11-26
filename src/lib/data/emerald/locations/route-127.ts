@@ -15,19 +15,14 @@ const ROUTE_127: Location = {
     ],
     battles: [
         {
-            battleKey: 'bird-keeper-aidan',
-            x: 19.38,
-            y: 29.18,
-        },
-        {
-            battleKey: 'cooltrainer-f-athena',
-            x: 15.62,
-            y: 29.18,
-        },
-        {
             battleKey: 'fisherman-jonah',
             x: 53.12,
             y: 26.68,
+        },
+        {
+            battleKey: 'fisherman-henry',
+            x: 68.12,
+            y: 17.93,
         },
         {
             battleKey: 'fisherman-roger',
@@ -35,9 +30,14 @@ const ROUTE_127: Location = {
             y: 24.18,
         },
         {
-            battleKey: 'fisherman-henry',
-            x: 68.12,
-            y: 17.93,
+            battleKey: 'cooltrainer-f-athena',
+            x: 15.62,
+            y: 29.18,
+        },
+        {
+            battleKey: 'bird-keeper-aidan',
+            x: 19.38,
+            y: 29.18,
         },
         {
             battleKey: 'triathlete-swimmer-m-camden',

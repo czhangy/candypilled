@@ -69,14 +69,14 @@ const ROUTE_213: Location = {
     ],
     battles: [
         {
-            battleKey: 'tuber-m-jared',
-            x: 66.1,
-            y: 50.2,
-        },
-        {
             battleKey: 'tuber-f-chelsea',
             x: 67.2,
             y: 42.5,
+        },
+        {
+            battleKey: 'tuber-m-jared',
+            x: 66.1,
+            y: 50.2,
         },
         {
             battleKey: 'fisherman-kenneth',

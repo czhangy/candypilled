@@ -1,5 +1,6 @@
 import { VANILLA_DATA_SOURCE } from '@/lib/data/data-sources';
 import { PLATINUM_MOVE_AI } from '@/lib/data/move-ai/platinum';
+import { BATTLE_ORDER } from '@/lib/data/platinum/battle-order';
 import {
     BadgeAssetFolder,
     GameVersionGroup,
@@ -36,6 +37,7 @@ const PLATINUM: Game = {
     starters: ['turtwig', 'chimchar', 'piplup'],
     accentColor: '#FFD500',
     encounters: ENCOUNTERS,
+    battleOrder: BATTLE_ORDER,
     battles: BATTLES,
     moveAi: PLATINUM_MOVE_AI,
     metLocationById: MET_LOCATIONS,

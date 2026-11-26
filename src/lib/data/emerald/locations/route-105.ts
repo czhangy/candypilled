@@ -30,9 +30,9 @@ const ROUTE_105: Location = {
             y: 60.43,
         },
         {
-            battleKey: 'swimmer-f-beverly',
-            x: 21.25,
-            y: 56.68,
+            battleKey: 'bird-keeper-josue',
+            x: 11.25,
+            y: 67.93,
         },
         {
             battleKey: 'ruin-maniac-andres',
@@ -40,9 +40,9 @@ const ROUTE_105: Location = {
             y: 72.93,
         },
         {
-            battleKey: 'bird-keeper-josue',
-            x: 11.25,
-            y: 67.93,
+            battleKey: 'swimmer-f-beverly',
+            x: 21.25,
+            y: 56.68,
         },
         {
             battleKey: 'swimmer-m-luis',

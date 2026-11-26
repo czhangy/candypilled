@@ -24,6 +24,11 @@ const ROUTE_111: Location = {
             ],
             battles: [
                 {
+                    battleKey: 'winstrate-family',
+                    x: 33.75,
+                    y: 66.89,
+                },
+                {
                     battleKey: 'interviewers-gabby-and-ty-route-111',
                     customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
                     x: 35,
@@ -39,11 +44,6 @@ const ROUTE_111: Location = {
                     x: 28.75,
                     y: 11.41,
                 },
-                {
-                    battleKey: 'winstrate-family',
-                    x: 33.75,
-                    y: 66.89,
-                },
             ],
         },
         {
@@ -57,14 +57,14 @@ const ROUTE_111: Location = {
                     y: 64.34,
                 },
                 {
-                    battleKey: 'cooltrainer-f-brooke',
-                    x: 28.75,
-                    y: 29.04,
-                },
-                {
                     battleKey: 'black-belt-daisuke',
                     x: 81.25,
                     y: 69.04,
+                },
+                {
+                    battleKey: 'cooltrainer-f-brooke',
+                    x: 28.75,
+                    y: 29.04,
                 },
             ],
         },

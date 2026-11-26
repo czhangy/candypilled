@@ -37,9 +37,21 @@ const ROUTE_217: Location = {
             y: 88.3,
         },
         {
+            battleKey: 'ninja-boy-matthew',
+            fieldCondition: FieldCondition.Hail,
+            x: 70.3,
+            y: 74.4,
+        },
+        {
             battleKey: 'skier-f-madison',
             fieldCondition: FieldCondition.Hail,
             x: 10.9,
+            y: 68.6,
+        },
+        {
+            battleKey: 'skier-m-shawn',
+            fieldCondition: FieldCondition.Hail,
+            x: 95.3,
             y: 68.6,
         },
         {
@@ -55,28 +67,16 @@ const ROUTE_217: Location = {
             y: 31.1,
         },
         {
-            battleKey: 'black-belt-luke',
-            fieldCondition: FieldCondition.Hail,
-            x: 10.9,
-            y: 13.3,
-        },
-        {
-            battleKey: 'skier-m-shawn',
-            fieldCondition: FieldCondition.Hail,
-            x: 95.3,
-            y: 68.6,
-        },
-        {
-            battleKey: 'ninja-boy-matthew',
-            fieldCondition: FieldCondition.Hail,
-            x: 70.3,
-            y: 74.4,
-        },
-        {
             battleKey: 'skier-m-bjorn',
             fieldCondition: FieldCondition.Hail,
             x: 82.8,
             y: 31.1,
+        },
+        {
+            battleKey: 'black-belt-luke',
+            fieldCondition: FieldCondition.Hail,
+            x: 10.9,
+            y: 13.3,
         },
         {
             battleKey: 'ace-trainer-snow-f-olivia',

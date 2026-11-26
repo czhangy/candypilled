@@ -39,10 +39,7 @@ import TeamSelectPanel from './TeamSelectPanel/TeamSelectPanel';
 
 type CalcTabProps = {
     game: Game;
-    onSelectAbility: (slug: string) => void;
     onSelectBattle: (battleKey: string) => void;
-    onSelectItem: (slug: string) => void;
-    onSelectMove: (slug: string) => void;
     onSelectSpecies: (slug: string) => void;
     run: Run;
     selectedBattle?: string;
@@ -50,10 +47,7 @@ type CalcTabProps = {
 
 const CalcTab: React.FC<CalcTabProps> = ({
     game,
-    onSelectAbility,
     onSelectBattle,
-    onSelectItem,
-    onSelectMove,
     onSelectSpecies,
     run,
     selectedBattle,
@@ -488,6 +482,19 @@ const CalcTab: React.FC<CalcTabProps> = ({
     const battleCardBattle = BattleHelpers.getAllBattles(game, run.gender).find(
         (battle) =>
             BattleHelpers.getBattleKey(battle) === effectiveSelectedBattle
+    );
+
+    const previousBattleKey = BattleHelpers.getAdjacentRequiredBattleKey(
+        game,
+        effectiveSelectedBattle,
+        run.gender,
+        -1
+    );
+    const nextBattleKey = BattleHelpers.getAdjacentRequiredBattleKey(
+        game,
+        effectiveSelectedBattle,
+        run.gender,
+        1
     );
 
     const caught = run.caughtPokemon.find(
@@ -980,6 +987,18 @@ const CalcTab: React.FC<CalcTabProps> = ({
         });
     };
 
+    const handleBattleCardMemberSelect = (memberIndex: number): void => {
+        setSelectedMemberIndex(String(memberIndex));
+    };
+
+    const handleBattleCardMoveSelect = (
+        memberIndex: number,
+        moveIndex: number
+    ): void => {
+        setSelectedMemberIndex(String(memberIndex));
+        setActiveMove({ index: moveIndex, side: 'defender' });
+    };
+
     const handleAiButtonClick = (): void => {
         setIsAiModalOpen(true);
     };
@@ -1041,10 +1060,12 @@ const CalcTab: React.FC<CalcTabProps> = ({
                             battle={battleCardBattle}
                             game={game}
                             generation={game.generation}
-                            onSelectAbility={onSelectAbility}
-                            onSelectItem={onSelectItem}
-                            onSelectMove={onSelectMove}
-                            onSelectSpecies={onSelectSpecies}
+                            mode="select"
+                            nextBattleKey={nextBattleKey}
+                            onSelectBattle={onSelectBattle}
+                            onSelectMember={handleBattleCardMemberSelect}
+                            onSelectMove={handleBattleCardMoveSelect}
+                            previousBattleKey={previousBattleKey}
                             starter={run.starter}
                             variant={game.pokemonAssetFolder ?? game.version}
                             version={game.version}
@@ -1139,8 +1160,10 @@ const CalcTab: React.FC<CalcTabProps> = ({
                     />
                     <TeamSelectPanel
                         game={game}
+                        nextBattleKey={nextBattleKey}
                         onSelectBattle={onSelectBattle}
                         onSelectMember={setSelectedMemberIndex}
+                        previousBattleKey={previousBattleKey}
                         run={run}
                         selectedBattle={effectiveSelectedBattle}
                         selectedMemberIndex={selectedMemberIndex}

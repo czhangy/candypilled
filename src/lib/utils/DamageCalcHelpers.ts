@@ -30,14 +30,23 @@ export default class DamageCalcHelpers {
     // PUBLIC
     // -------------------------------------------------------------------------
 
-    /** @smogon/calc's Generation data for generation, memoized since it's pure/expensive to rebuild. */
-    static getGeneration(generation: number): Generation {
-        const cached = DamageCalcHelpers.generationCache.get(generation);
+    /** @smogon/calc's Generation data for generation under dataSource's type chart, memoized since it's pure/expensive to rebuild. */
+    static getGeneration(
+        generation: number,
+        dataSource: GameDataSource
+    ): Generation {
+        const key = `${generation}:${dataSource.usesGen6TypeChart}`;
+        const cached = DamageCalcHelpers.generationCache.get(key);
         if (cached) return cached;
 
-        const resolved = Generations.get(generation as GenerationNum);
-        DamageCalcHelpers.addFairyToPreFairyGeneration(resolved);
-        DamageCalcHelpers.generationCache.set(generation, resolved);
+        const base = Generations.get(generation as GenerationNum);
+        const resolved = dataSource.usesGen6TypeChart
+            ? {
+                  ...base,
+                  types: Generations.get(DamageCalcHelpers.GEN_6).types,
+              }
+            : base;
+        DamageCalcHelpers.generationCache.set(key, resolved);
         return resolved;
     }
 
@@ -298,7 +307,7 @@ export default class DamageCalcHelpers {
         const calcMoveName =
             DamageCalcHelpers.CALC_MOVE_NAMES[moveName] ?? moveName;
         const moveData =
-            DamageCalcHelpers.getGeneration(generation).moves.get(
+            DamageCalcHelpers.getGeneration(generation, dataSource).moves.get(
                 toID(calcMoveName)
             ) ?? DamageCalcHelpers.getFallbackMove(calcMoveName, generation);
         const multihit = moveData?.multihit;
@@ -397,32 +406,9 @@ export default class DamageCalcHelpers {
         ];
     }
 
-    // Games like Renegade Platinum use Fairy in Gen 4, but @smogon/calc's
-    // pre-Gen 6 charts lack it, so matchups against Fairy come out NaN and
-    // Fairy moves throw. Copy Gen 6's Fairy defending column and serve its
-    // Fairy attacking row.
-    private static addFairyToPreFairyGeneration(gen: Generation): void {
-        if (gen.num >= DamageCalcHelpers.FAIRY_GENERATION) return;
+    private static readonly GEN_6 = 6;
 
-        const fairyGen = Generations.get(DamageCalcHelpers.FAIRY_GENERATION);
-        for (const attackingType of gen.types) {
-            const fairyEffectiveness = fairyGen.types.get(attackingType.id)
-                ?.effectiveness.Fairy;
-            if (fairyEffectiveness !== undefined) {
-                (attackingType.effectiveness as Record<string, number>).Fairy =
-                    fairyEffectiveness;
-            }
-        }
-
-        const fairyType = fairyGen.types.get(toID('Fairy'));
-        const getType = gen.types.get.bind(gen.types);
-        gen.types.get = (id) =>
-            id === fairyType?.id ? fairyType : getType(id);
-    }
-
-    private static readonly FAIRY_GENERATION = 6;
-
-    private static readonly generationCache = new Map<number, Generation>();
+    private static readonly generationCache = new Map<string, Generation>();
 
     private static getResult(
         generation: number,
@@ -435,7 +421,7 @@ export default class DamageCalcHelpers {
     ): Result | null {
         if (!moveName) return null;
 
-        const gen = DamageCalcHelpers.getGeneration(generation);
+        const gen = DamageCalcHelpers.getGeneration(generation, dataSource);
         const attackerPokemon = DamageCalcHelpers.buildPokemon(
             gen,
             dataSource,
@@ -540,7 +526,7 @@ export default class DamageCalcHelpers {
         generation: number
     ): CalcMoveData | undefined {
         for (let laterGen = generation + 1; laterGen <= 9; laterGen++) {
-            const found = DamageCalcHelpers.getGeneration(laterGen).moves.get(
+            const found = Generations.get(laterGen as GenerationNum).moves.get(
                 toID(moveName)
             );
             if (found) return found;

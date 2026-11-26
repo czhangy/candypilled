@@ -76,14 +76,15 @@ const ROUTE_109: Location = {
             methodSplits: ROUTE_109_METHOD_SPLITS,
             battles: [
                 {
-                    battleKey: 'tuber-f-gwen',
-                    x: 73.75,
-                    y: 16.19,
+                    battleKey: 'young-couple-mel-and-paul',
+                    customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
+                    x: 22.34,
+                    y: 43.3,
                 },
                 {
-                    battleKey: 'tuber-f-carmen',
-                    x: 71.25,
-                    y: 13.16,
+                    battleKey: 'fisherman-carter',
+                    x: 38.75,
+                    y: 76.8,
                 },
                 {
                     battleKey: 'swimmer-f-alice',
@@ -96,15 +97,14 @@ const ROUTE_109: Location = {
                     y: 28.31,
                 },
                 {
-                    battleKey: 'young-couple-mel-and-paul',
-                    customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
-                    x: 22.34,
-                    y: 43.3,
+                    battleKey: 'tuber-f-gwen',
+                    x: 73.75,
+                    y: 16.19,
                 },
                 {
-                    battleKey: 'fisherman-carter',
-                    x: 38.75,
-                    y: 76.8,
+                    battleKey: 'tuber-f-carmen',
+                    x: 71.25,
+                    y: 13.16,
                 },
             ],
         },

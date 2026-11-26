@@ -1,3 +1,4 @@
+import { BattleMetadata } from '@/lib/static/enums';
 import {
     AiFlag,
     Battle,
@@ -108,13 +109,12 @@ export default class BattleHelpers {
     }
 
     /**
-     * Every distinct battle in game for gender, ordered by each battle's own
-     * split (game.battles[key].split) in game order -- sourced from
-     * game.locations (every location, split-independent) rather than
-     * game.splits[].locations, so a battle shows up here even when its
-     * location's Split.locations membership doesn't (yet) cover the split
-     * the battle itself belongs to. A battle reachable from more than one
-     * location is still one battle, so only its first occurrence is kept.
+     * Every distinct battle in game for gender, in game.battleOrder -- sourced
+     * from game.locations (every location, split-independent) rather than
+     * game.splits[].locations. A battle missing from battleOrder sorts last,
+     * by its own split (game.battles[key].split) in game order. A battle
+     * reachable from more than one location is still one battle, so only its
+     * first occurrence is kept.
      */
     static getAllBattles(
         game: Game,
@@ -149,6 +149,45 @@ export default class BattleHelpers {
         );
     }
 
+    /**
+     * The key of the nearest Required, Boss or Choice battle before
+     * (direction -1) or after (direction 1) battleKey in
+     * getAllBattles(game, gender), or undefined if there is none. battleKey
+     * itself needn't be one of those, so stepping also works from an Optional
+     * battle.
+     */
+    static getAdjacentRequiredBattleKey(
+        game: Game,
+        battleKey: string | undefined,
+        gender: 'male' | 'female' | undefined,
+        direction: -1 | 1
+    ): string | undefined {
+        const requiredMetadata = [
+            BattleMetadata.Required,
+            BattleMetadata.Boss,
+            BattleMetadata.Choice,
+        ];
+        const battles = BattleHelpers.getAllBattles(game, gender);
+        const position = battles.findIndex(
+            (battle) => BattleHelpers.getBattleKey(battle) === battleKey
+        );
+        if (position === -1) return undefined;
+
+        for (
+            let index = position + direction;
+            index >= 0 && index < battles.length;
+            index += direction
+        ) {
+            const key = BattleHelpers.getBattleKey(battles[index]);
+            const { metadata } = game.battles[key];
+            if (requiredMetadata.some((value) => metadata.includes(value))) {
+                return key;
+            }
+        }
+
+        return undefined;
+    }
+
     /** items restricted to gender: entries with no `gender` always pass, entries with one only pass for a matching run gender. Shared by Battle[] and TagPartner[], both of which carry an optional gender field. */
     static filterByGender<T extends { gender?: 'male' | 'female' }>(
         items: T[],
@@ -165,7 +204,7 @@ export default class BattleHelpers {
         return items.filter((item) => !item.game || item.game === game.name);
     }
 
-    /** items restricted to splitName: entries whose BattleData carries no `split` always pass, entries with one only pass once splitName's split is reached — i.e. splitName is that split or a later one in game order. Shared by Battle[] and TagPartner[], both of which carry a `battleKey` into Game.battles. */
+    /** items restricted to splitName: only entries whose BattleData `split` equals splitName pass, or every entry if splitName is undefined. Shared by Battle[] and TagPartner[], both of which carry a `battleKey` into Game.battles. */
     static filterBySplit<T extends { battleKey: string }>(
         items: T[],
         splitName: string | undefined,
@@ -173,21 +212,9 @@ export default class BattleHelpers {
     ): T[] {
         if (!splitName) return items;
 
-        const splitIndexes = new Map(
-            game.splits.map((split, index) => [split.name, index])
+        return items.filter(
+            (item) => game.battles[item.battleKey].split === splitName
         );
-        const currentIndex = splitIndexes.get(splitName);
-
-        return items.filter((item) => {
-            const split = game.battles[item.battleKey]?.split;
-            if (!split) return true;
-
-            const battleIndex = splitIndexes.get(split);
-            if (battleIndex === undefined || currentIndex === undefined) {
-                return true;
-            }
-            return currentIndex >= battleIndex;
-        });
     }
 
     /** The team belonging to the battle keyed by battleKey within game, resolved for starter, or [] if battleKey is undefined or doesn't match any battle. */
@@ -348,18 +375,25 @@ export default class BattleHelpers {
         const splitIndexes = new Map(
             game.splits.map((split, index) => [split.name, index])
         );
+        const orderIndexes = new Map(
+            game.battleOrder.map((key, index) => [key, index])
+        );
 
         return deduped
             .map((entry) => {
-                const split =
-                    game.battles[BattleHelpers.getBattleKey(entry.battle)]
-                        ?.split;
+                const key = BattleHelpers.getBattleKey(entry.battle);
+                const split = game.battles[key]?.split;
                 return {
                     entry,
+                    orderIndex: orderIndexes.get(key) ?? Infinity,
                     splitIndex: split ? (splitIndexes.get(split) ?? -1) : -1,
                 };
             })
-            .sort((a, b) => a.splitIndex - b.splitIndex)
+            .sort((a, b) =>
+                a.orderIndex === b.orderIndex
+                    ? a.splitIndex - b.splitIndex
+                    : a.orderIndex - b.orderIndex
+            )
             .map(({ entry }) => entry);
     }
 

@@ -287,7 +287,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-isabelle': {
         metadata: [BattleMetadata.Optional],
-        split: 'Brawly',
+        split: 'Winona',
         trainerClass: 'swimmer-f',
         name: 'Isabelle',
         teams: [
@@ -308,7 +308,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-m-pete': {
         metadata: [BattleMetadata.Optional],
-        split: 'Brawly',
+        split: 'Winona',
         trainerClass: 'swimmer-m',
         name: 'Pete',
         teams: [
@@ -9405,7 +9405,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'swimmer-f-brenda': {
         metadata: [BattleMetadata.Optional],
-        split: 'Winona',
+        split: 'Juan',
         trainerClass: 'swimmer-f',
         name: 'Brenda',
         teams: [
@@ -13577,7 +13577,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'kindler-jace': {
-        metadata: [BattleMetadata.Required],
+        metadata: [BattleMetadata.Optional],
         split: 'Flannery',
         trainerClass: 'kindler',
         name: 'Jace',
@@ -13598,7 +13598,7 @@ export const BATTLES: Record<string, BattleData> = {
         ],
     },
     'hiker-eli': {
-        metadata: [BattleMetadata.Required],
+        metadata: [BattleMetadata.Optional],
         split: 'Flannery',
         trainerClass: 'hiker',
         name: 'Eli',

@@ -10,14 +10,14 @@ const ROUTE_116: Location = {
     methodSplits: [{ method: EncounterMethod.Grass, split: 'Roxanne' }],
     battles: [
         {
-            battleKey: 'bug-catcher-jose',
-            x: 13.5,
-            y: 86.72,
-        },
-        {
             battleKey: 'youngster-joey',
             x: 12.5,
             y: 36.72,
+        },
+        {
+            battleKey: 'bug-catcher-jose',
+            x: 13.5,
+            y: 86.72,
         },
         {
             battleKey: 'school-kid-f-karen',
@@ -25,14 +25,14 @@ const ROUTE_116: Location = {
             y: 81.72,
         },
         {
-            battleKey: 'hiker-clark',
-            x: 36.5,
-            y: 86.72,
-        },
-        {
             battleKey: 'youngster-johnson',
             x: 36.5,
             y: 66.72,
+        },
+        {
+            battleKey: 'hiker-clark',
+            x: 36.5,
+            y: 86.72,
         },
         {
             battleKey: 'hiker-devan',
@@ -40,14 +40,14 @@ const ROUTE_116: Location = {
             y: 66.72,
         },
         {
-            battleKey: 'lady-sarah',
-            x: 33.5,
-            y: 41.72,
-        },
-        {
             battleKey: 'rich-boy-dawson',
             x: 33.5,
             y: 26.72,
+        },
+        {
+            battleKey: 'lady-sarah',
+            x: 33.5,
+            y: 41.72,
         },
         {
             battleKey: 'school-kid-m-jerry',

@@ -17,6 +17,12 @@ const PASTORIA_GYM: Location = {
     ],
     battles: [
         {
+            battleKey: 'tuber-m-jacky',
+            fieldCondition: FieldCondition.Rain,
+            x: 41.8,
+            y: 75.4,
+        },
+        {
             battleKey: 'fisherman-walter',
             fieldCondition: FieldCondition.Rain,
             x: 34.2,
@@ -27,12 +33,6 @@ const PASTORIA_GYM: Location = {
             fieldCondition: FieldCondition.Rain,
             x: 26.2,
             y: 48,
-        },
-        {
-            battleKey: 'tuber-m-jacky',
-            fieldCondition: FieldCondition.Rain,
-            x: 41.8,
-            y: 75.4,
         },
         {
             battleKey: 'tuber-f-caitlyn',

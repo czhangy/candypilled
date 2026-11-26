@@ -15,17 +15,18 @@ Ask these in one plain-text list before creating anything. Never answer one from
 
 Then create `src/lib/data/<slug>/ONBOARDING.md` and record every answer in it. Later steps add to it; edit in place, never as a log.
 
-| Question                                                                                                    | Decides                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Is it a ROM hack, or a vanilla game?                                                                        | Data sources for trainers and encounters. A hack's tracker is the source, since PokeAPI and the decomp reflect the unpatched base game. |
-| Does it change Pokémon or moves from its base game?                                                         | Whether it needs `DataOverrides` (a sparse diff over vanilla) or an independent dataset, instead of `VANILLA_DATA_SOURCE`.              |
-| Is there a trusted decomp of this exact game?                                                               | Trainer data, badge bits and flags come from the decomp. Without one, they come from a tracker or a real save.                          |
-| Does it change the trainer AI (scripts, flags or per-trainer flag assignments) from its base game?          | Whether `battle-ai-flags` and `move-ai-rules` can reuse the base game's data, or need the hack's own `trdata` flags and AI script diff. |
-| Is it one of a set of variants that differ only in wild encounters (like Diamond and Pearl)?                | One shared data folder plus a subfolder per variant.                                                                                    |
-| What generation and PokeAPI version-group slug does it use? (For a hack, that of the base game it patches.) | `Game.generation`, `Game.version`, and the encounter scraper config.                                                                    |
-| Which sprite and badge art does it use?                                                                     | Whether `badgeAssetFolder`, `trainerAssetFolder` and `pokemonAssetFolder` reuse an existing folder, or need new art.                    |
-| What is its accent color?                                                                                   | `Game.accentColor`.                                                                                                                     |
-| Does it need a text contrast color? (Optional.)                                                             | `Game.textContrastColor`, omitted when not needed.                                                                                      |
+| Question                                                                                                              | Decides                                                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Is it a ROM hack, or a vanilla game?                                                                                  | Data sources for trainers and encounters. A hack's tracker is the source, since PokeAPI and the decomp reflect the unpatched base game.              |
+| Does it change Pokémon or moves from its base game?                                                                   | Whether it needs `DataOverrides` (a sparse diff over vanilla) or an independent dataset, instead of `VANILLA_DATA_SOURCE`.                           |
+| (ROM hacks only) Does it use the Gen 6+ type chart (Fairy, Steel resisting less) despite its generation predating it? | `GameDataSource.usesGen6TypeChart`, which the damage calc builds its type chart from. A vanilla game never asks: it uses its own generation's chart. |
+| Is there a trusted decomp of this exact game?                                                                         | Trainer data, badge bits and flags come from the decomp. Without one, they come from a tracker or a real save.                                       |
+| Does it change the trainer AI (scripts, flags or per-trainer flag assignments) from its base game?                    | Whether `battle-ai-flags` and `move-ai-rules` can reuse the base game's data, or need the hack's own `trdata` flags and AI script diff.              |
+| Is it one of a set of variants that differ only in wild encounters (like Diamond and Pearl)?                          | One shared data folder plus a subfolder per variant.                                                                                                 |
+| What generation and PokeAPI version-group slug does it use? (For a hack, that of the base game it patches.)           | `Game.generation`, `Game.version`, and the encounter scraper config.                                                                                 |
+| Which sprite and badge art does it use?                                                                               | Whether `badgeAssetFolder`, `trainerAssetFolder` and `pokemonAssetFolder` reuse an existing folder, or need new art.                                 |
+| What is its accent color?                                                                                             | `Game.accentColor`.                                                                                                                                  |
+| Does it need a text contrast color? (Optional.)                                                                       | `Game.textContrastColor`, omitted when not needed.                                                                                                   |
 
 ## 2. Data folder scaffold
 
@@ -37,6 +38,7 @@ Create `src/lib/data/<slug>/` (reference: `platinum/`). For a variant group, cre
 - `met-locations.ts`: `MET_LOCATIONS: Record<number, string>`, met index to location name.
 - `encounters.ts`: `ENCOUNTERS: Record<string, Encounter[]>`.
 - `battles.ts`: `BATTLES: Record<string, BattleData>`.
+- `battle-order.ts`: `BATTLE_ORDER: string[]`, battle keys in canonical order (step 14).
 - `locations.ts`: `LOCATIONS: Location[]`, every location in the game.
 - `locations/`: one `Location` per file.
 - `maps/`: map PNGs plus `index.ts`, one alphabetical export per image.
@@ -59,12 +61,12 @@ Badges and trainer class sprites are requested later, once the splits and traine
 
 ## 4. Data source
 
-- **Vanilla, or no Pokémon/move changes:** `dataSource: VANILLA_DATA_SOURCE` (`data-sources.ts`). Nothing to build.
+- **Vanilla, or no Pokémon/move changes:** `dataSource: VANILLA_DATA_SOURCE` (`data-sources.ts`). Nothing to build. The type chart follows the game's generation (`usesGen6TypeChart: false`). A hack that answered yes to the Gen 6+ chart question needs its own `<SLUG>_DATA_SOURCE` below even without other changes.
 - **A hack with changes (overrides):**
     - Ask the user for the source of the changes.
     - Write sparse `DataOverrides` JSON to `<slug>/raw/pokemon-overrides.json` and `moves-overrides.json`, diffed against vanilla as resolved for the hack's generation.
     - Create `<slug>/pokemon.ts` and `<slug>/moves.ts` in the shape of `renegade-platinum/`. They export `POKEMON_OVERRIDES` and `POKEMON`, and `MOVE_OVERRIDES` and `MOVES`, built with `DataOverrideHelpers.applyOverrides` (plus `removeEntries` for retired moves).
-    - Add a `<SLUG>_DATA_SOURCE` to `data-sources.ts` with `overrides` set, reusing `ITEMS` unless items changed.
+    - Add a `<SLUG>_DATA_SOURCE` to `data-sources.ts` with `overrides` set and `usesGen6TypeChart` set to the user's answer from step 1, reusing `ITEMS` unless items changed.
     - Set `Game.pokemonAssetFolder` to the version group whose Pokémon sprites the hack uses.
 - **A hack with a wholly independent dataset:** ask the user.
 
@@ -92,7 +94,7 @@ Once `encounters.ts` is populated:
 
 1. Find which `encountersKey` holds the `Starter` encounters in `encounters.ts`, work out which location it is, and suggest it to the user. Wait for confirmation.
 2. Wire only that location: a `Location` whose map is the inline placeholder `{ src: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', height: 1, width: 1 }` (no file), with `mapAnchor: MapAnchor.Center` and its `encountersKey`. Add it to `locations.ts` and to one split. Ask the user for the split's name. Set the split's `saveCondition` to the placeholder `{ type: 'badge', bit: -1 }`; step 10 replaces it. Set `Game.starters` to the species of the `Starter` encounters.
-3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. Set `moveAi` to the empty `{ moves: {}, rules: {} }`; step 15 fills it. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
+3. Ask the user for `wipeMessages` (`[]` is valid). Assemble the `Game` in `<slug>.ts` with every required field. Set `moveAi` to the empty `{ moves: {}, rules: {} }`; step 15 fills it. Set `battleOrder` to `BATTLE_ORDER` from `battle-order.ts`, empty until step 14. `genders` is `{ male: '/trainers/<trainerAssetFolder>/<male file>.png', female: '/trainers/<trainerAssetFolder>/<female file>.png' }`, from the step 3 sprites.
 4. Register the game. For a variant group, do this for each variant:
     - Add a member to `GameName`, and to `GameVersionGroup`, `BadgeAssetFolder` and `TrainerAssetFolder` when the value is new.
     - Add the game to `GAMES` and its slug to `GAME_LOADERS` in `RunPageLoader.tsx`.
@@ -141,8 +143,9 @@ Work one location at a time, in alphabetical order. Wire each location's battles
 3. Look each trainer up in the game's trainer data and read team, species, level, moves, held item, ability, nature and gender. IVs follow the `battle-ivs` skill. State exactly what you parsed and get the user's confirmation before writing. Never guess a value; a missing or ambiguous one is a question for the user. `gender` is never omitted for a species that has one.
 4. Add each battle to `battles.ts` under its `battleKey`: `<trainer-class-slug>-<name>` for a named trainer, or `<trainer-class-slug>-<number>` (with `name` set to the number as a string) for repeated anonymous trainers. Ask the user for each battle's `split`.
 5. Set every team's required `aiFlags` following the `battle-ai-flags` skill, from the game's own trainer data (never from the user for a vanilla game). Report every team that cannot be matched to a trainer. The skill also covers the `Double`/`TrueDouble`/`Tag` implied flag, which comes from the metadata the user gave in step 2.
-6. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill.
+6. Add the battle to the location's `battles: []` with its `battleKey` and `x`/`y`, following the `battle-marker-placement` skill. Keep the array in the order the player fights them (each subarea's own array), since the battle order in step 14 relies on it. Ask the user when the source order is unclear.
 7. A roster that varies by run state (starter-dependent) is one battle with several `teams`, each with a `condition`. A different trainer or position by gender or game is a separate `Battle` entry with `gender` or `game` set.
+8. Once the game's `isEnabled` is `true`, a new battle also needs a `battleOrder` entry. Ask the user where it goes.
 
 ## 12. Method splits
 
@@ -167,7 +170,7 @@ Work one location at a time, in alphabetical order, after its method splits. Ite
 3. If a slug isn't in `ITEMS` (`src/lib/data/raw/items.json`), add it as data first, by hand: an entry in `src/lib/data/raw/items.json` (same shape as its neighbours, with `valuesByGeneration` from PokeAPI's flavor text up to generation 5), the slug in `ItemSlug` (`types.ts`), and its sprite at `public/items/<slug>.png`. There is no fetch script. Tell the user about any sprite you can't source and wait.
 4. Items carry no split. Never ask for one.
 
-## 14. Split assignment
+## 14. Split assignment and battle order
 
 Run only after step 13 is finished for every location. Work split by split, in `Game.splits` order:
 
@@ -175,6 +178,20 @@ Run only after step 13 is finished for every location. Work split by split, in `
 2. Write exactly the list the user gives, then move to the next split.
 
 Never add a location to a split unprompted or infer membership. Per `.claude/docs/split-location-wiring.md`, a split lists only locations the player is required to go through.
+
+### Battle order
+
+`battle-order.ts` lists every battle placed in a location, earliest first: by split (the battle's `BattleData.split`), then by location within that split, then by the battle's position in its location's `battles` array (each subarea's array in turn). Step 11 already put each array in fight order, so the only thing to ask is the order of the locations.
+
+For each split, in `Game.splits` order:
+
+1. List the locations that have battles of this split, with their battle counts. Use `Split.locations` order, with locations the split doesn't list after them as a default only.
+2. Ask the user for the order of those locations. Never infer it. Apply it exactly.
+3. Append the split's battles to `battle-order.ts` under a `// <Split>` comment: each location's battles of this split, in array order.
+
+Then `npm run check:data` must show the missing count drop by the split's size. To change the order within a location later, reorder its `battles` array and the list together.
+
+A tag partner's battle isn't placed in a location, so it isn't listed. In a variant group the list is shared, so list a version-exclusive battle once.
 
 ## 15. Move AI
 

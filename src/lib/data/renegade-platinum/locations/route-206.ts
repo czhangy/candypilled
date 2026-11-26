@@ -10,14 +10,28 @@ const ROUTE_206: Location = {
     items: [
         {
             category: ItemCategory.Berry,
-            count: 2,
+            count: 5,
             hidden: false,
             method: 'Berry tree',
             slug: 'razz-berry',
         },
         {
             category: ItemCategory.Berry,
-            count: 2,
+            count: 5,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'razz-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 5,
+            hidden: false,
+            method: 'Berry tree',
+            slug: 'rawst-berry',
+        },
+        {
+            category: ItemCategory.Berry,
+            count: 5,
             hidden: false,
             method: 'Berry tree',
             slug: 'rawst-berry',
@@ -44,11 +58,6 @@ const ROUTE_206: Location = {
             battleKey: 'cyclist-megan',
             x: 35.9,
             y: 27.4,
-        },
-        {
-            battleKey: 'hiker-theodore',
-            x: 73.4,
-            y: 35.9,
         },
         {
             battleKey: 'cyclist-james',
@@ -79,6 +88,11 @@ const ROUTE_206: Location = {
             battleKey: 'cyclist-kayla',
             x: 57.8,
             y: 77.4,
+        },
+        {
+            battleKey: 'hiker-theodore',
+            x: 73.4,
+            y: 35.9,
         },
     ],
 };

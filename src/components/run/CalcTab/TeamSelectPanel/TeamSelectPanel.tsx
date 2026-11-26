@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Dropdown from '@/components/common/Dropdown/Dropdown';
 import HeldItemIcon from '@/components/common/HeldItemIcon/HeldItemIcon';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { DropdownOption, Game, Run } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
@@ -8,8 +9,10 @@ import styles from './TeamSelectPanel.module.scss';
 
 type TeamSelectPanelProps = {
     game: Game;
+    nextBattleKey: string | undefined;
     onSelectBattle: (battleKey: string) => void;
     onSelectMember: (index: string) => void;
+    previousBattleKey: string | undefined;
     run: Run;
     selectedBattle?: string;
     selectedMemberIndex?: string;
@@ -17,8 +20,10 @@ type TeamSelectPanelProps = {
 
 const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
     game,
+    nextBattleKey,
     onSelectBattle,
     onSelectMember,
+    previousBattleKey,
     run,
     selectedBattle,
     selectedMemberIndex,
@@ -46,6 +51,18 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
     );
 
     // -------------------------------------------------------------------------
+    // HANDLERS
+    // -------------------------------------------------------------------------
+
+    const handlePreviousBattleClick = (): void => {
+        if (previousBattleKey) onSelectBattle(previousBattleKey);
+    };
+
+    const handleNextBattleClick = (): void => {
+        if (nextBattleKey) onSelectBattle(nextBattleKey);
+    };
+
+    // -------------------------------------------------------------------------
     // MARKUP
     // -------------------------------------------------------------------------
 
@@ -53,14 +70,42 @@ const TeamSelectPanel: React.FC<TeamSelectPanelProps> = ({
         <div className={styles['team-select-panel']}>
             <div className={styles.field}>
                 <span className={styles.label}>Battle</span>
-                <Dropdown
-                    dense
-                    onChange={onSelectBattle}
-                    options={battleOptions}
-                    placeholder="Select a trainer…"
-                    searchable
-                    value={selectedBattle ?? ''}
-                />
+                <div className={styles['battle-row']}>
+                    <button
+                        aria-label="Previous required battle"
+                        className={[
+                            styles['nav-button'],
+                            styles['nav-button--previous'],
+                        ].join(' ')}
+                        disabled={!previousBattleKey}
+                        onClick={handlePreviousBattleClick}
+                        type="button"
+                    >
+                        <ChevronIcon />
+                    </button>
+                    <div className={styles['battle-select']}>
+                        <Dropdown
+                            dense
+                            onChange={onSelectBattle}
+                            options={battleOptions}
+                            placeholder="Select a trainer…"
+                            searchable
+                            value={selectedBattle ?? ''}
+                        />
+                    </div>
+                    <button
+                        aria-label="Next required battle"
+                        className={[
+                            styles['nav-button'],
+                            styles['nav-button--next'],
+                        ].join(' ')}
+                        disabled={!nextBattleKey}
+                        onClick={handleNextBattleClick}
+                        type="button"
+                    >
+                        <ChevronIcon />
+                    </button>
+                </div>
             </div>
             {selectedBattle && (
                 <div className={styles.grid}>

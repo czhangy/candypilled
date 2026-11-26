@@ -28,13 +28,13 @@ const ROUTE_109: Location = {
                     y: 64.24,
                 },
                 {
-                    battleKey: 'sailor-edmond',
-                    x: 61.25,
+                    battleKey: 'tuber-f-hailey',
+                    x: 43.75,
                     y: 49.42,
                 },
                 {
-                    battleKey: 'tuber-f-hailey',
-                    x: 43.75,
+                    battleKey: 'sailor-edmond',
+                    x: 61.25,
                     y: 49.42,
                 },
                 {
@@ -89,30 +89,15 @@ const ROUTE_109: Location = {
             ],
             battles: [
                 {
-                    battleKey: 'tuber-f-austina',
-                    x: 71.25,
-                    y: 12.07,
-                },
-                {
-                    battleKey: 'tuber-f-gwen',
-                    x: 73.75,
-                    y: 14.84,
-                },
-                {
-                    battleKey: 'swimmer-m-david',
-                    x: 31.25,
-                    y: 25.95,
-                },
-                {
-                    battleKey: 'swimmer-f-alice',
-                    x: 63.75,
-                    y: 34.29,
-                },
-                {
                     battleKey: 'young-couple-mel-and-paul',
                     customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
                     x: 22.5,
                     y: 39.84,
+                },
+                {
+                    battleKey: 'bird-keeper-elijah',
+                    x: 43.75,
+                    y: 81.51,
                 },
                 {
                     battleKey: 'fisherman-carter',
@@ -120,9 +105,24 @@ const ROUTE_109: Location = {
                     y: 81.51,
                 },
                 {
-                    battleKey: 'bird-keeper-elijah',
-                    x: 43.75,
-                    y: 81.51,
+                    battleKey: 'swimmer-f-alice',
+                    x: 63.75,
+                    y: 34.29,
+                },
+                {
+                    battleKey: 'swimmer-m-david',
+                    x: 31.25,
+                    y: 25.95,
+                },
+                {
+                    battleKey: 'tuber-f-gwen',
+                    x: 73.75,
+                    y: 14.84,
+                },
+                {
+                    battleKey: 'tuber-f-austina',
+                    x: 71.25,
+                    y: 12.07,
                 },
             ],
         },

@@ -64,14 +64,14 @@ const ROUTE_205: Location = {
                     y: 59.44,
                 },
                 {
-                    battleKey: 'picnicker-siena',
-                    x: 73.54,
-                    y: 44.86,
-                },
-                {
                     battleKey: 'camper-zackary',
                     x: 45.41,
                     y: 51.11,
+                },
+                {
+                    battleKey: 'picnicker-siena',
+                    x: 73.54,
+                    y: 44.86,
                 },
                 {
                     battleKey: 'hiker-nicholas',

@@ -16,14 +16,20 @@ const ROUTE_125: Location = {
     ],
     battles: [
         {
+            battleKey: 'swimmer-m-nolen',
+            x: 9.38,
+            y: 78.36,
+        },
+        {
             battleKey: 'sailor-ernest',
             x: 26.88,
             y: 75.86,
         },
         {
-            battleKey: 'swimmer-m-nolen',
-            x: 9.38,
-            y: 78.36,
+            battleKey: 'sr-and-jr-kim-and-iris',
+            x: 22.5,
+            y: 48.36,
+            customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
         },
         {
             battleKey: 'swimmer-f-sharon',
@@ -49,12 +55,6 @@ const ROUTE_125: Location = {
             battleKey: 'swimmer-m-stan',
             x: 56.88,
             y: 23.36,
-        },
-        {
-            battleKey: 'sr-and-jr-kim-and-iris',
-            x: 22.5,
-            y: 48.36,
-            customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
         },
     ],
 };

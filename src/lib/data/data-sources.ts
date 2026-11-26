@@ -16,6 +16,7 @@ export const VANILLA_DATA_SOURCE: GameDataSource = {
     pokemon: POKEMON,
     moves: MOVES,
     items: ITEMS,
+    usesGen6TypeChart: false,
 };
 
 // Items are unchanged from vanilla Platinum (confirmed — no override table
@@ -26,6 +27,7 @@ export const RENEGADE_PLATINUM_DATA_SOURCE: GameDataSource = {
     pokemon: RENEGADE_PLATINUM_POKEMON,
     moves: RENEGADE_PLATINUM_MOVES,
     items: ITEMS,
+    usesGen6TypeChart: true,
     overrides: {
         pokemon: POKEMON_OVERRIDES,
         moves: MOVE_OVERRIDES,

@@ -18,13 +18,18 @@ const PETALBURG_GYM: Location = {
             y: 68.44,
         },
         {
+            battleKey: 'cooltrainer-m-parker',
+            x: 14.1,
+            y: 48.65,
+        },
+        {
             battleKey: 'cooltrainer-f-lori',
             x: 49.9,
             y: 48.65,
         },
         {
-            battleKey: 'cooltrainer-m-parker',
-            x: 14.1,
+            battleKey: 'cooltrainer-m-george',
+            x: 85.52,
             y: 48.65,
         },
         {
@@ -36,11 +41,6 @@ const PETALBURG_GYM: Location = {
             battleKey: 'cooltrainer-m-berke',
             x: 67.81,
             y: 28.56,
-        },
-        {
-            battleKey: 'cooltrainer-m-george',
-            x: 85.52,
-            y: 48.65,
         },
         {
             battleKey: 'leader-norman',

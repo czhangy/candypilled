@@ -14,16 +14,6 @@ const WAYWARD_CAVE: Location = {
             tagPartner: [{ battleKey: 'pkmn-trainer-mira-tag' }],
             battles: [
                 {
-                    battleKey: 'camper-diego',
-                    x: 2.64,
-                    y: 24.25,
-                },
-                {
-                    battleKey: 'picnicker-tori',
-                    x: 5.76,
-                    y: 24.25,
-                },
-                {
                     battleKey: 'hiker-reginald',
                     x: 18.26,
                     y: 65.62,
@@ -42,6 +32,16 @@ const WAYWARD_CAVE: Location = {
                     battleKey: 'youngster-wayne',
                     x: 5.76,
                     y: 72.52,
+                },
+                {
+                    battleKey: 'camper-diego',
+                    x: 2.64,
+                    y: 24.25,
+                },
+                {
+                    battleKey: 'picnicker-tori',
+                    x: 5.76,
+                    y: 24.25,
                 },
                 {
                     battleKey: 'picnicker-ana',

@@ -16,18 +16,6 @@ const ROUTE_110: Location = {
     ],
     battles: [
         {
-            battleKey: 'pkmn-trainer-may-route-110',
-            gender: 'male',
-            x: 86.25,
-            y: 54.28,
-        },
-        {
-            battleKey: 'pkmn-trainer-brendan-route-110',
-            gender: 'female',
-            x: 86.25,
-            y: 54.28,
-        },
-        {
             battleKey: 'pokefan-f-isabel',
             x: 26.25,
             y: 76.34,
@@ -41,6 +29,18 @@ const ROUTE_110: Location = {
             battleKey: 'youngster-timmy',
             x: 83.75,
             y: 69.34,
+        },
+        {
+            battleKey: 'pkmn-trainer-may-route-110',
+            gender: 'male',
+            x: 86.25,
+            y: 54.28,
+        },
+        {
+            battleKey: 'pkmn-trainer-brendan-route-110',
+            gender: 'female',
+            x: 86.25,
+            y: 54.28,
         },
         {
             battleKey: 'collector-edwin',

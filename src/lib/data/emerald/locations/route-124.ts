@@ -47,13 +47,13 @@ const ROUTE_124: Location = {
             y: 72.93,
         },
         {
-            battleKey: 'triathlete-swimmer-f-isabella',
-            x: 86.88,
+            battleKey: 'swimmer-m-roland',
+            x: 76.88,
             y: 92.93,
         },
         {
-            battleKey: 'swimmer-m-roland',
-            x: 76.88,
+            battleKey: 'triathlete-swimmer-f-isabella',
+            x: 86.88,
             y: 92.93,
         },
     ],

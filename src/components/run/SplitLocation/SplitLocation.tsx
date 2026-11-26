@@ -543,6 +543,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                     game={game}
                                     generation={game.generation}
                                     isTagPartner
+                                    mode="link"
                                     onSelectAbility={onSelectAbility}
                                     onSelectItem={onSelectItem}
                                     onSelectMove={onSelectMove}
@@ -559,6 +560,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         battle={selectedBattle}
                                         game={game}
                                         generation={game.generation}
+                                        mode="link"
                                         onSelectAbility={onSelectAbility}
                                         onSelectItem={onSelectItem}
                                         onSelectMove={onSelectMove}

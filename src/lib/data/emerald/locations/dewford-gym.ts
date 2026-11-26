@@ -13,9 +13,9 @@ const DEWFORD_GYM: Location = {
             y: 90.51,
         },
         {
-            battleKey: 'battle-girl-lilith',
-            x: 91.67,
-            y: 33.37,
+            battleKey: 'black-belt-takao',
+            x: 13.89,
+            y: 65.51,
         },
         {
             battleKey: 'sailor-brenden',
@@ -23,9 +23,9 @@ const DEWFORD_GYM: Location = {
             y: 44.08,
         },
         {
-            battleKey: 'black-belt-takao',
-            x: 13.89,
-            y: 65.51,
+            battleKey: 'battle-girl-lilith',
+            x: 91.67,
+            y: 33.37,
         },
         {
             battleKey: 'black-belt-cristian',

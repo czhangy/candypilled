@@ -121,10 +121,9 @@ export default class EvolutionHelpers {
     /**
      * For each other stage in slug's line, earlier or later (forms
      * included), its level-up moves in version that slug learns at a
-     * different level, plus those neither slug nor any later stage can learn
-     * by any method (the stage's lostMoves), plus slug's own level-up moves
-     * the stage can't learn by any method (gainedMoves). Stages with none
-     * are omitted.
+     * different level, plus those slug can't learn by any method (the
+     * stage's lostMoves), plus slug's own level-up moves the stage can't
+     * learn by any method (gainedMoves). Stages with none are omitted.
      */
     static getLearnsetDifferences(
         dataSource: GameDataSource,
@@ -191,11 +190,7 @@ export default class EvolutionHelpers {
         };
         findStep(line)?.evolvesTo.forEach(collect);
 
-        const learnableSlugs = new Set(
-            [slug, ...laterStages].flatMap((stage) =>
-                getLearnset(stage).map((move) => move.slug)
-            )
-        );
+        const ownSlugs = new Set(ownLearnset.map((move) => move.slug));
         const earlierStages = (findAncestors(line, []) ?? []).flatMap((step) =>
             PokemonHelpers.getPokemonForms(dataSource, step.slug)
         );
@@ -209,7 +204,7 @@ export default class EvolutionHelpers {
                     (move) => move.method === 'level-up'
                 );
                 const lostMoves = levelUpMoves
-                    .filter((move) => !learnableSlugs.has(move.slug))
+                    .filter((move) => !ownSlugs.has(move.slug))
                     .map((move) => move.slug);
                 const stageSlugs = new Set(
                     getLearnset(stage).map((move) => move.slug)

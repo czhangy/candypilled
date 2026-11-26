@@ -113,15 +113,15 @@ const VICTORY_ROAD: Location = {
                     y: 57.4,
                 },
                 {
-                    battleKey: 'ace-trainer-henry',
-                    x: 80.8,
-                    y: 26.7,
-                },
-                {
                     battleKey: 'double-team-jo-and-pat',
                     customHeight: GEN_4_TRUE_DOUBLE_HEIGHT,
                     x: 83.3,
                     y: 86.8,
+                },
+                {
+                    battleKey: 'ace-trainer-henry',
+                    x: 80.8,
+                    y: 26.7,
                 },
                 {
                     battleKey: 'dragon-tamer-ondrej',

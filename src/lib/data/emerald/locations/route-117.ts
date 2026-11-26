@@ -17,15 +17,15 @@ const ROUTE_117: Location = {
     ],
     battles: [
         {
-            battleKey: 'triathlete-runner-m-dylan',
-            x: 64.17,
-            y: 81.72,
-        },
-        {
             battleKey: 'sr-and-jr-anna-and-meg',
             customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
             x: 71.67,
             y: 31.72,
+        },
+        {
+            battleKey: 'triathlete-runner-m-dylan',
+            x: 64.17,
+            y: 81.72,
         },
         {
             battleKey: 'pkmn-breeder-m-isaac',
@@ -38,13 +38,8 @@ const ROUTE_117: Location = {
             y: 66.72,
         },
         {
-            battleKey: 'bug-maniac-derek',
-            x: 29.17,
-            y: 61.72,
-        },
-        {
-            battleKey: 'psychic-f-brandi',
-            x: 25.83,
+            battleKey: 'battle-girl-aisha',
+            x: 35.83,
             y: 21.72,
         },
         {
@@ -53,9 +48,14 @@ const ROUTE_117: Location = {
             y: 21.72,
         },
         {
-            battleKey: 'battle-girl-aisha',
-            x: 35.83,
+            battleKey: 'psychic-f-brandi',
+            x: 25.83,
             y: 21.72,
+        },
+        {
+            battleKey: 'bug-maniac-derek',
+            x: 29.17,
+            y: 61.72,
         },
         {
             battleKey: 'pkmn-breeder-f-lydia',

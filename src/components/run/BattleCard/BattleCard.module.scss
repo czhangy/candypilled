@@ -70,11 +70,11 @@
             }
         }
 
+        .nav-button,
         .notes-button {
             align-items: center;
             background: $background-light;
             border: 1px solid $border-subtle;
-            border-radius: 0 0.25rem 0 0;
             color: $text-dim;
             cursor: pointer;
             display: flex;
@@ -91,7 +91,7 @@
             }
 
             @media (hover: hover) {
-                &:hover {
+                &:hover:not(:disabled) {
                     color: var(--accent-color);
                 }
             }
@@ -99,6 +99,25 @@
             @media (prefers-reduced-motion: reduce) {
                 transition: none;
             }
+        }
+
+        .nav-button {
+            &:disabled {
+                cursor: default;
+                opacity: 0.4;
+            }
+
+            &--previous svg {
+                transform: rotate(90deg);
+            }
+
+            &--next svg {
+                transform: rotate(-90deg);
+            }
+        }
+
+        .notes-button {
+            border-radius: 0 0.25rem 0 0;
         }
     }
 

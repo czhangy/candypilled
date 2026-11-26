@@ -24,6 +24,11 @@ const ROUTE_115: Location = {
                     y: 44.43,
                 },
                 {
+                    battleKey: 'battle-girl-cyndy',
+                    x: 38.75,
+                    y: 38.22,
+                },
+                {
                     battleKey: 'collector-hector',
                     x: 61.25,
                     y: 63.22,
@@ -32,11 +37,6 @@ const ROUTE_115: Location = {
                     battleKey: 'psychic-f-marlene',
                     x: 71.25,
                     y: 63.22,
-                },
-                {
-                    battleKey: 'battle-girl-cyndy',
-                    x: 38.75,
-                    y: 38.22,
                 },
             ],
         },
@@ -54,11 +54,6 @@ const ROUTE_115: Location = {
             ],
             battles: [
                 {
-                    battleKey: 'ninja-boy-jaiden',
-                    x: 28.75,
-                    y: 30.86,
-                },
-                {
                     battleKey: 'expert-m-timothy',
                     x: 13.75,
                     y: 38.36,
@@ -72,6 +67,11 @@ const ROUTE_115: Location = {
                     battleKey: 'black-belt-koichi',
                     x: 48.75,
                     y: 38.36,
+                },
+                {
+                    battleKey: 'ninja-boy-jaiden',
+                    x: 28.75,
+                    y: 30.86,
                 },
                 {
                     battleKey: 'psychic-f-alix',

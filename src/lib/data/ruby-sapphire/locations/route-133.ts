@@ -14,11 +14,11 @@ const ROUTE_133: Location = {
         { method: EncounterMethod.Surf, split: 'Winona' },
     ],
     battles: [
-        { battleKey: 'swimmer-m-franklin', x: 8.12, y: 10.86 },
-        { battleKey: 'cooltrainer-m-warren', x: 9.38, y: 35.86 },
-        { battleKey: 'bird-keeper-beck', x: 46.88, y: 40.86 },
         { battleKey: 'swimmer-f-debra', x: 86.88, y: 60.86 },
         { battleKey: 'swimmer-f-linda', x: 85.62, y: 60.86 },
+        { battleKey: 'bird-keeper-beck', x: 46.88, y: 40.86 },
+        { battleKey: 'cooltrainer-m-warren', x: 9.38, y: 35.86 },
+        { battleKey: 'swimmer-m-franklin', x: 8.12, y: 10.86 },
     ],
 };
 

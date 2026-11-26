@@ -38,14 +38,14 @@ const WAYWARD_CAVE: Location = {
                     y: 72.7,
                 },
                 {
-                    battleKey: 'camper-diego',
-                    x: 2.6,
-                    y: 24.4,
+                    battleKey: 'hiker-reginald',
+                    x: 18.2,
+                    y: 65.4,
                 },
                 {
-                    battleKey: 'picnicker-tori',
-                    x: 5.9,
-                    y: 24.4,
+                    battleKey: 'hiker-lorenzo',
+                    x: 21.5,
+                    y: 65.4,
                 },
                 {
                     battleKey: 'lass-cassidy',
@@ -58,14 +58,14 @@ const WAYWARD_CAVE: Location = {
                     y: 72.6,
                 },
                 {
-                    battleKey: 'hiker-reginald',
-                    x: 18.2,
-                    y: 65.4,
+                    battleKey: 'camper-diego',
+                    x: 2.6,
+                    y: 24.4,
                 },
                 {
-                    battleKey: 'hiker-lorenzo',
-                    x: 21.5,
-                    y: 65.4,
+                    battleKey: 'picnicker-tori',
+                    x: 5.9,
+                    y: 24.4,
                 },
                 {
                     battleKey: 'picnicker-ana',

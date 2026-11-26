@@ -26,6 +26,18 @@ const ROUTE_110: Location = {
             y: 69.34,
         },
         {
+            battleKey: 'pkmn-trainer-may-route-110',
+            gender: 'male',
+            x: 86.25,
+            y: 54.34,
+        },
+        {
+            battleKey: 'pkmn-trainer-brendan-route-110',
+            gender: 'female',
+            x: 86.25,
+            y: 54.34,
+        },
+        {
             battleKey: 'collector-edwin',
             x: 58.75,
             y: 40.34,
@@ -39,18 +51,6 @@ const ROUTE_110: Location = {
             battleKey: 'fisherman-dale',
             x: 26.25,
             y: 19.34,
-        },
-        {
-            battleKey: 'pkmn-trainer-may-route-110',
-            gender: 'male',
-            x: 86.25,
-            y: 54.34,
-        },
-        {
-            battleKey: 'pkmn-trainer-brendan-route-110',
-            gender: 'female',
-            x: 86.25,
-            y: 54.34,
         },
         {
             battleKey: 'psychic-f-jaclyn',

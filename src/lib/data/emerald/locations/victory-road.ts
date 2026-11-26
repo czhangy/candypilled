@@ -20,14 +20,14 @@ const VICTORY_ROAD: Location = {
                     y: 54.1,
                 },
                 {
-                    battleKey: 'cooltrainer-m-albert',
-                    x: 59.78,
-                    y: 76.32,
-                },
-                {
                     battleKey: 'cooltrainer-f-hope',
                     x: 14.13,
                     y: 34.1,
+                },
+                {
+                    battleKey: 'cooltrainer-m-albert',
+                    x: 59.78,
+                    y: 76.32,
                 },
                 {
                     battleKey: 'cooltrainer-m-edgar',
@@ -64,11 +64,6 @@ const VICTORY_ROAD: Location = {
                     y: 39.82,
                 },
                 {
-                    battleKey: 'cooltrainer-f-michelle',
-                    x: 11.96,
-                    y: 68.85,
-                },
-                {
                     battleKey: 'cooltrainer-m-mitchell',
                     x: 31.52,
                     y: 52.72,
@@ -77,6 +72,11 @@ const VICTORY_ROAD: Location = {
                     battleKey: 'cooltrainer-f-halle',
                     x: 31.52,
                     y: 65.62,
+                },
+                {
+                    battleKey: 'cooltrainer-f-michelle',
+                    x: 11.96,
+                    y: 68.85,
                 },
             ],
             encountersKey: 'hoenn-victory-road-b1f',
@@ -94,6 +94,11 @@ const VICTORY_ROAD: Location = {
                     battleKey: 'cooltrainer-f-julie',
                     x: 77.17,
                     y: 72.08,
+                },
+                {
+                    battleKey: 'cooltrainer-m-vito',
+                    x: 33.7,
+                    y: 20.46,
                 },
                 {
                     battleKey: 'cooltrainer-m-owen',
@@ -114,11 +119,6 @@ const VICTORY_ROAD: Location = {
                     battleKey: 'cooltrainer-f-caroline',
                     x: 5.43,
                     y: 55.95,
-                },
-                {
-                    battleKey: 'cooltrainer-m-vito',
-                    x: 33.7,
-                    y: 20.46,
                 },
             ],
             encountersKey: 'hoenn-victory-road-b2f',

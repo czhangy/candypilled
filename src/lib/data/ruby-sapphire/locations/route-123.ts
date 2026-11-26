@@ -12,15 +12,15 @@ const ROUTE_123: Location = {
             mapAnchor: MapAnchor.Left,
             battles: [
                 {
+                    battleKey: 'aroma-lady-violet',
+                    x: 37.71,
+                    y: 46.72,
+                },
+                {
                     battleKey: 'twins-miu-and-yuki',
                     x: 86.71,
                     y: 67.02,
                     customWidth: GEN_3_TRUE_DOUBLE_WIDTH,
-                },
-                {
-                    battleKey: 'aroma-lady-violet',
-                    x: 37.71,
-                    y: 46.72,
                 },
             ],
         },
@@ -37,6 +37,11 @@ const ROUTE_123: Location = {
                 { method: EncounterMethod.Surf, split: 'Winona' },
             ],
             battles: [
+                {
+                    battleKey: 'psychic-m-cameron',
+                    x: 98.66,
+                    y: 61.72,
+                },
                 {
                     battleKey: 'hex-maniac-kindra',
                     x: 53.07,
@@ -56,11 +61,6 @@ const ROUTE_123: Location = {
                     battleKey: 'psychic-f-jacki',
                     x: 20,
                     y: 81.72,
-                },
-                {
-                    battleKey: 'psychic-m-cameron',
-                    x: 98.66,
-                    y: 61.72,
                 },
             ],
         },

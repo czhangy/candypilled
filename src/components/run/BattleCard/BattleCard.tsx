@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import ConfirmModal from '@/components/common/ConfirmModal/ConfirmModal';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
+import ChevronIcon from '@/lib/icons/ChevronIcon';
 import EditIcon from '@/lib/icons/EditIcon';
 import { Battle, Game } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
@@ -16,17 +17,33 @@ import PokemonSlot from './PokemonSlot/PokemonSlot';
 import TrainerPanel from './TrainerPanel/TrainerPanel';
 import TrainerSprite from './TrainerSprite/TrainerSprite';
 
-type BattleCardProps = {
+// 'link' mode's species, move, ability and item buttons open their reference
+// pages. 'select' mode has no links: it reports which team member (an index
+// into the battle's combined team) or move slot was clicked.
+type BattleCardProps = (
+    | {
+          mode: 'link';
+          onSelectAbility: (slug: string) => void;
+          onSelectItem: (slug: string) => void;
+          onSelectMove: (slug: string) => void;
+          onSelectSpecies: (species: string) => void;
+          onSelectTrainer?: (battleKey: string) => void;
+          onWipeBattle?: (battleKey: string) => void;
+      }
+    | {
+          mode: 'select';
+          // The neighboring required battles, undefined when there is none.
+          nextBattleKey: string | undefined;
+          onSelectBattle: (battleKey: string) => void;
+          onSelectMember: (memberIndex: number) => void;
+          onSelectMove: (memberIndex: number, moveIndex: number) => void;
+          previousBattleKey: string | undefined;
+      }
+) & {
     battle: Battle;
     game: Game;
     generation: number;
     isTagPartner?: boolean;
-    onSelectAbility: (slug: string) => void;
-    onSelectItem: (slug: string) => void;
-    onSelectMove: (slug: string) => void;
-    onSelectSpecies: (species: string) => void;
-    onSelectTrainer?: (battleKey: string) => void;
-    onWipeBattle?: (battleKey: string) => void;
     starter: string;
     variant: string;
     version: string;
@@ -37,15 +54,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
     game,
     generation,
     isTagPartner,
-    onSelectAbility,
-    onSelectItem,
-    onSelectMove,
-    onSelectSpecies,
-    onSelectTrainer,
-    onWipeBattle,
     starter,
     variant,
     version,
+    ...rest
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -59,6 +71,34 @@ const BattleCard: React.FC<BattleCardProps> = ({
 
     const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
     const [isWipeConfirmOpen, setIsWipeConfirmOpen] = useState(false);
+
+    // -------------------------------------------------------------------------
+    // COMPUTATIONS
+    // -------------------------------------------------------------------------
+
+    const getSlotHandlers = (
+        firstMemberIndex: number,
+        slotIndex: number
+    ): Pick<
+        React.ComponentProps<typeof PokemonSlot>,
+        'onSelectAbility' | 'onSelectItem' | 'onSelectMove' | 'onSelectSpecies'
+    > => {
+        if (rest.mode === 'link') {
+            return {
+                onSelectAbility: rest.onSelectAbility,
+                onSelectItem: rest.onSelectItem,
+                onSelectMove: rest.onSelectMove,
+                onSelectSpecies: rest.onSelectSpecies,
+            };
+        }
+
+        const memberIndex = firstMemberIndex + slotIndex;
+        return {
+            onSelectMove: (_slug: string, moveIndex: number) =>
+                rest.onSelectMove(memberIndex, moveIndex),
+            onSelectSpecies: () => rest.onSelectMember(memberIndex),
+        };
+    };
 
     // -------------------------------------------------------------------------
     // RENDERING
@@ -97,6 +137,18 @@ const BattleCard: React.FC<BattleCardProps> = ({
     // HANDLERS
     // -------------------------------------------------------------------------
 
+    const handlePreviousBattleClick = (): void => {
+        if (rest.mode === 'select' && rest.previousBattleKey) {
+            rest.onSelectBattle(rest.previousBattleKey);
+        }
+    };
+
+    const handleNextBattleClick = (): void => {
+        if (rest.mode === 'select' && rest.nextBattleKey) {
+            rest.onSelectBattle(rest.nextBattleKey);
+        }
+    };
+
     const handleNotesButtonClick = (): void => {
         setIsNotesModalOpen(true);
     };
@@ -114,7 +166,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
     };
 
     const handleWipeConfirm = (): void => {
-        onWipeBattle?.(BattleHelpers.getBattleKey(battle));
+        if (rest.mode !== 'link') return;
+
+        rest.onWipeBattle?.(BattleHelpers.getBattleKey(battle));
     };
 
     // -------------------------------------------------------------------------
@@ -133,12 +187,26 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         <Image alt="" fill sizes="1.5rem" src={badge} />
                     </div>
                 </Tooltip>
+                {rest.mode === 'select' && (
+                    <button
+                        aria-label="Previous required battle"
+                        className={[
+                            styles['nav-button'],
+                            styles['nav-button--previous'],
+                        ].join(' ')}
+                        disabled={!rest.previousBattleKey}
+                        onClick={handlePreviousBattleClick}
+                        type="button"
+                    >
+                        <ChevronIcon />
+                    </button>
+                )}
                 <div className={styles['trainer-header']}>
-                    {onSelectTrainer ? (
+                    {rest.mode === 'link' && rest.onSelectTrainer ? (
                         <button
                             className={styles['trainer-name']}
                             onClick={() =>
-                                onSelectTrainer(
+                                rest.onSelectTrainer?.(
                                     BattleHelpers.getBattleKey(battle)
                                 )
                             }
@@ -152,6 +220,20 @@ const BattleCard: React.FC<BattleCardProps> = ({
                         </span>
                     )}
                 </div>
+                {rest.mode === 'select' && (
+                    <button
+                        aria-label="Next required battle"
+                        className={[
+                            styles['nav-button'],
+                            styles['nav-button--next'],
+                        ].join(' ')}
+                        disabled={!rest.nextBattleKey}
+                        onClick={handleNextBattleClick}
+                        type="button"
+                    >
+                        <ChevronIcon />
+                    </button>
+                )}
                 <button
                     aria-label="Add notes"
                     className={styles['notes-button']}
@@ -189,9 +271,17 @@ const BattleCard: React.FC<BattleCardProps> = ({
                 {rows.map((row, rowIndex) => {
                     const isLastRow = rowIndex === rows.length - 1;
                     const handleRowWipeClick =
-                        rowIndex === 0 && onWipeBattle
+                        rowIndex === 0 &&
+                        rest.mode === 'link' &&
+                        rest.onWipeBattle
                             ? handleWipeButtonClick
                             : undefined;
+                    const firstMemberIndex = rows
+                        .slice(0, rowIndex)
+                        .reduce(
+                            (count, previous) => count + previous.team.length,
+                            0
+                        );
                     const position = !isStacked
                         ? 'single'
                         : isLastRow
@@ -238,6 +328,9 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                         dataSource={game.dataSource}
                                         generation={generation}
                                         hofDisplay={false}
+                                        isMetadataReadOnly={
+                                            rest.mode === 'select'
+                                        }
                                         isReadOnly={false}
                                         isTagPartner={!!isTagPartner}
                                         key={
@@ -245,10 +338,10 @@ const BattleCard: React.FC<BattleCardProps> = ({
                                                 ? `${rowIndex}-${pokemon.slug}-${index}`
                                                 : `${rowIndex}-empty-${index}`
                                         }
-                                        onSelectAbility={onSelectAbility}
-                                        onSelectItem={onSelectItem}
-                                        onSelectMove={onSelectMove}
-                                        onSelectSpecies={onSelectSpecies}
+                                        {...getSlotHandlers(
+                                            firstMemberIndex,
+                                            index
+                                        )}
                                         pokemon={pokemon}
                                         position={position}
                                         variant={variant}

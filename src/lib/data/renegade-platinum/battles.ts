@@ -14413,7 +14413,7 @@ export const BATTLES: Record<string, BattleData> = {
     },
     'galactic-grunt-m-valor-lakefront': {
         metadata: [BattleMetadata.Required],
-        split: 'Wake',
+        split: 'Byron',
         trainerClass: 'galactic-grunt-m',
         name: '1',
         teams: [

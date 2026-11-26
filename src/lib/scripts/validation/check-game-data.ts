@@ -156,6 +156,95 @@ const checkBattleMetadata = (game: Game): string[] => {
         });
 };
 
+const PROGRESSION_METADATA = [
+    BattleMetadata.Required,
+    BattleMetadata.Boss,
+    BattleMetadata.Choice,
+];
+
+// Every battle placed in one of game's locations for game itself (a
+// placement restricted to another version doesn't count).
+const getPlacements = (
+    game: Game
+): { battleKey: string; locationName: string }[] =>
+    game.locations.flatMap((location) =>
+        (location.subareas
+            ? location.subareas.flatMap((subarea) => subarea.battles ?? [])
+            : (location.battles ?? [])
+        )
+            .filter((battle) => !battle.game || battle.game === game.name)
+            .map((battle) => ({
+                battleKey: battle.battleKey,
+                locationName: location.name,
+            }))
+    );
+
+const getPlacedKeys = (games: Game[]): Set<string> =>
+    new Set(
+        games.flatMap(getPlacements).map((placement) => placement.battleKey)
+    );
+
+// A Required, Boss or Choice battle must be placed in a location some split
+// lists. One that only a sibling version places (Ruby/Sapphire share a battle
+// table) isn't this game's to wire. Only reports; never wires.
+const checkSplitWiring = (game: Game, siblings: Game[]): string[] => {
+    const wiredLocations = new Set(
+        game.splits.flatMap((split) =>
+            split.locations.map((location) => location.name)
+        )
+    );
+    const placements = getPlacements(game);
+    const siblingBattleKeys = getPlacedKeys(siblings);
+
+    return Object.entries(game.battles)
+        .filter(([, battle]) =>
+            battle.metadata.some((value) =>
+                PROGRESSION_METADATA.includes(value)
+            )
+        )
+        .flatMap(([key]) => {
+            const ownPlacements = placements.filter(
+                (placement) => placement.battleKey === key
+            );
+            if (
+                ownPlacements.some((placement) =>
+                    wiredLocations.has(placement.locationName)
+                ) ||
+                (ownPlacements.length === 0 && siblingBattleKeys.has(key))
+            ) {
+                return [];
+            }
+
+            return ownPlacements.length === 0
+                ? `battle ${key}: not placed in any location`
+                : `battle ${key}: only in locations no split lists (${ownPlacements.map((placement) => placement.locationName).join(', ')})`;
+        });
+};
+
+// battleOrder must list each battle placed in one of the game's locations
+// exactly once. A battle only a sibling version places (Ruby/Sapphire share a
+// battleOrder) may be listed too, but nothing placed nowhere.
+const checkBattleOrder = (game: Game, siblings: Game[]): string[] => {
+    const placedKeys = getPlacedKeys([game]);
+    const siblingKeys = getPlacedKeys(siblings);
+    const listedKeys = new Set<string>();
+    const duplicated = new Set<string>();
+    game.battleOrder.forEach((key) => {
+        if (listedKeys.has(key)) duplicated.add(key);
+        listedKeys.add(key);
+    });
+
+    return [
+        ...[...placedKeys]
+            .filter((key) => !listedKeys.has(key))
+            .map((key) => `battle ${key}: missing from battleOrder`),
+        ...[...listedKeys]
+            .filter((key) => !placedKeys.has(key) && !siblingKeys.has(key))
+            .map((key) => `battleOrder: "${key}" isn't placed in a location`),
+        ...[...duplicated].map((key) => `battleOrder: duplicate "${key}"`),
+    ];
+};
+
 const DOUBLE_METADATA = [
     BattleMetadata.Double,
     BattleMetadata.TrueDouble,
@@ -276,7 +365,7 @@ const checkMetLocations = (
     ];
 };
 
-const checkGame = (game: Game): Report => {
+const checkGame = (game: Game, games: Game[]): Report => {
     const config = GAME_CHECK_CONFIGS[game.name];
     if (!config) {
         return {
@@ -295,6 +384,11 @@ const checkGame = (game: Game): Report => {
     }
 
     const hasMetTable = Object.keys(game.metLocationById).length > 0;
+    const siblings = games.filter(
+        (other) =>
+            other !== game &&
+            GAME_CHECK_CONFIGS[other.name]?.dataFolder === config.dataFolder
+    );
 
     return {
         title: game.name,
@@ -303,6 +397,8 @@ const checkGame = (game: Game): Report => {
             ...checkSplitNames(game),
             ...checkTrainerClasses(game),
             ...checkBattleMetadata(game),
+            ...checkSplitWiring(game, siblings),
+            ...checkBattleOrder(game, siblings),
             ...checkAiFlags(game),
             ...checkMoveAi(game),
             ...(hasMetTable
@@ -354,7 +450,7 @@ const checkGameData = async (): Promise<void> => {
     });
 
     const reports = [
-        ...games.map(checkGame),
+        ...games.map((game) => checkGame(game, games)),
         ...(await Promise.all(
             [...gamesByFolder].map(([folder, folderGames]) =>
                 checkLocationFiles(folder, folderGames)

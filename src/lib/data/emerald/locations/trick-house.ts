@@ -41,11 +41,6 @@ const TRICK_HOUSE: Location = {
             mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    battleKey: 'school-kid-m-ted',
-                    x: 90.0,
-                    y: 47.02,
-                },
-                {
                     battleKey: 'school-kid-m-paul',
                     x: 70.0,
                     y: 78.84,
@@ -54,6 +49,11 @@ const TRICK_HOUSE: Location = {
                     battleKey: 'school-kid-f-georgia',
                     x: 76.67,
                     y: 42.47,
+                },
+                {
+                    battleKey: 'school-kid-m-ted',
+                    x: 90.0,
+                    y: 47.02,
                 },
             ],
         },
@@ -68,14 +68,14 @@ const TRICK_HOUSE: Location = {
                     y: 87.93,
                 },
                 {
-                    battleKey: 'picnicker-martha',
-                    x: 30.0,
-                    y: 19.74,
-                },
-                {
                     battleKey: 'hiker-alan',
                     x: 70.0,
                     y: 47.02,
+                },
+                {
+                    battleKey: 'picnicker-martha',
+                    x: 30.0,
+                    y: 19.74,
                 },
             ],
         },
@@ -85,6 +85,11 @@ const TRICK_HOUSE: Location = {
             mapAnchor: MapAnchor.Center,
             battles: [
                 {
+                    battleKey: 'black-belt-yuji',
+                    x: 16.67,
+                    y: 65.2,
+                },
+                {
                     battleKey: 'battle-girl-cora',
                     x: 16.67,
                     y: 10.65,
@@ -93,11 +98,6 @@ const TRICK_HOUSE: Location = {
                     battleKey: 'battle-girl-paula',
                     x: 96.67,
                     y: 33.38,
-                },
-                {
-                    battleKey: 'black-belt-yuji',
-                    x: 16.67,
-                    y: 65.2,
                 },
             ],
         },
@@ -117,14 +117,14 @@ const TRICK_HOUSE: Location = {
                     y: 42.47,
                 },
                 {
-                    battleKey: 'bird-keeper-benny',
-                    x: 76.67,
-                    y: 47.02,
-                },
-                {
                     battleKey: 'pkmn-ranger-m-sebastian',
                     x: 30.0,
                     y: 24.29,
+                },
+                {
+                    battleKey: 'bird-keeper-benny',
+                    x: 76.67,
+                    y: 47.02,
                 },
             ],
         },
@@ -134,24 +134,14 @@ const TRICK_HOUSE: Location = {
             mapAnchor: MapAnchor.Center,
             battles: [
                 {
-                    battleKey: 'psychic-m-joshua',
-                    x: 63.33,
-                    y: 92.47,
-                },
-                {
-                    battleKey: 'psychic-f-alexis',
-                    x: 70.0,
-                    y: 10.65,
-                },
-                {
                     battleKey: 'hex-maniac-patricia',
                     x: 56.67,
                     y: 78.84,
                 },
                 {
-                    battleKey: 'psychic-m-alvaro',
+                    battleKey: 'psychic-m-joshua',
                     x: 63.33,
-                    y: 10.65,
+                    y: 92.47,
                 },
                 {
                     battleKey: 'psychic-f-mariela',
@@ -162,6 +152,16 @@ const TRICK_HOUSE: Location = {
                     battleKey: 'gentleman-everett',
                     x: 63.33,
                     y: 56.11,
+                },
+                {
+                    battleKey: 'psychic-m-alvaro',
+                    x: 63.33,
+                    y: 10.65,
+                },
+                {
+                    battleKey: 'psychic-f-alexis',
+                    x: 70.0,
+                    y: 10.65,
                 },
             ],
         },

@@ -20,6 +20,11 @@ const ROUTE_118: Location = {
             ],
             battles: [
                 {
+                    battleKey: 'youngster-deandre',
+                    x: 31.25,
+                    y: 36.72,
+                },
+                {
                     battleKey: 'aroma-lady-rose',
                     x: 31.25,
                     y: 61.72,
@@ -33,11 +38,6 @@ const ROUTE_118: Location = {
                     battleKey: 'guitarist-dalton',
                     x: 72.92,
                     y: 56.72,
-                },
-                {
-                    battleKey: 'youngster-deandre',
-                    x: 31.25,
-                    y: 36.72,
                 },
             ],
         },

@@ -15,24 +15,14 @@ const ROUTE_132: Location = {
     ],
     battles: [
         {
-            battleKey: 'swimmer-m-gilbert',
-            x: 50.62,
-            y: 33.36,
-        },
-        {
-            battleKey: 'swimmer-f-dana',
-            x: 13.12,
-            y: 15.86,
-        },
-        {
             battleKey: 'fisherman-ronald',
             x: 61.88,
             y: 70.86,
         },
         {
-            battleKey: 'black-belt-kiyo',
-            x: 11.88,
-            y: 38.36,
+            battleKey: 'swimmer-m-gilbert',
+            x: 50.62,
+            y: 33.36,
         },
         {
             battleKey: 'expert-m-paxton',
@@ -45,14 +35,24 @@ const ROUTE_132: Location = {
             y: 78.36,
         },
         {
+            battleKey: 'cooltrainer-m-jonathan',
+            x: 26.88,
+            y: 63.36,
+        },
+        {
             battleKey: 'expert-f-makayla',
             x: 26.88,
             y: 75.86,
         },
         {
-            battleKey: 'cooltrainer-m-jonathan',
-            x: 26.88,
-            y: 63.36,
+            battleKey: 'swimmer-f-dana',
+            x: 13.12,
+            y: 15.86,
+        },
+        {
+            battleKey: 'black-belt-kiyo',
+            x: 11.88,
+            y: 38.36,
         },
     ],
 };
