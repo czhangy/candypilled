@@ -31,6 +31,10 @@
         background: color-mix(in srgb, var(--marker-color) 40%, transparent);
     }
 
+    .trainer-marker__tooltip {
+        @include marker-tooltip;
+    }
+
     .trainer-marker__annotation {
         align-items: center;
         background: var(--marker-color);

@@ -1,3 +1,4 @@
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import CrownIcon from '@/lib/icons/CrownIcon';
 import DoubleExclamationMarkIcon from '@/lib/icons/DoubleExclamationMarkIcon';
 import ExclamationMarkIcon from '@/lib/icons/ExclamationMarkIcon';
@@ -50,6 +51,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
     const width = ((trainer.customWidth ?? defaultSize.width) / mapWidth) * 100;
     const height =
         ((trainer.customHeight ?? defaultSize.height) / mapHeight) * 100;
+    const fullName = BattleHelpers.getFullName(trainer, game);
     const metadata = game.battles[trainer.battleKey]?.metadata ?? [];
     const isBoss = metadata.includes(BattleMetadata.Boss);
     const isMiniboss = metadata.includes(BattleMetadata.Miniboss);
@@ -72,7 +74,7 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
 
     return (
         <button
-            aria-label={BattleHelpers.getFullName(trainer, game)}
+            aria-label={fullName}
             aria-pressed={isSelected}
             className={[
                 styles['trainer-marker'],
@@ -96,6 +98,13 @@ const TrainerMarker: React.FC<TrainerMarkerProps> = ({
             }
             type="button"
         >
+            <Tooltip
+                className={styles['trainer-marker__tooltip']}
+                position="center"
+                text={fullName}
+            >
+                {null}
+            </Tooltip>
             {isPersonalBest && (
                 <span className={styles['trainer-marker__annotation']}>
                     <CrownIcon />

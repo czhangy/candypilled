@@ -116,6 +116,17 @@
     }
 }
 
+// A marker's Tooltip trigger: its span covers the whole marker so the bubble
+// anchors to the marker's box.
+@mixin marker-tooltip {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 @mixin detail-tab {
     @include uppercase-label;
 
