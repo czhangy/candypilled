@@ -33,6 +33,9 @@ const MAUVILLE_GYM: Location = {
             y: 15.92,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Mauville City', width: 32, x: 50, y: 97.62 },
+    ],
 };
 
 export default MAUVILLE_GYM;

@@ -22,6 +22,11 @@ const ROUTE_127: Location = {
         { battleKey: 'triathlete-swimmer-m-caleb', x: 23.12, y: 85.43 },
         { battleKey: 'black-belt-koji', x: 79.38, y: 79.18 },
     ],
+    transitions: [
+        { height: 16, location: 'Mossdeep City', width: 160, x: 37.5, y: 0.63 },
+        { height: 400, location: 'Route 126', width: 16, x: 0.63, y: 55.63 },
+        { height: 16, location: 'Route 128', width: 368, x: 36.88, y: 99.38 },
+    ],
 };
 
 export default ROUTE_127;

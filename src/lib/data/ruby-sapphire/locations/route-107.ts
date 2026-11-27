@@ -42,6 +42,10 @@ const ROUTE_107: Location = {
             y: 31.72,
         },
     ],
+    transitions: [
+        { height: 96, location: 'Dewford Town', width: 16, x: 0.83, y: 55 },
+        { height: 224, location: 'Route 108', width: 16, x: 99.17, y: 45 },
+    ],
 };
 
 export default ROUTE_107;

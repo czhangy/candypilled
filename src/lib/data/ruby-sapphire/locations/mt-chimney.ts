@@ -54,6 +54,23 @@ const MT_CHIMNEY: Location = {
                     y: 13.5,
                 },
             ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Jagged Pass',
+                    width: 32,
+                    x: 52.5,
+                    y: 88.3,
+                },
+                {
+                    height: 16,
+                    location: 'Route 112',
+                    subarea: 'South',
+                    width: 32,
+                    x: 45,
+                    y: 77.66,
+                },
+            ],
         },
         {
             name: 'Post-Lavaridge',
@@ -79,6 +96,23 @@ const MT_CHIMNEY: Location = {
                     battleKey: 'beauty-melissa',
                     x: 36.25,
                     y: 15.62,
+                },
+            ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Jagged Pass',
+                    width: 32,
+                    x: 52.5,
+                    y: 88.3,
+                },
+                {
+                    height: 16,
+                    location: 'Route 112',
+                    subarea: 'South',
+                    width: 32,
+                    x: 45,
+                    y: 77.66,
                 },
             ],
         },

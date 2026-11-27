@@ -36,6 +36,10 @@ const ROUTE_102: Location = {
             y: 36.72,
         },
     ],
+    transitions: [
+        { height: 64, location: 'Petalburg City', width: 16, x: 1, y: 40 },
+        { height: 32, location: 'Oldale Town', width: 16, x: 99, y: 55 },
+    ],
 };
 
 export default ROUTE_102;

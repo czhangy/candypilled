@@ -64,6 +64,23 @@ const ROUTE_114: Location = {
             y: 81.68,
         },
     ],
+    transitions: [
+        {
+            height: 176,
+            location: 'Fallarbor Town',
+            width: 16,
+            x: 98.75,
+            y: 13.13,
+        },
+        {
+            height: 16,
+            location: 'Meteor Falls',
+            subarea: '1F',
+            width: 16,
+            x: 21.25,
+            y: 79.38,
+        },
+    ],
 };
 
 export default ROUTE_114;

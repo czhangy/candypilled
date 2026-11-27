@@ -445,6 +445,9 @@ export type AreaRef = {
 // but sized per transition since an exit can be a doorway or a whole route
 // edge.
 export type MapTransition = {
+    // Restricts this box to the matching Game.name, for an exit that only
+    // exists in one version (e.g. Lilycove's hideout door).
+    game?: string;
     // Box height, in px of the map image.
     height: number;
     // Destination Location.name.

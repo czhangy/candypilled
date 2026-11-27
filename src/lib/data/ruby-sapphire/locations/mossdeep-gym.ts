@@ -7,6 +7,9 @@ const MOSSDEEP_GYM: Location = {
     name: 'Mossdeep Gym',
     map: mossdeepGym,
     mapAnchor: MapAnchor.Bottom,
+    transitions: [
+        { height: 16, location: 'Mossdeep City', width: 32, x: 50, y: 98.33 },
+    ],
     battles: [
         { battleKey: 'psychic-m-preston', x: 12.5, y: 81.15 },
         { battleKey: 'psychic-f-maura', x: 47.5, y: 57.81 },

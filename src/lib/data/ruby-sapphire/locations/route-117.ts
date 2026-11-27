@@ -48,6 +48,16 @@ const ROUTE_117: Location = {
             y: 46.72,
         },
     ],
+    transitions: [
+        { height: 96, location: 'Mauville City', width: 16, x: 99.17, y: 45 },
+        {
+            height: 64,
+            location: 'Verdanturf Town',
+            width: 16,
+            x: 0.83,
+            y: 55,
+        },
+    ],
 };
 
 export default ROUTE_117;

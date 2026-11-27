@@ -6,6 +6,15 @@ const RUSTBORO_GYM: Location = {
     name: 'Rustboro Gym',
     map: rustboroGym,
     mapAnchor: MapAnchor.Center,
+    transitions: [
+        {
+            height: 16,
+            location: 'Rustboro City',
+            width: 32,
+            x: 54.55,
+            y: 97.37,
+        },
+    ],
     battles: [
         {
             battleKey: 'youngster-josh',

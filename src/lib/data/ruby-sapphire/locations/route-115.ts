@@ -40,6 +40,31 @@ const ROUTE_115: Location = {
                     y: 60.72,
                 },
             ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Route 115',
+                    subarea: 'North',
+                    width: 176,
+                    x: 23.75,
+                    y: 1.05,
+                },
+                {
+                    height: 16,
+                    location: 'Rustboro City',
+                    width: 80,
+                    x: 53.75,
+                    y: 98.95,
+                },
+                {
+                    height: 16,
+                    location: 'Meteor Falls',
+                    subarea: '1F',
+                    width: 16,
+                    x: 68.75,
+                    y: 10.53,
+                },
+            ],
         },
         {
             name: 'North',
@@ -63,6 +88,16 @@ const ROUTE_115: Location = {
                     battleKey: 'black-belt-koichi',
                     x: 43.75,
                     y: 43.36,
+                },
+            ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Route 115',
+                    subarea: 'South',
+                    width: 160,
+                    x: 22.5,
+                    y: 98.75,
                 },
             ],
         },

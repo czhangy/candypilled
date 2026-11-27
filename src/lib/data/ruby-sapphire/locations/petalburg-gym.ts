@@ -6,6 +6,15 @@ const PETALBURG_GYM: Location = {
     name: 'Petalburg Gym',
     map: petalburgGym,
     mapAnchor: MapAnchor.Bottom,
+    transitions: [
+        {
+            height: 16,
+            location: 'Petalburg City',
+            width: 32,
+            x: 51.43,
+            y: 98.2,
+        },
+    ],
     battles: [
         {
             battleKey: 'cooltrainer-m-randall',

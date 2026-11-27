@@ -35,6 +35,18 @@ const ROUTE_106: Location = {
             y: 56.72,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Route 105', width: 304, x: 24.38, y: 2.5 },
+        {
+            height: 16,
+            location: 'Granite Cave',
+            subarea: '1F',
+            width: 16,
+            x: 60.62,
+            y: 82.5,
+        },
+        { height: 16, location: 'Dewford Town', width: 160, x: 85, y: 97.5 },
+    ],
 };
 
 export default ROUTE_106;

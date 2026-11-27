@@ -37,6 +37,14 @@ const ROUTE_112: Location = {
             ],
             transitions: [
                 {
+                    height: 32,
+                    location: 'Route 111',
+                    subarea: 'South',
+                    width: 16,
+                    x: 98.75,
+                    y: 77.5,
+                },
+                {
                     height: 16,
                     location: 'Fiery Path',
                     width: 16,
@@ -49,14 +57,6 @@ const ROUTE_112: Location = {
                     width: 32,
                     x: 17.5,
                     y: 66.25,
-                },
-                {
-                    height: 96,
-                    location: 'Route 111',
-                    subarea: 'Desert',
-                    width: 16,
-                    x: 98.75,
-                    y: 72.5,
                 },
                 {
                     height: 96,

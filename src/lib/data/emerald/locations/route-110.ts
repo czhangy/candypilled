@@ -132,14 +132,6 @@ const ROUTE_110: Location = {
             x: 43.75,
             y: 99.5,
         },
-        {
-            height: 16,
-            location: 'Slateport City',
-            subarea: 'City',
-            width: 64,
-            x: 95,
-            y: 99.5,
-        },
     ],
 };
 

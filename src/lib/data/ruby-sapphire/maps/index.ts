@@ -17,6 +17,7 @@ export { default as desertRuins } from './desert-ruins.png';
 export { default as dewfordGym } from './dewford-gym.png';
 export { default as dewfordTown } from './dewford-town.png';
 export { default as everGrandeCity } from './ever-grande-city.png';
+export { default as everGrandeCityLobby } from './ever-grande-city-lobby.png';
 export { default as fallarborTown } from './fallarbor-town.png';
 export { default as fieryPath } from './fiery-path.png';
 export { default as fortreeCity } from './fortree-city.png';

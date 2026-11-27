@@ -27,6 +27,19 @@ const ROUTE_121: Location = {
         { battleKey: 'gentleman-walter', x: 69.38, y: 41.72 },
         { battleKey: 'pokefan-f-vanessa', x: 79.38, y: 26.72 },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Safari Zone',
+            subarea: 'Area 1',
+            width: 16,
+            x: 46.88,
+            y: 27.5,
+        },
+        { height: 80, location: 'Lilycove City', width: 16, x: 99.38, y: 37.5 },
+        { height: 128, location: 'Route 120', width: 16, x: 0.63, y: 50 },
+        { height: 16, location: 'Route 122', width: 176, x: 40.63, y: 97.5 },
+    ],
 };
 
 export default ROUTE_121;

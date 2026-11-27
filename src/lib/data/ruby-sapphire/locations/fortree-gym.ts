@@ -13,6 +13,9 @@ const FORTREE_GYM: Location = {
         { battleKey: 'bird-keeper-will', x: 92.5, y: 5.38 },
         { battleKey: 'leader-winona', x: 22.5, y: 5.38 },
     ],
+    transitions: [
+        { height: 16, location: 'Fortree City', width: 32, x: 15, y: 98 },
+    ],
 };
 
 export default FORTREE_GYM;

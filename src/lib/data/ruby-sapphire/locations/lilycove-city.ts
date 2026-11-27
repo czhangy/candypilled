@@ -30,6 +30,28 @@ const LILYCOVE_CITY: Location = {
             y: 18.36,
         },
     ],
+    transitions: [
+        {
+            game: 'Sapphire',
+            height: 16,
+            location: 'Aqua Hideout',
+            subarea: 'Entrance',
+            width: 16,
+            x: 89.38,
+            y: 13.75,
+        },
+        {
+            game: 'Ruby',
+            height: 16,
+            location: 'Magma Hideout',
+            subarea: 'Entrance',
+            width: 16,
+            x: 88.13,
+            y: 13.75,
+        },
+        { height: 144, location: 'Route 124', width: 16, x: 99.38, y: 33.75 },
+        { height: 48, location: 'Route 121', width: 16, x: 0.63, y: 41.25 },
+    ],
 };
 
 export default LILYCOVE_CITY;

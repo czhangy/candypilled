@@ -28,6 +28,9 @@ const DEWFORD_GYM: Location = {
             y: 15.51,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Dewford Town', width: 32, x: 33.33, y: 98.21 },
+    ],
 };
 
 export default DEWFORD_GYM;

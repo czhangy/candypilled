@@ -408,7 +408,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
             items: subarea.items ?? [],
             methodSplits: subarea.methodSplits ?? [],
-            transitions: subarea.transitions ?? [],
+            transitions: BattleHelpers.filterByGame(
+                subarea.transitions ?? [],
+                game
+            ),
         };
     } else {
         section = {
@@ -430,7 +433,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
             items: location.items ?? [],
             methodSplits: location.methodSplits ?? [],
-            transitions: location.transitions ?? [],
+            transitions: BattleHelpers.filterByGame(
+                location.transitions ?? [],
+                game
+            ),
         };
     }
     const currentTagPartner = BattleHelpers.filterBySplit(

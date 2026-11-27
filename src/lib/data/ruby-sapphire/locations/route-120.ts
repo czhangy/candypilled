@@ -70,6 +70,12 @@ const ROUTE_120: Location = {
             y: 60.34,
         },
     ],
+    transitions: [
+        { height: 80, location: 'Fortree City', width: 16, x: 1.25, y: 7.5 },
+        { height: 16, location: 'Scorched Slab', width: 16, x: 48.75, y: 23.5 },
+        { height: 16, location: 'Ancient Tomb', width: 16, x: 18.75, y: 55.5 },
+        { height: 128, location: 'Route 121', width: 16, x: 98.75, y: 90 },
+    ],
 };
 
 export default ROUTE_120;

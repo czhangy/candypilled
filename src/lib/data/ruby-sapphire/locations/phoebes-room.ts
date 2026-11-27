@@ -7,6 +7,10 @@ const PHOEBES_ROOM: Location = {
     map: pokemonLeaguePhoebesRoom,
     mapAnchor: MapAnchor.Center,
     battles: [{ battleKey: 'elite-four-phoebe', x: 50, y: 38.17 }],
+    transitions: [
+        { height: 16, location: "Glacia's Room", width: 16, x: 50, y: 17.86 },
+        { height: 16, location: "Sidney's Room", width: 16, x: 50, y: 96.43 },
+    ],
 };
 
 export default PHOEBES_ROOM;

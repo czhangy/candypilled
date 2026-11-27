@@ -27,6 +27,23 @@ const ROUTE_124: Location = {
         { battleKey: 'swimmer-m-spencer', x: 73.12, y: 74.18 },
         { battleKey: 'swimmer-m-chad', x: 75.62, y: 92.93 },
     ],
+    transitions: [
+        {
+            height: 144,
+            location: 'Lilycove City',
+            width: 16,
+            x: 0.63,
+            y: 30.63,
+        },
+        {
+            height: 448,
+            location: 'Mossdeep City',
+            width: 16,
+            x: 99.38,
+            y: 73.75,
+        },
+        { height: 16, location: 'Route 126', width: 736, x: 56.25, y: 99.38 },
+    ],
 };
 
 export default ROUTE_124;

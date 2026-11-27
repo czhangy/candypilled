@@ -42,6 +42,17 @@ const ROUTE_113: Location = {
             y: 56.72,
         },
     ],
+    transitions: [
+        {
+            height: 64,
+            location: 'Route 111',
+            subarea: 'North',
+            width: 16,
+            x: 99.5,
+            y: 45,
+        },
+        { height: 144, location: 'Fallarbor Town', width: 16, x: 0.5, y: 52.5 },
+    ],
 };
 
 export default ROUTE_113;

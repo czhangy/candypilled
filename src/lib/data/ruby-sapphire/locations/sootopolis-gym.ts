@@ -13,6 +13,23 @@ const SOOTOPOLIS_GYM: Location = {
             map: sootopolisGym1f,
             mapAnchor: MapAnchor.Center,
             battles: [{ battleKey: 'leader-wallace', x: 50, y: 9.01 }],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Sootopolis Gym',
+                    subarea: 'B1F',
+                    width: 16,
+                    x: 67.65,
+                    y: 86.54,
+                },
+                {
+                    height: 16,
+                    location: 'Sootopolis City',
+                    width: 32,
+                    x: 52.94,
+                    y: 98.08,
+                },
+            ],
         },
         {
             name: 'B1F',
@@ -27,6 +44,16 @@ const SOOTOPOLIS_GYM: Location = {
                 { battleKey: 'lady-brianna', x: 55.88, y: 55.17 },
                 { battleKey: 'beauty-connie', x: 55.88, y: 66.71 },
                 { battleKey: 'lass-andrea', x: 44.12, y: 74.4 },
+            ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Sootopolis Gym',
+                    subarea: '1F',
+                    width: 16,
+                    x: 67.65,
+                    y: 86.54,
+                },
             ],
         },
     ],

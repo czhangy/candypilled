@@ -35,6 +35,25 @@ const ROUTE_108: Location = {
             y: 51.72,
         },
     ],
+    transitions: [
+        {
+            height: 224,
+            location: 'Route 109',
+            subarea: 'Ocean',
+            width: 16,
+            x: 99.17,
+            y: 50,
+        },
+        {
+            height: 16,
+            location: 'Abandoned Ship',
+            subarea: 'Deck',
+            width: 16,
+            x: 49.17,
+            y: 32.5,
+        },
+        { height: 224, location: 'Route 107', width: 16, x: 0.83, y: 50 },
+    ],
 };
 
 export default ROUTE_108;

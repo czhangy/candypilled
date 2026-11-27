@@ -24,6 +24,7 @@ import {
     MapTransition,
     MethodSplit,
 } from '@/lib/static/types';
+import BattleHelpers from '@/lib/utils/BattleHelpers';
 
 type Report = {
     title: string;
@@ -346,24 +347,28 @@ type TransitionArea = {
     transitions: MapTransition[];
 };
 
-const getTransitionAreas = (game: Game): TransitionArea[] =>
-    game.locations.flatMap((location): TransitionArea[] =>
+const getTransitionAreas = (game: Game): TransitionArea[] => {
+    const forGame = (transitions: MapTransition[] | undefined) =>
+        BattleHelpers.filterByGame(transitions ?? [], game);
+
+    return game.locations.flatMap((location): TransitionArea[] =>
         location.subareas
             ? location.subareas.map((subarea) => ({
                   label: `${location.name} / ${subarea.name}`,
                   location,
                   subareaName: subarea.name,
-                  transitions: subarea.transitions ?? [],
+                  transitions: forGame(subarea.transitions),
               }))
             : [
                   {
                       label: location.name,
                       location,
                       subareaName: undefined,
-                      transitions: location.transitions ?? [],
+                      transitions: forGame(location.transitions),
                   },
               ]
     );
+};
 
 const getTransitionLabel = (transition: MapTransition): string =>
     transition.subarea

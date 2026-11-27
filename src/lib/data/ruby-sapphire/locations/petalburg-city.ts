@@ -13,6 +13,24 @@ const PETALBURG_CITY: Location = {
         { method: EncounterMethod.SuperRod, split: 'Winona' },
         { method: EncounterMethod.Surf, split: 'Winona' },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Petalburg Gym',
+            width: 16,
+            x: 51.67,
+            y: 28.33,
+        },
+        {
+            height: 32,
+            location: 'Route 104',
+            subarea: 'South',
+            width: 16,
+            x: 1.67,
+            y: 43.33,
+        },
+        { height: 64, location: 'Route 102', width: 16, x: 98.33, y: 60 },
+    ],
 };
 
 export default PETALBURG_CITY;
