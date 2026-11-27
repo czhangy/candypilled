@@ -14,6 +14,7 @@ import {
     Location,
     LocationItem,
     LocationMapImage,
+    MapTransition,
     MethodSplit,
     Run,
 } from '@/lib/static/types';
@@ -42,8 +43,13 @@ type SplitLocationProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
+    onSelectTransition: (
+        locationName: string,
+        subareaName: string | undefined
+    ) => void;
     run: Run;
     selectedBattleKey?: string;
+    selectedSubareaName: string | undefined;
     splitName: string | undefined;
     variant: string;
 };
@@ -59,8 +65,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
+    onSelectTransition,
     run,
     selectedBattleKey,
+    selectedSubareaName,
     splitName,
     variant,
 }) => {
@@ -75,6 +83,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         encounters?: Encounter[];
         items: LocationItem[];
         methodSplits: MethodSplit[];
+        transitions: MapTransition[];
     };
 
     // -------------------------------------------------------------------------
@@ -169,6 +178,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             return 0;
         }
 
+        const namedIndex = location.subareas.findIndex(
+            (subarea) => subarea.name === selectedSubareaName
+        );
+        if (namedIndex !== -1) return namedIndex;
+
         if (selectedBattleKey) {
             const queried = getAllBattles().find(
                 ({ battle }) =>
@@ -231,6 +245,21 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
 
     const handleTagPartnerClick = (): void => {
         setIsTagPartnerSelected(true);
+    };
+
+    // A transition to another subarea of this same location only swaps the
+    // local subarea; anything else navigates to the destination location.
+    const handleTransitionClick = (transition: MapTransition): void => {
+        if (transition.location !== location.name) {
+            onSelectTransition(transition.location, transition.subarea);
+            return;
+        }
+
+        const subareaIndex =
+            location.subareas?.findIndex(
+                (subarea) => subarea.name === transition.subarea
+            ) ?? -1;
+        if (subareaIndex !== -1) handleSubareaClick(subareaIndex);
     };
 
     const handleEncounterSelect = (encounter: Encounter): void => {
@@ -363,6 +392,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
             items: subarea.items ?? [],
             methodSplits: subarea.methodSplits ?? [],
+            transitions: subarea.transitions ?? [],
         };
     } else {
         section = {
@@ -384,6 +414,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                 : undefined,
             items: location.items ?? [],
             methodSplits: location.methodSplits ?? [],
+            transitions: location.transitions ?? [],
         };
     }
     const currentTagPartner = BattleHelpers.filterBySplit(
@@ -532,9 +563,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                                         );
                                     }}
                                     onTagPartnerClick={handleTagPartnerClick}
+                                    onTransitionClick={handleTransitionClick}
                                     priority={index === 0}
                                     selectedBattle={selectedBattle}
                                     tagPartnerBattleKey={tagPartnerBattleKey}
+                                    transitions={section.transitions}
                                 />
                             )}
                             {isTagPartnerSelected && tagPartnerBattle ? (

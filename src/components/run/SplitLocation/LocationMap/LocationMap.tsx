@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { MapAnchor } from '@/lib/static/enums';
-import { Battle, Game } from '@/lib/static/types';
+import { Battle, Game, MapTransition } from '@/lib/static/types';
 import BattleHelpers from '@/lib/utils/BattleHelpers';
 import styles from './LocationMap.module.scss';
 import TagPartnerButton from './TagPartnerButton/TagPartnerButton';
 import TrainerMarker from './TrainerMarker/TrainerMarker';
+import TransitionMarker from './TransitionMarker/TransitionMarker';
 
 type LocationMapProps = {
     alt: string;
@@ -19,9 +20,11 @@ type LocationMapProps = {
     mapAnchor: MapAnchor;
     onBattleClick: (battle: Battle) => void;
     onTagPartnerClick?: () => void;
+    onTransitionClick: (transition: MapTransition) => void;
     priority: boolean;
     selectedBattle?: Battle;
     tagPartnerBattleKey?: string;
+    transitions: MapTransition[];
 };
 
 const LocationMap: React.FC<LocationMapProps> = ({
@@ -34,9 +37,11 @@ const LocationMap: React.FC<LocationMapProps> = ({
     mapAnchor,
     onBattleClick,
     onTagPartnerClick,
+    onTransitionClick,
     priority,
     selectedBattle,
     tagPartnerBattleKey,
+    transitions,
 }) => {
     // -------------------------------------------------------------------------
     // CONSTANTS
@@ -282,6 +287,15 @@ const LocationMap: React.FC<LocationMapProps> = ({
                         src={map}
                         unoptimized
                     />
+                    {transitions.map((transition) => (
+                        <TransitionMarker
+                            key={`${transition.location}-${transition.subarea ?? ''}-${transition.x}-${transition.y}`}
+                            mapHeight={map.height}
+                            mapWidth={map.width}
+                            onClick={onTransitionClick}
+                            transition={transition}
+                        />
+                    ))}
                     {battles.map((battle) => (
                         <TrainerMarker
                             game={game}

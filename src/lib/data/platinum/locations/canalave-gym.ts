@@ -31,6 +31,15 @@ const CANALAVE_GYM: Location = {
                     y: 80.99,
                 },
             ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Canalave City',
+                    width: 32,
+                    x: 42,
+                    y: 96.12,
+                },
+            ],
         },
         {
             name: '2F',

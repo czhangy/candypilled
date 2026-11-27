@@ -20,9 +20,14 @@ type LocationsTabProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
+    onSelectTransition: (
+        locationName: string,
+        subareaName: string | undefined
+    ) => void;
     run: Run;
     selectedBattleKey?: string;
     selectedLocationName?: string;
+    selectedSubareaName: string | undefined;
     stickyOffset: number;
 };
 
@@ -36,9 +41,11 @@ const LocationsTab: React.FC<LocationsTabProps> = ({
     onSelectMove,
     onSelectSpecies,
     onSelectTrainer,
+    onSelectTransition,
     run,
     selectedBattleKey,
     selectedLocationName,
+    selectedSubareaName,
     stickyOffset,
 }) => {
     // -------------------------------------------------------------------------
@@ -262,8 +269,10 @@ const LocationsTab: React.FC<LocationsTabProps> = ({
                             onSelectMove={onSelectMove}
                             onSelectSpecies={onSelectSpecies}
                             onSelectTrainer={onSelectTrainer}
+                            onSelectTransition={onSelectTransition}
                             run={run}
                             selectedBattleKey={selectedBattleKey}
+                            selectedSubareaName={selectedSubareaName}
                             splitName={undefined}
                             variant={variant}
                         />

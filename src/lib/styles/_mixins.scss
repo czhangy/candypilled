@@ -49,6 +49,72 @@
     }
 }
 
+// Registers the percentage custom properties pulsing-marker animates; include
+// once at the root of any module that uses pulsing-marker (not nested inside
+// a rule, where Sass would wrap @property in the selector).
+@mixin pulsing-marker-properties {
+    @property --pulse-white {
+        inherits: false;
+        initial-value: 0%;
+        syntax: '<percentage>';
+    }
+
+    @property --marker-opacity {
+        inherits: false;
+        initial-value: 15%;
+        syntax: '<percentage>';
+    }
+}
+
+// A map marker box: accent border, fill pulsing between $opacity and
+// $pulse-opacity. Only percentages animate (a color derived in @keyframes can
+// go stale); a modifier recolors it via --marker-color-base.
+@mixin pulsing-marker($opacity, $pulse-opacity) {
+    @keyframes marker-pulse {
+        0%,
+        100% {
+            --pulse-white: 0%;
+            --marker-opacity: #{$opacity};
+        }
+
+        50% {
+            --pulse-white: 35%;
+            --marker-opacity: #{$pulse-opacity};
+        }
+    }
+
+    --marker-color-base: var(--accent-color);
+    --marker-color: color-mix(
+        in srgb,
+        white var(--pulse-white),
+        var(--marker-color-base)
+    );
+    --marker-opacity: #{$opacity};
+    --pulse-white: 0%;
+
+    animation: marker-pulse 2.5s ease-in-out infinite;
+    background: color-mix(
+        in srgb,
+        var(--marker-color) var(--marker-opacity),
+        transparent
+    );
+    border: 2px solid var(--marker-color);
+    cursor: pointer;
+    height: var(--height);
+    left: var(--x);
+    padding: 0;
+    position: absolute;
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    transition: background 0.15s ease;
+    width: var(--width);
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+        transition: none;
+    }
+}
+
 @mixin detail-tab {
     @include uppercase-label;
 

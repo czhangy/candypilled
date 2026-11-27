@@ -25,6 +25,10 @@ type SplitTabProps = {
     onSelectSpecies: (species: string) => void;
     onSelectSplit: (splitName: string) => void;
     onSelectTrainer: (battleKey: string) => void;
+    onSelectTransition: (
+        locationName: string,
+        subareaName: string | undefined
+    ) => void;
     onToggleSplitComplete: (splitName: string) => void;
     run: Run;
     selectedBattleKey?: string;
@@ -42,6 +46,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
     onSelectSpecies,
     onSelectSplit,
     onSelectTrainer,
+    onSelectTransition,
     onToggleSplitComplete,
     run,
     selectedBattleKey,
@@ -388,8 +393,10 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             onSelectMove={onSelectMove}
                             onSelectSpecies={onSelectSpecies}
                             onSelectTrainer={onSelectTrainer}
+                            onSelectTransition={onSelectTransition}
                             run={run}
                             selectedBattleKey={selectedBattleKey}
+                            selectedSubareaName={undefined}
                             splitName={currentSplit?.name}
                             variant={variant}
                         />

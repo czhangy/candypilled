@@ -19,6 +19,16 @@ const CANALAVE_CITY: Location = {
             y: 32.91,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Canalave Gym',
+            subarea: '1F',
+            width: 16,
+            x: 23.44,
+            y: 42.97,
+        },
+    ],
 };
 
 export default CANALAVE_CITY;

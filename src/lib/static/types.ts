@@ -434,6 +434,24 @@ export type Battle = {
     y: number;
 };
 
+// A clickable box on a map that navigates to another Location (or one of
+// its Subareas). Placed like a Battle (center x/y, in % of the map image),
+// but sized per transition since an exit can be a doorway or a whole route
+// edge.
+export type MapTransition = {
+    // Box height, in px of the map image.
+    height: number;
+    // Destination Location.name.
+    location: string;
+    // Destination Subarea.name. Set exactly when the destination location
+    // has subareas.
+    subarea?: string;
+    // Box width, in px of the map image.
+    width: number;
+    x: number;
+    y: number;
+};
+
 // A location-level ally trainer shown as a fixed corner button on the map,
 // not placed by x/y like a Battle and not tied to any one fight. Points into
 // the same Game.battles map as a normal Battle, reusing its existing
@@ -586,6 +604,7 @@ export type Subarea = {
     // Usually one entry; two when the partner's identity is gender-split
     // (e.g. Dawn for a male run, Lucas for a female run).
     tagPartner?: TagPartner[];
+    transitions?: MapTransition[];
 };
 
 export type Location = {
@@ -599,6 +618,10 @@ export type Location = {
     // since a partner's company is usually confined to one area. Usually
     // one entry; two when the partner's identity is gender-split.
     tagPartner?: TagPartner[];
+    // Only meaningful for a location with no subareas — a subarea-based
+    // location sets transitions per-subarea instead (Subarea.transitions),
+    // since each subarea has its own map.
+    transitions?: MapTransition[];
 } & (
     | {
           map: LocationMapImage;

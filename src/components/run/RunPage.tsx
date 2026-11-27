@@ -117,6 +117,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const selectedSpecies = searchParams.get('species') ?? undefined;
     const selectedBattle = searchParams.get('battle') ?? undefined;
     const selectedLocationName = searchParams.get('location') ?? undefined;
+    const selectedSubareaName = searchParams.get('subarea') ?? undefined;
 
     const wipeMessage = ArrayHelpers.pickRandom([
         ...DEFAULT_WIPE_MESSAGES,
@@ -260,7 +261,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     };
 
     const handleLocationNameSelect = (locationName: string): void => {
-        updateQueryParams({ location: locationName });
+        updateQueryParams({ location: locationName, subarea: undefined });
     };
 
     const handlePokemonDeselect = (): void => {
@@ -277,10 +278,19 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         );
     };
 
-    const handleLocationSelect = (locationName: string): void => {
+    const handleTransitionSelect = (
+        locationName: string,
+        subareaName: string | undefined
+    ): void => {
         const params = new URLSearchParams(searchParams.toString());
         params.set('tab', 'locations');
         params.set('location', locationName);
+        if (subareaName) {
+            params.set('subarea', subareaName);
+        } else {
+            params.delete('subarea');
+        }
+        params.delete('battle');
         params.delete('pokemon');
         params.delete('subtab');
         params.delete('move');
@@ -289,6 +299,10 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
         params.delete('species');
 
         router.push(`${pathname}?${params.toString()}`);
+    };
+
+    const handleLocationSelect = (locationName: string): void => {
+        handleTransitionSelect(locationName, undefined);
     };
 
     const handleAbilityLinkClick = (slug: string): void => {
@@ -523,6 +537,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                             onSelectSpecies={handleSpeciesLinkClick}
                             onSelectSplit={handleSplitSelect}
                             onSelectTrainer={handleTrainerLinkClick}
+                            onSelectTransition={handleTransitionSelect}
                             onToggleSplitComplete={handleSplitToggleComplete}
                             run={run}
                             selectedBattleKey={selectedBattle}
@@ -540,9 +555,11 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                             onSelectMove={handleMoveLinkClick}
                             onSelectSpecies={handleSpeciesLinkClick}
                             onSelectTrainer={handleTrainerLinkClick}
+                            onSelectTransition={handleTransitionSelect}
                             run={run}
                             selectedBattleKey={selectedBattle}
                             selectedLocationName={selectedLocationName}
+                            selectedSubareaName={selectedSubareaName}
                             stickyOffset={stickyHeaderHeight}
                         />
                     )}

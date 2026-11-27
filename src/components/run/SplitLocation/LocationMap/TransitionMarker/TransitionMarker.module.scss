@@ -1,0 +1,55 @@
+@use '@/styles/constants' as *;
+@use '@/styles/mixins' as *;
+@include pulsing-marker-properties;
+
+// Filled in (unlike the mostly-outline trainer marker) so an exit reads as
+// a surface to step onto rather than a trainer to fight.
+.transition-marker {
+    @include pulsing-marker(40%, 55%);
+
+    // Dashed and glowing, where a trainer marker has a solid border and no
+    // glow.
+    border-style: dashed;
+    box-shadow: 0 0 0.6rem
+        color-mix(in srgb, var(--marker-color) 60%, transparent);
+
+    @media (hover: hover) {
+        &:hover {
+            background: color-mix(
+                in srgb,
+                var(--marker-color) 70%,
+                transparent
+            );
+
+            .transition-marker__label {
+                opacity: 1;
+            }
+        }
+    }
+
+    &:focus-visible {
+        .transition-marker__label {
+            opacity: 1;
+        }
+    }
+
+    .transition-marker__label {
+        @include mono-label;
+
+        background: $background;
+        border: 1px solid $border-subtle;
+        border-radius: 0.25rem;
+        bottom: 100%;
+        color: $foreground;
+        font-size: 0.65rem;
+        left: 50%;
+        margin-bottom: 0.35rem;
+        opacity: 0;
+        padding: 0.15rem 0.4rem;
+        pointer-events: none;
+        position: absolute;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        z-index: 1;
+    }
+}

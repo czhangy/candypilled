@@ -20,6 +20,8 @@ import {
     BattleTeam,
     BattleTrainer,
     Game,
+    Location,
+    MapTransition,
     MethodSplit,
 } from '@/lib/static/types';
 
@@ -337,6 +339,120 @@ const checkMoveAi = (game: Game): string[] => {
     ];
 };
 
+type TransitionArea = {
+    label: string;
+    location: Location;
+    subareaName: string | undefined;
+    transitions: MapTransition[];
+};
+
+const getTransitionAreas = (game: Game): TransitionArea[] =>
+    game.locations.flatMap((location): TransitionArea[] =>
+        location.subareas
+            ? location.subareas.map((subarea) => ({
+                  label: `${location.name} / ${subarea.name}`,
+                  location,
+                  subareaName: subarea.name,
+                  transitions: subarea.transitions ?? [],
+              }))
+            : [
+                  {
+                      label: location.name,
+                      location,
+                      subareaName: undefined,
+                      transitions: location.transitions ?? [],
+                  },
+              ]
+    );
+
+const getTransitionLabel = (transition: MapTransition): string =>
+    transition.subarea
+        ? `${transition.location} / ${transition.subarea}`
+        : transition.location;
+
+// A transition must stay on its map, point at a real location (and a real
+// subarea exactly when that location has subareas), and not point at the
+// very area it sits on.
+const checkTransitions = (game: Game): string[] =>
+    getTransitionAreas(game).flatMap((area) =>
+        area.transitions.flatMap((transition) => {
+            const prefix = `${area.label} -> ${getTransitionLabel(transition)}`;
+            const violations: string[] = [];
+
+            if (
+                transition.x < 0 ||
+                transition.x > 100 ||
+                transition.y < 0 ||
+                transition.y > 100
+            ) {
+                violations.push(`${prefix}: x/y outside the map (0-100%)`);
+            }
+            if (transition.width <= 0 || transition.height <= 0) {
+                violations.push(`${prefix}: width/height must be positive`);
+            }
+
+            const destination = game.locations.find(
+                (location) => location.name === transition.location
+            );
+            if (!destination) {
+                return [
+                    ...violations,
+                    `${prefix}: unknown destination location`,
+                ];
+            }
+
+            if (destination.subareas) {
+                if (!transition.subarea) {
+                    violations.push(`${prefix}: missing subarea`);
+                } else if (
+                    !destination.subareas.some(
+                        (subarea) => subarea.name === transition.subarea
+                    )
+                ) {
+                    violations.push(`${prefix}: unknown destination subarea`);
+                }
+            } else if (transition.subarea) {
+                violations.push(`${prefix}: destination has no subareas`);
+            }
+
+            if (
+                destination === area.location &&
+                transition.subarea === area.subareaName
+            ) {
+                violations.push(`${prefix}: points at its own area`);
+            }
+
+            return violations;
+        })
+    );
+
+// Not every link is two-way (a ledge, a one-way warp), so a missing return
+// transition is only a warning.
+const getTransitionWarnings = (game: Game): string[] => {
+    const areas = getTransitionAreas(game);
+
+    return areas.flatMap((area) =>
+        area.transitions.flatMap((transition) => {
+            const destination = areas.find(
+                (candidate) =>
+                    candidate.location.name === transition.location &&
+                    candidate.subareaName === transition.subarea
+            );
+            if (!destination) return [];
+
+            const hasReturn = destination.transitions.some(
+                (candidate) =>
+                    candidate.location === area.location.name &&
+                    candidate.subarea === area.subareaName
+            );
+
+            return hasReturn
+                ? []
+                : `${area.label} -> ${getTransitionLabel(transition)}: no transition back`;
+        })
+    );
+};
+
 const checkMetLocations = (
     game: Game,
     unmappedLocations: string[]
@@ -401,13 +517,19 @@ const checkGame = (game: Game, games: Game[]): Report => {
             ...checkBattleOrder(game, siblings),
             ...checkAiFlags(game),
             ...checkMoveAi(game),
+            ...checkTransitions(game),
             ...(hasMetTable
                 ? checkMetLocations(game, config.unmappedLocations)
                 : []),
         ],
-        warnings: hasMetTable
-            ? []
-            : ['no met-location table yet, skipping location correspondence'],
+        warnings: [
+            ...(hasMetTable
+                ? []
+                : [
+                      'no met-location table yet, skipping location correspondence',
+                  ]),
+            ...getTransitionWarnings(game),
+        ],
     };
 };
 
