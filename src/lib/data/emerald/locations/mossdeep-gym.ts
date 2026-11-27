@@ -75,6 +75,16 @@ const MOSSDEEP_GYM: Location = {
             y: 20.4,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Mossdeep City',
+            subarea: 'City',
+            width: 32,
+            x: 26.92,
+            y: 98.61,
+        },
+    ],
 };
 
 export default MOSSDEEP_GYM;

@@ -40,6 +40,32 @@ const JAGGED_PASS: Location = {
             y: 76.83,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Mt. Chimney',
+            subarea: 'Pre-Lavaridge',
+            width: 32,
+            x: 46.67,
+            y: 11.96,
+        },
+        {
+            height: 16,
+            location: 'Magma Hideout',
+            subarea: 'Entrance',
+            width: 16,
+            x: 55,
+            y: 40.22,
+        },
+        {
+            height: 16,
+            location: 'Route 112',
+            subarea: 'South',
+            width: 32,
+            x: 50,
+            y: 88.04,
+        },
+    ],
 };
 
 export default JAGGED_PASS;

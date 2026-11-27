@@ -55,6 +55,18 @@ const ROUTE_127: Location = {
             y: 85.43,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Mossdeep City',
+            subarea: 'City',
+            width: 160,
+            x: 37.5,
+            y: 0.63,
+        },
+        { height: 400, location: 'Route 126', width: 16, x: 0.63, y: 55.63 },
+        { height: 16, location: 'Route 128', width: 368, x: 36.88, y: 99.38 },
+    ],
 };
 
 export default ROUTE_127;

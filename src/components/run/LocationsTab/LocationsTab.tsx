@@ -4,7 +4,7 @@ import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import SplitLocation from '@/components/run/SplitLocation/SplitLocation';
-import { Encounter, Game, Location, Run } from '@/lib/static/types';
+import { AreaRef, Encounter, Game, Location, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
@@ -20,15 +20,13 @@ type LocationsTabProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
-    onSelectTransition: (
-        locationName: string,
-        subareaName: string | undefined
-    ) => void;
+    onSelectTransition: (destination: AreaRef, source: AreaRef) => void;
     run: Run;
     selectedBattleKey?: string;
     selectedLocationName?: string;
     selectedSubareaName: string | undefined;
     stickyOffset: number;
+    transitionSource: AreaRef | undefined;
 };
 
 const LocationsTab: React.FC<LocationsTabProps> = ({
@@ -47,6 +45,7 @@ const LocationsTab: React.FC<LocationsTabProps> = ({
     selectedLocationName,
     selectedSubareaName,
     stickyOffset,
+    transitionSource,
 }) => {
     // -------------------------------------------------------------------------
     // HOOKS
@@ -274,6 +273,7 @@ const LocationsTab: React.FC<LocationsTabProps> = ({
                             selectedBattleKey={selectedBattleKey}
                             selectedSubareaName={selectedSubareaName}
                             splitName={undefined}
+                            transitionSource={transitionSource}
                             variant={variant}
                         />
                     )}

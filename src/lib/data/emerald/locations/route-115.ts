@@ -39,6 +39,31 @@ const ROUTE_115: Location = {
                     y: 63.22,
                 },
             ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Meteor Falls',
+                    subarea: '1F',
+                    width: 16,
+                    x: 68.75,
+                    y: 11.46,
+                },
+                {
+                    height: 16,
+                    location: 'Route 115',
+                    subarea: 'North',
+                    width: 176,
+                    x: 23.75,
+                    y: 1.04,
+                },
+                {
+                    height: 16,
+                    location: 'Rustboro City',
+                    width: 80,
+                    x: 53.75,
+                    y: 98.96,
+                },
+            ],
         },
         {
             name: 'North',
@@ -78,6 +103,16 @@ const ROUTE_115: Location = {
                     customWidth: 102,
                     x: 32.5,
                     y: 18.36,
+                },
+            ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Route 115',
+                    subarea: 'South',
+                    width: 160,
+                    x: 22.5,
+                    y: 98.75,
                 },
             ],
         },

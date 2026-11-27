@@ -7,6 +7,7 @@ import LocationSelectModal from '@/components/run/LocationSelectModal/LocationSe
 import ChevronIcon from '@/lib/icons/ChevronIcon';
 import { EncounterMethod, MapAnchor, PokemonStatus } from '@/lib/static/enums';
 import {
+    AreaRef,
     Battle,
     CaughtPokemon,
     Encounter,
@@ -43,14 +44,12 @@ type SplitLocationProps = {
     onSelectMove: (slug: string) => void;
     onSelectSpecies: (species: string) => void;
     onSelectTrainer: (battleKey: string) => void;
-    onSelectTransition: (
-        locationName: string,
-        subareaName: string | undefined
-    ) => void;
+    onSelectTransition: (destination: AreaRef, source: AreaRef) => void;
     run: Run;
     selectedBattleKey?: string;
     selectedSubareaName: string | undefined;
     splitName: string | undefined;
+    transitionSource: AreaRef | undefined;
     variant: string;
 };
 
@@ -70,6 +69,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     selectedBattleKey,
     selectedSubareaName,
     splitName,
+    transitionSource,
     variant,
 }) => {
     // -------------------------------------------------------------------------
@@ -206,6 +206,11 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
         () => getDefaultSelectedBattle(getInitialSubareaIndex())
     );
     const [isTagPartnerSelected, setIsTagPartnerSelected] = useState(false);
+    // Where the player just came from via a transition, until they pick a
+    // subarea by hand; the map centers on the way back to it.
+    const [arrivedFrom, setArrivedFrom] = useState<AreaRef | undefined>(
+        transitionSource
+    );
     const [selectedEncounter, setSelectedEncounter] = useState<
         Encounter | undefined
     >(undefined);
@@ -236,6 +241,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     };
 
     const handleSubareaClick = (index: number): void => {
+        setArrivedFrom(undefined);
         setSelectedSubareaIndex(index);
         setSelectedBattle(getDefaultSelectedBattle(index));
         setSelectedEncounter(undefined);
@@ -250,8 +256,15 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     // A transition to another subarea of this same location only swaps the
     // local subarea; anything else navigates to the destination location.
     const handleTransitionClick = (transition: MapTransition): void => {
+        const source: AreaRef = {
+            location: location.name,
+            subarea: location.subareas?.[selectedSubareaIndex].name,
+        };
         if (transition.location !== location.name) {
-            onSelectTransition(transition.location, transition.subarea);
+            onSelectTransition(
+                { location: transition.location, subarea: transition.subarea },
+                source
+            );
             return;
         }
 
@@ -259,7 +272,10 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
             location.subareas?.findIndex(
                 (subarea) => subarea.name === transition.subarea
             ) ?? -1;
-        if (subareaIndex !== -1) handleSubareaClick(subareaIndex);
+        if (subareaIndex === -1) return;
+
+        handleSubareaClick(subareaIndex);
+        setArrivedFrom(source);
     };
 
     const handleEncounterSelect = (encounter: Encounter): void => {
@@ -431,6 +447,24 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
     const tagPartnerBattle: Battle | undefined = tagPartnerBattleKey
         ? { battleKey: tagPartnerBattleKey, x: 0, y: 0 }
         : undefined;
+    // The midpoint of this subarea's transitions back to where the player
+    // came from (several when the edge is split by obstacles).
+    const arrivalTransitions = arrivedFrom
+        ? section.transitions.filter(
+              (transition) =>
+                  transition.location === arrivedFrom.location &&
+                  transition.subarea === arrivedFrom.subarea
+          )
+        : [];
+    const arrivalXs = arrivalTransitions.map((transition) => transition.x);
+    const arrivalYs = arrivalTransitions.map((transition) => transition.y);
+    const arrivalPoint =
+        arrivalTransitions.length > 0
+            ? {
+                  x: (Math.min(...arrivalXs) + Math.max(...arrivalXs)) / 2,
+                  y: (Math.min(...arrivalYs) + Math.max(...arrivalYs)) / 2,
+              }
+            : undefined;
     const isStarterEncounter = selectedEncounter
         ? selectedEncounter.method === EncounterMethod.Starter
         : !!encounter &&
@@ -540,6 +574,7 @@ const SplitLocation: React.FC<SplitLocationProps> = ({
                             {section.map && (
                                 <LocationMap
                                     alt={`${location.name} map`}
+                                    arrivalPoint={arrivalPoint}
                                     battles={section.battles}
                                     game={game}
                                     id={

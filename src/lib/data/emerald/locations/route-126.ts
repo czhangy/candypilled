@@ -55,6 +55,11 @@ const ROUTE_126: Location = {
             y: 60.43,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Route 124', width: 176, x: 34.38, y: 0.63 },
+        { height: 16, location: 'Route 124', width: 208, x: 76.88, y: 0.63 },
+        { height: 480, location: 'Route 127', width: 16, x: 99.38, y: 55 },
+    ],
 };
 
 export default ROUTE_126;

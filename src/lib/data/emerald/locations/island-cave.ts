@@ -8,6 +8,9 @@ const ISLAND_CAVE: Location = {
     mapAnchor: MapAnchor.Center,
     encountersKey: 'island-cave',
     methodSplits: [{ method: EncounterMethod.Static, split: 'Juan' }],
+    transitions: [
+        { height: 16, location: 'Route 105', width: 16, x: 50, y: 89.39 },
+    ],
 };
 
 export default ISLAND_CAVE;

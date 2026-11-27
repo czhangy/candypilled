@@ -48,6 +48,15 @@ const PETALBURG_GYM: Location = {
             y: 5.18,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Petalburg City',
+            width: 32,
+            x: 52.02,
+            y: 98.9,
+        },
+    ],
 };
 
 export default PETALBURG_GYM;

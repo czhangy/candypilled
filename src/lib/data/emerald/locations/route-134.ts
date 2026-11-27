@@ -56,6 +56,17 @@ const ROUTE_134: Location = {
             y: 75.86,
         },
     ],
+    transitions: [
+        {
+            height: 128,
+            location: 'Slateport City',
+            subarea: 'City',
+            width: 16,
+            x: 0.63,
+            y: 27.5,
+        },
+        { height: 512, location: 'Route 133', width: 16, x: 99.38, y: 50 },
+    ],
 };
 
 export default ROUTE_134;

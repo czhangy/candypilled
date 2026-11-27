@@ -8,6 +8,24 @@ const LAVARIDGE_TOWN: Location = {
     mapAnchor: MapAnchor.Center,
     encountersKey: 'lavaridge-town',
     methodSplits: [{ method: EncounterMethod.Egg, split: 'Flannery' }],
+    transitions: [
+        {
+            height: 96,
+            location: 'Route 112',
+            subarea: 'South',
+            width: 16,
+            x: 97.5,
+            y: 50,
+        },
+        {
+            height: 16,
+            location: 'Lavaridge Gym',
+            subarea: '1F',
+            width: 16,
+            x: 27.5,
+            y: 77.5,
+        },
+    ],
 };
 
 export default LAVARIDGE_TOWN;

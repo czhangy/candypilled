@@ -40,6 +40,10 @@ const ROUTE_129: Location = {
             y: 68.36,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Route 128', width: 208, x: 46.88, y: 1.25 },
+        { height: 288, location: 'Route 130', width: 16, x: 0.63, y: 55 },
+    ],
 };
 
 export default ROUTE_129;

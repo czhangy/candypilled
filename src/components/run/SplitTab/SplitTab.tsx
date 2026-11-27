@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import SplitLocation from '@/components/run/SplitLocation/SplitLocation';
 import ChevronIcon from '@/lib/icons/ChevronIcon';
-import { Encounter, Game, Location, Run } from '@/lib/static/types';
+import { AreaRef, Encounter, Game, Location, Run } from '@/lib/static/types';
 import EncounterHelpers from '@/lib/utils/EncounterHelpers';
 import PokemonHelpers from '@/lib/utils/PokemonHelpers';
 import SettingsHelpers from '@/lib/utils/SettingsHelpers';
@@ -25,10 +25,7 @@ type SplitTabProps = {
     onSelectSpecies: (species: string) => void;
     onSelectSplit: (splitName: string) => void;
     onSelectTrainer: (battleKey: string) => void;
-    onSelectTransition: (
-        locationName: string,
-        subareaName: string | undefined
-    ) => void;
+    onSelectTransition: (destination: AreaRef, source: AreaRef) => void;
     onToggleSplitComplete: (splitName: string) => void;
     run: Run;
     selectedBattleKey?: string;
@@ -398,6 +395,7 @@ const SplitTab: React.FC<SplitTabProps> = ({
                             selectedBattleKey={selectedBattleKey}
                             selectedSubareaName={undefined}
                             splitName={currentSplit?.name}
+                            transitionSource={undefined}
                             variant={variant}
                         />
                     ))}

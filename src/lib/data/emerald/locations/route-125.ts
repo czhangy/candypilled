@@ -57,6 +57,24 @@ const ROUTE_125: Location = {
             y: 23.36,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Shoal Cave',
+            subarea: 'Entrance (High)',
+            width: 16,
+            x: 28.13,
+            y: 48.75,
+        },
+        {
+            height: 16,
+            location: 'Mossdeep City',
+            subarea: 'City',
+            width: 464,
+            x: 46.88,
+            y: 98.75,
+        },
+    ],
 };
 
 export default ROUTE_125;

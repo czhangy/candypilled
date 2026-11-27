@@ -7,6 +7,9 @@ const WALLACES_ROOM: Location = {
     map: wallacesRoom,
     mapAnchor: MapAnchor.Center,
     battles: [{ battleKey: 'champion-wallace', x: 50.0, y: 41.11 }],
+    transitions: [
+        { height: 16, location: "Drake's Room", width: 16, x: 50, y: 96.15 },
+    ],
 };
 
 export default WALLACES_ROOM;

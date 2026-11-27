@@ -25,6 +25,32 @@ const PETALBURG_WOODS: Location = {
             y: 32.6,
         },
     ],
+    transitions: [
+        {
+            height: 16,
+            location: 'Route 104',
+            subarea: 'North',
+            width: 32,
+            x: 31.25,
+            y: 12.5,
+        },
+        {
+            height: 16,
+            location: 'Route 104',
+            subarea: 'South',
+            width: 32,
+            x: 35.42,
+            y: 87.5,
+        },
+        {
+            height: 16,
+            location: 'Route 104',
+            subarea: 'South',
+            width: 32,
+            x: 77.08,
+            y: 87.5,
+        },
+    ],
 };
 
 export default PETALBURG_WOODS;

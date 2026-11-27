@@ -66,7 +66,7 @@
     }
 }
 
-// A map marker box: accent border, fill pulsing between $opacity and
+// A map marker box: ringed accent border, fill pulsing between $opacity and
 // $pulse-opacity. Only percentages animate (a color derived in @keyframes can
 // go stale); a modifier recolors it via --marker-color-base.
 @mixin pulsing-marker($opacity, $pulse-opacity) {
@@ -99,6 +99,7 @@
         transparent
     );
     border: 2px solid var(--marker-color);
+    box-shadow: $marker-ring;
     cursor: pointer;
     height: var(--height);
     left: var(--x);

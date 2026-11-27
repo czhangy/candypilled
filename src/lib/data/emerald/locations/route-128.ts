@@ -50,6 +50,18 @@ const ROUTE_128: Location = {
             y: 73.36,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Route 127', width: 400, x: 26.25, y: 1.25 },
+        {
+            height: 112,
+            location: 'Ever Grande City',
+            subarea: 'City',
+            width: 16,
+            x: 99.58,
+            y: 73.75,
+        },
+        { height: 16, location: 'Route 129', width: 384, x: 36.67, y: 98.75 },
+    ],
 };
 
 export default ROUTE_128;

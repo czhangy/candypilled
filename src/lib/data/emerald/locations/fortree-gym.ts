@@ -40,6 +40,9 @@ const FORTREE_GYM: Location = {
             y: 9.38,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Fortree City', width: 32, x: 80, y: 98 },
+    ],
 };
 
 export default FORTREE_GYM;

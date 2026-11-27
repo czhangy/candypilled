@@ -52,6 +52,16 @@ const ROUTE_131: Location = {
             y: 40.86,
         },
     ],
+    transitions: [
+        {
+            height: 272,
+            location: 'Pacifidlog Town',
+            width: 16,
+            x: 0.83,
+            y: 53.75,
+        },
+        { height: 112, location: 'Route 130', width: 16, x: 99.17, y: 58.75 },
+    ],
 };
 
 export default ROUTE_131;

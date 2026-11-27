@@ -1,3 +1,4 @@
+import Tooltip from '@/components/common/Tooltip/Tooltip';
 import { MapTransition } from '@/lib/static/types';
 import styles from './TransitionMarker.module.scss';
 
@@ -51,9 +52,13 @@ const TransitionMarker: React.FC<TransitionMarkerProps> = ({
             }
             type="button"
         >
-            <span className={styles['transition-marker__label']}>
-                {destination}
-            </span>
+            <Tooltip
+                className={styles['transition-marker__tooltip']}
+                position="center"
+                text={destination}
+            >
+                {null}
+            </Tooltip>
         </button>
     );
 };

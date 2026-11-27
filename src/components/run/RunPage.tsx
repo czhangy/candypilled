@@ -19,6 +19,7 @@ import GenderSelectModal from '@/components/common/GenderSelectModal/GenderSelec
 import StarterSelectModal from '@/components/common/StarterSelectModal/StarterSelectModal';
 import Tabs from '@/components/common/Tabs/Tabs';
 import {
+    AreaRef,
     CaughtPokemon,
     Game,
     PokemonSlug,
@@ -118,6 +119,13 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     const selectedBattle = searchParams.get('battle') ?? undefined;
     const selectedLocationName = searchParams.get('location') ?? undefined;
     const selectedSubareaName = searchParams.get('subarea') ?? undefined;
+    const sourceLocationName = searchParams.get('from');
+    const transitionSource: AreaRef | undefined = sourceLocationName
+        ? {
+              location: sourceLocationName,
+              subarea: searchParams.get('fromSubarea') ?? undefined,
+          }
+        : undefined;
 
     const wipeMessage = ArrayHelpers.pickRandom([
         ...DEFAULT_WIPE_MESSAGES,
@@ -261,7 +269,12 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     };
 
     const handleLocationNameSelect = (locationName: string): void => {
-        updateQueryParams({ location: locationName, subarea: undefined });
+        updateQueryParams({
+            from: undefined,
+            fromSubarea: undefined,
+            location: locationName,
+            subarea: undefined,
+        });
     };
 
     const handlePokemonDeselect = (): void => {
@@ -279,17 +292,24 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     };
 
     const handleTransitionSelect = (
-        locationName: string,
-        subareaName: string | undefined
+        destination: AreaRef,
+        source: AreaRef | undefined
     ): void => {
         const params = new URLSearchParams(searchParams.toString());
         params.set('tab', 'locations');
-        params.set('location', locationName);
-        if (subareaName) {
-            params.set('subarea', subareaName);
-        } else {
-            params.delete('subarea');
-        }
+        params.set('location', destination.location);
+        const optionalParams: Record<string, string | undefined> = {
+            from: source?.location,
+            fromSubarea: source?.subarea,
+            subarea: destination.subarea,
+        };
+        Object.entries(optionalParams).forEach(([key, value]) => {
+            if (value) {
+                params.set(key, value);
+            } else {
+                params.delete(key);
+            }
+        });
         params.delete('battle');
         params.delete('pokemon');
         params.delete('subtab');
@@ -302,7 +322,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
     };
 
     const handleLocationSelect = (locationName: string): void => {
-        handleTransitionSelect(locationName, undefined);
+        handleTransitionSelect({ location: locationName }, undefined);
     };
 
     const handleAbilityLinkClick = (slug: string): void => {
@@ -561,6 +581,7 @@ const RunPage: React.FC<RunPageProps> = ({ game }) => {
                             selectedLocationName={selectedLocationName}
                             selectedSubareaName={selectedSubareaName}
                             stickyOffset={stickyHeaderHeight}
+                            transitionSource={transitionSource}
                         />
                     )}
                     {activeTab === 'box' && (

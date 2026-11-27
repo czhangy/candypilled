@@ -60,6 +60,11 @@ const ROUTE_116: Location = {
             y: 31.72,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Rusturf Tunnel', width: 16, x: 47.5, y: 42.5 },
+        { height: 16, location: 'Rusturf Tunnel', width: 16, x: 65.5, y: 52.5 },
+        { height: 96, location: 'Rustboro City', width: 16, x: 0.5, y: 55 },
+    ],
 };
 
 export default ROUTE_116;

@@ -33,6 +33,24 @@ const ROUTE_123: Location = {
                     y: 66.72,
                 },
             ],
+            transitions: [
+                {
+                    height: 32,
+                    location: 'Route 118',
+                    subarea: 'East',
+                    width: 16,
+                    x: 1.14,
+                    y: 55,
+                },
+                {
+                    height: 240,
+                    location: 'Route 123',
+                    subarea: 'East',
+                    width: 16,
+                    x: 98.86,
+                    y: 47.5,
+                },
+            ],
         },
         {
             name: 'East',
@@ -97,6 +115,23 @@ const ROUTE_123: Location = {
                     battleKey: 'expert-m-fredrick',
                     x: 19.11,
                     y: 96.72,
+                },
+            ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Route 122',
+                    width: 32,
+                    x: 82.12,
+                    y: 2.5,
+                },
+                {
+                    height: 160,
+                    location: 'Route 123',
+                    subarea: 'West',
+                    width: 16,
+                    x: 0.45,
+                    y: 60,
                 },
             ],
         },

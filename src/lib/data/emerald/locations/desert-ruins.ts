@@ -8,6 +8,16 @@ const DESERT_RUINS: Location = {
     mapAnchor: MapAnchor.Center,
     encountersKey: 'desert-ruins',
     methodSplits: [{ method: EncounterMethod.Static, split: 'Juan' }],
+    transitions: [
+        {
+            height: 16,
+            location: 'Route 111',
+            subarea: 'Desert',
+            width: 16,
+            x: 50,
+            y: 89.39,
+        },
+    ],
 };
 
 export default DESERT_RUINS;

@@ -15,6 +15,23 @@ const CAVE_OF_ORIGIN: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'cave-of-origin-entrance',
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Juan' }],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Cave of Origin',
+                    subarea: '1F',
+                    width: 16,
+                    x: 50,
+                    y: 21.15,
+                },
+                {
+                    height: 16,
+                    location: 'Sootopolis City',
+                    width: 16,
+                    x: 50,
+                    y: 78.85,
+                },
+            ],
         },
         {
             name: '1F',
@@ -22,6 +39,24 @@ const CAVE_OF_ORIGIN: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'cave-of-origin-1f',
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Juan' }],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Cave of Origin',
+                    subarea: 'B1F',
+                    width: 16,
+                    x: 63.04,
+                    y: 23.91,
+                },
+                {
+                    height: 16,
+                    location: 'Cave of Origin',
+                    subarea: 'Entrance',
+                    width: 16,
+                    x: 50,
+                    y: 76.09,
+                },
+            ],
         },
         {
             name: 'B1F',
@@ -29,6 +64,16 @@ const CAVE_OF_ORIGIN: Location = {
             mapAnchor: MapAnchor.Center,
             encountersKey: 'cave-of-origin-b1f',
             methodSplits: [{ method: EncounterMethod.Cave, split: 'Juan' }],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Cave of Origin',
+                    subarea: '1F',
+                    width: 16,
+                    x: 50,
+                    y: 18.42,
+                },
+            ],
         },
     ],
 };

@@ -434,6 +434,12 @@ export type Battle = {
     y: number;
 };
 
+// A location, or one of its subareas when it has any.
+export type AreaRef = {
+    location: string;
+    subarea?: string;
+};
+
 // A clickable box on a map that navigates to another Location (or one of
 // its Subareas). Placed like a Battle (center x/y, in % of the map image),
 // but sized per transition since an exit can be a doorway or a whole route

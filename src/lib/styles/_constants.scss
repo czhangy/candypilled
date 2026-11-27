@@ -17,3 +17,7 @@ $narrow-content-width: 600px;
 $border-subtle: rgba($foreground, 0.15);
 $text-dim: rgba($foreground, 0.4);
 $text-mid: rgba($foreground, 0.5);
+
+// Dark outer edge, so an accent-colored marker keeps brightness contrast on
+// terrain that matches its hue.
+$marker-ring: 0 0 0 1px rgb(black, 0.5);

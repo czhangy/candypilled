@@ -20,6 +20,17 @@ const RUSTURF_TUNNEL: Location = {
             y: 55.6,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Route 116', width: 16, x: 12.5, y: 43.75 },
+        {
+            height: 16,
+            location: 'Verdanturf Town',
+            width: 16,
+            x: 81.94,
+            y: 68.75,
+        },
+        { height: 16, location: 'Route 116', width: 16, x: 51.39, y: 85.42 },
+    ],
 };
 
 export default RUSTURF_TUNNEL;

@@ -28,6 +28,9 @@ const RUSTBORO_GYM: Location = {
             y: 11.72,
         },
     ],
+    transitions: [
+        { height: 16, location: 'Rustboro City', width: 32, x: 54.55, y: 97.5 },
+    ],
 };
 
 export default RUSTBORO_GYM;

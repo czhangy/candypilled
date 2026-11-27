@@ -16,6 +16,23 @@ const SOOTOPOLIS_GYM: Location = {
                     y: 9.01,
                 },
             ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Sootopolis Gym',
+                    subarea: 'B1F',
+                    width: 16,
+                    x: 67.65,
+                    y: 86.54,
+                },
+                {
+                    height: 16,
+                    location: 'Sootopolis City',
+                    width: 32,
+                    x: 52.94,
+                    y: 98.08,
+                },
+            ],
         },
         {
             name: 'B1F',
@@ -71,6 +88,16 @@ const SOOTOPOLIS_GYM: Location = {
                     battleKey: 'beauty-connie',
                     x: 55.88,
                     y: 74.4,
+                },
+            ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Sootopolis Gym',
+                    subarea: '1F',
+                    width: 16,
+                    x: 67.65,
+                    y: 86.54,
                 },
             ],
         },

@@ -8,6 +8,9 @@ const ANCIENT_TOMB: Location = {
     mapAnchor: MapAnchor.Center,
     encountersKey: 'ancient-tomb',
     methodSplits: [{ method: EncounterMethod.Static, split: 'Juan' }],
+    transitions: [
+        { height: 16, location: 'Route 120', width: 16, x: 50, y: 89.39 },
+    ],
 };
 
 export default ANCIENT_TOMB;

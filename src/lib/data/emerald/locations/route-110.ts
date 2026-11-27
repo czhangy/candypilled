@@ -70,7 +70,7 @@ const ROUTE_110: Location = {
         {
             battleKey: 'psychic-f-jaclyn',
             x: 83.75,
-            y: 7.34,
+            y: 15.34,
         },
         {
             battleKey: 'triathlete-biker-f-abigail',
@@ -96,6 +96,49 @@ const ROUTE_110: Location = {
             battleKey: 'triathlete-biker-m-jacob',
             x: 53.75,
             y: 78.34,
+        },
+    ],
+    transitions: [
+        { height: 16, location: 'Mauville City', width: 112, x: 38.75, y: 0.5 },
+        {
+            height: 16,
+            location: 'New Mauville',
+            subarea: 'Entrance',
+            width: 16,
+            x: 88.75,
+            y: 24.5,
+        },
+        {
+            height: 64,
+            location: 'Route 103',
+            subarea: 'East',
+            width: 16,
+            x: 1.25,
+            y: 69,
+        },
+        {
+            height: 16,
+            location: 'Trick House',
+            subarea: 'Puzzle 1',
+            width: 16,
+            x: 28.75,
+            y: 66.5,
+        },
+        {
+            height: 16,
+            location: 'Slateport City',
+            subarea: 'City',
+            width: 80,
+            x: 43.75,
+            y: 99.5,
+        },
+        {
+            height: 16,
+            location: 'Slateport City',
+            subarea: 'City',
+            width: 64,
+            x: 95,
+            y: 99.5,
         },
     ],
 };

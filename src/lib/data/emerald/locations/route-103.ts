@@ -37,6 +37,23 @@ const ROUTE_103: Location = {
                     y: 14.68,
                 },
             ],
+            transitions: [
+                {
+                    height: 16,
+                    location: 'Oldale Town',
+                    width: 64,
+                    x: 38.46,
+                    y: 97.73,
+                },
+                {
+                    height: 96,
+                    location: 'Route 103',
+                    subarea: 'East',
+                    width: 16,
+                    x: 98.08,
+                    y: 45.45,
+                },
+            ],
         },
         {
             name: 'East',
@@ -91,6 +108,23 @@ const ROUTE_103: Location = {
                     battleKey: 'swimmer-m-pete',
                     x: 19.33,
                     y: 60.42,
+                },
+            ],
+            transitions: [
+                {
+                    height: 64,
+                    location: 'Route 110',
+                    width: 16,
+                    x: 99.07,
+                    y: 40.91,
+                },
+                {
+                    height: 80,
+                    location: 'Route 103',
+                    subarea: 'West',
+                    width: 16,
+                    x: 0.93,
+                    y: 47.73,
                 },
             ],
         },

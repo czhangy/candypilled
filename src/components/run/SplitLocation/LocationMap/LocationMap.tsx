@@ -12,6 +12,9 @@ import TransitionMarker from './TransitionMarker/TransitionMarker';
 
 type LocationMapProps = {
     alt: string;
+    // Where to center on first load (in % of the map), ahead of the selected
+    // battle: the player's arrival point after a transition.
+    arrivalPoint: { x: number; y: number } | undefined;
     battles?: Battle[];
     game: Game;
     id?: string;
@@ -29,6 +32,7 @@ type LocationMapProps = {
 
 const LocationMap: React.FC<LocationMapProps> = ({
     alt,
+    arrivalPoint,
     battles = [],
     game,
     id,
@@ -90,6 +94,23 @@ const LocationMap: React.FC<LocationMapProps> = ({
         return Math.min(0, Math.max(viewportLength - mapLength, pan));
     };
 
+    // The pan that centers a point (in % of the map) in the viewport.
+    const getPanCenteredOn = (point: {
+        x: number;
+        y: number;
+    }): { x: number; y: number } => ({
+        x: clampPanAxis(
+            effectiveViewportWidth / 2 - (point.x / 100) * map.width,
+            effectiveViewportWidth,
+            map.width
+        ),
+        y: clampPanAxis(
+            effectiveViewportHeight / 2 - (point.y / 100) * map.height,
+            effectiveViewportHeight,
+            map.height
+        ),
+    });
+
     // The pan that puts mapAnchor's edge/corner flush against the
     // viewport, before clampPanAxis centers it back if the map is
     // actually smaller than the viewport on that axis.
@@ -145,25 +166,16 @@ const LocationMap: React.FC<LocationMapProps> = ({
         setPrevMap(map);
         setPan({ x: 0, y: 0 });
         setPendingCenter(true);
+    } else if (pendingCenter && hasMeasuredViewport && arrivalPoint) {
+        // Wins over the default selected battle, which is marked as seen so
+        // it can't re-center the map afterwards.
+        setPendingCenter(false);
+        setPrevSelectedBattle(selectedBattle);
+        setPan(getPanCenteredOn(arrivalPoint));
     } else if (selectedBattle !== prevSelectedBattle && hasMeasuredViewport) {
         setPrevSelectedBattle(selectedBattle);
         setPendingCenter(false);
-        if (selectedBattle) {
-            const markerX = (selectedBattle.x / 100) * map.width;
-            const markerY = (selectedBattle.y / 100) * map.height;
-            setPan({
-                x: clampPanAxis(
-                    effectiveViewportWidth / 2 - markerX,
-                    effectiveViewportWidth,
-                    map.width
-                ),
-                y: clampPanAxis(
-                    effectiveViewportHeight / 2 - markerY,
-                    effectiveViewportHeight,
-                    map.height
-                ),
-            });
-        }
+        if (selectedBattle) setPan(getPanCenteredOn(selectedBattle));
     } else if (pendingCenter && hasMeasuredViewport && !selectedBattle) {
         setPendingCenter(false);
         setPan(getAnchorPan(mapAnchor));
